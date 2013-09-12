@@ -14,6 +14,7 @@
 		DA6C8EB317E15544001F8A6D /* RTR.json in Resources */ = {isa = PBXBuildFile; fileRef = DA6C8EB217E15544001F8A6D /* RTR.json */; };
 		DA6C8EB517E15552001F8A6D /* GTC.json in Resources */ = {isa = PBXBuildFile; fileRef = DA6C8EB417E15552001F8A6D /* GTC.json */; };
 		DA6C8EB717E15563001F8A6D /* DGM.json in Resources */ = {isa = PBXBuildFile; fileRef = DA6C8EB617E15563001F8A6D /* DGM.json */; };
+		DA6C8EBC17E1833A001F8A6D /* CardRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6C8EBB17E1833A001F8A6D /* CardRepository.m */; };
 		DAAF3A5E17E118BF00048CC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF3A5D17E118BF00048CC6 /* Foundation.framework */; };
 		DAAF3A6017E118BF00048CC6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF3A5F17E118BF00048CC6 /* CoreGraphics.framework */; };
 		DAAF3A6217E118BF00048CC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF3A6117E118BF00048CC6 /* UIKit.framework */; };
@@ -50,6 +51,8 @@
 		DA6C8EB217E15544001F8A6D /* RTR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RTR.json; sourceTree = "<group>"; };
 		DA6C8EB417E15552001F8A6D /* GTC.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GTC.json; sourceTree = "<group>"; };
 		DA6C8EB617E15563001F8A6D /* DGM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DGM.json; sourceTree = "<group>"; };
+		DA6C8EBA17E1833A001F8A6D /* CardRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardRepository.h; sourceTree = "<group>"; };
+		DA6C8EBB17E1833A001F8A6D /* CardRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardRepository.m; sourceTree = "<group>"; };
 		DAAF3A5A17E118BF00048CC6 /* DraftWithFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DraftWithFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAF3A5D17E118BF00048CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DAAF3A5F17E118BF00048CC6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -98,13 +101,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DA6C8E3917E13000001F8A6D /* DomainObjects */ = {
+		DA6C8E3917E13000001F8A6D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				DA6C8E3A17E1301F001F8A6D /* Card.h */,
 				DA6C8E3B17E1301F001F8A6D /* Card.m */,
 			);
-			name = DomainObjects;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		DA6C8EAD17E1432F001F8A6D /* Frameworks */ = {
@@ -114,6 +117,15 @@
 				DA6C8EAB17E14318001F8A6D /* SDWebImage.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA6C8EB917E18271001F8A6D /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				DA6C8EBA17E1833A001F8A6D /* CardRepository.h */,
+				DA6C8EBB17E1833A001F8A6D /* CardRepository.m */,
+			);
+			name = Repositories;
 			sourceTree = "<group>";
 		};
 		DAAF3A5117E118BF00048CC6 = {
@@ -150,7 +162,8 @@
 		DAAF3A6317E118BF00048CC6 /* DraftWithFriends */ = {
 			isa = PBXGroup;
 			children = (
-				DA6C8E3917E13000001F8A6D /* DomainObjects */,
+				DA6C8EB917E18271001F8A6D /* Repositories */,
+				DA6C8E3917E13000001F8A6D /* Models */,
 				DAAF3A9917E1202F00048CC6 /* Images */,
 				DAAF3A9817E1200400048CC6 /* Views */,
 				DAAF3A9717E11FF600048CC6 /* AppDelegate */,
@@ -338,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA6C8EBC17E1833A001F8A6D /* CardRepository.m in Sources */,
 				DAAF3A7417E118BF00048CC6 /* ViewController.m in Sources */,
 				DAAF3A6E17E118BF00048CC6 /* AppDelegate.m in Sources */,
 				DAAF3A6A17E118BF00048CC6 /* main.m in Sources */,

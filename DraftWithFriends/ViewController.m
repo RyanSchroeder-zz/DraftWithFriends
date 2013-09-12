@@ -8,13 +8,15 @@
 
 #import "ViewController.h"
 #import "Card.h"
+#import "CardRepository.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/SDWebImagePrefetcher.h>
 
 @interface ViewController () <UIGestureRecognizerDelegate>
     @property (weak, nonatomic) IBOutlet UIImageView *cardImageView;
     @property (strong, nonatomic) NSArray *cardsInSet;
     @property (strong, nonatomic) Card *currentlyDisplayedCard;
-    @property (strong, nonatomic) NSString *currentlySelectedSetName;
+    @property (strong, nonatomic) NSString *currentlySelectedSetCode;
 @end
 
 static dispatch_group_t json_load_dispatch_group;
@@ -97,47 +99,23 @@ static NSError *__JSONLoadingError;
     [self fetchSetJSON:@"DGM"];
 }
 
-- (void)fetchSetJSON:(NSString *)setName
+- (void)fetchSetJSON:(NSString *)setCode
 {
-    json_load_dispatch_group = dispatch_group_create();
+    CardRepository *cardRepository = [CardRepository initializeRepositoryForSet:setCode];
+    [cardRepository cardsWithSuccess:^(NSArray *cardsInSet) {
+        [self setCardsInSet:cardsInSet];
+    } failure:nil];
     
-    NSString *setPath = [[[NSBundle mainBundle] URLForResource:setName withExtension:@"json"] path];
-    
-    NSAssert(setPath, @"Couldn't find the set in the main bundle");
-    
-    dispatch_group_async(json_load_dispatch_group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        NSError *jsonError;
-        id json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:setPath]
-                                                  options:0
-                                                    error:&jsonError];
-        __JSONLoadingError = jsonError;
-        
-        if (!jsonError) {
-            NSMutableArray *mutableCardsInSet = [[NSMutableArray alloc] init];
-            for (id cardJSON in [json valueForKey:@"cards"]) {
-                Card *currentCard = [Card cardWithDictionary:cardJSON];
-                [mutableCardsInSet addObject:currentCard];
-            }
-            [self setCardsInSet:[mutableCardsInSet sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-                int firstNumber = [((Card *)a).number integerValue];
-                int secondNumber = [((Card *)b).number integerValue];
-                
-                return firstNumber >= secondNumber ? NSOrderedDescending : NSOrderedAscending;
-            }]];
-            
-            [self setCurrentlySelectedSetName:[setName lowercaseString]];
-            
-            [self setCurrentlyDisplayedCard:[self.cardsInSet objectAtIndex:0]];
-            [self setImageForCurrentCard];
-        }
-    });
+    [self setCurrentlySelectedSetCode:[setCode lowercaseString]];
+    [self setCurrentlyDisplayedCard:[self.cardsInSet objectAtIndex:0]];
+    [self setImageForCurrentCard];
 }
 
 - (void)setImageForCurrentCard
 {
     [self.cardImageView setImageWithURL:
      [NSURL URLWithString:
-      [NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", self.currentlySelectedSetName, self.currentlyDisplayedCard.number]]
+      [NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", self.currentlySelectedSetCode, self.currentlyDisplayedCard.number]]
                        placeholderImage:nil];
 }
 
