@@ -54,7 +54,6 @@
 
 + (void)preloadCardImages:(NSArray *)cardsInSet
 {
-    [[SDWebImagePrefetcher sharedImagePrefetcher] setMaxConcurrentDownloads:15];
     [[SDWebImagePrefetcher sharedImagePrefetcher] prefetchURLs:cardsInSet completed:^(NSUInteger finishedCount, NSUInteger skippedCount) {
         
     }];

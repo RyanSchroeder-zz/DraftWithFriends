@@ -76,26 +76,31 @@ static NSError *__JSONLoadingError;
 
 - (IBAction)LoadM14Pressed:(id)sender
 {
+    [[SDImageCache sharedImageCache] clearMemory];
     [self fetchSetJSON:@"M14"];
 }
 
 - (IBAction)LoadM13Pressed:(id)sender
 {
+    [[SDImageCache sharedImageCache] clearMemory];
     [self fetchSetJSON:@"M13"];
 }
 
 - (IBAction)LoadRTRPressed:(id)sender
 {
+    [[SDImageCache sharedImageCache] clearMemory];
     [self fetchSetJSON:@"RTR"];
 }
 
 - (IBAction)LoadGTCPressed:(id)sender
 {
+    [[SDImageCache sharedImageCache] clearMemory];
     [self fetchSetJSON:@"GTC"];
 }
 
 - (IBAction)DGM:(id)sender
 {
+    [[SDImageCache sharedImageCache] clearMemory];
     [self fetchSetJSON:@"DGM"];
 }
 
