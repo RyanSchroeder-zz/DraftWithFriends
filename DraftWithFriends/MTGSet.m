@@ -10,15 +10,18 @@
 
 @interface MTGSet ()
 @property (nonatomic, readwrite) NSArray *cardsInSet;
+@property (nonatomic, readwrite) NSString *setCode;
 @end
 
 @implementation MTGSet
 
 + (MTGSet *)setWithCards:(NSArray *)cards
+                 setCode:(NSString *)setCode
 {
     MTGSet *instance = [[MTGSet alloc] init];
     
     [instance setCardsInSet:cards];
+    [instance setSetCode:setCode];
     
     return instance;
 }

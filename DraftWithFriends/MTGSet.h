@@ -10,8 +10,10 @@
 
 @interface MTGSet : NSObject
 
+@property (nonatomic, readonly) NSString *setCode;
 @property (nonatomic, readonly) NSArray *cardsInSet;
 
-+ (MTGSet *)setWithCards:(NSArray *)cards;
++ (MTGSet *)setWithCards:(NSArray *)cards
+                 setCode:(NSString *)setCode;
 
 @end
