@@ -34,7 +34,7 @@
             Card *currentCard = [Card cardWithDictionary:cardJSON];
             
             [mutableCardsInSet addObject:currentCard];
-            [mutableCardImagesInSet addObject:[NSURL URLWithString:[NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", [setCode lowercaseString], currentCard.number]]];
+            [mutableCardImagesInSet addObject:[NSURL URLWithString:[NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", [setCode lowercaseString], currentCard.numberInSet]]];
         }
         [self preloadCardImages:mutableCardImagesInSet];
         [instance setCards:[self sortCardsInSetByNumber:mutableCardsInSet]];
@@ -45,8 +45,8 @@
 + (NSArray *)sortCardsInSetByNumber:(NSArray *)cardsInSet
 {
     return [cardsInSet sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-        NSString *numberForCard_A = ((Card *)a).number;
-        NSString *numberForCard_B = ((Card *)b).number;
+        NSString *numberForCard_A = ((Card *)a).numberInSet;
+        NSString *numberForCard_B = ((Card *)b).numberInSet;
         
         return [numberForCard_A compare:numberForCard_B options:NSNumericSearch];
     }];

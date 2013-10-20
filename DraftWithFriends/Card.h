@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Player.h"
 
 @interface Card : NSObject
 
@@ -22,8 +23,6 @@ extern NSString * const kCardRarityKey;
 extern NSString * const kCardRulesTextKey;
 extern NSString * const kCardNumberKey;
 
-+ (Card *)cardWithDictionary:(NSDictionary *)cardDictionary;
-
 @property (nonatomic, readonly) int ID;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSArray *names;
@@ -35,6 +34,19 @@ extern NSString * const kCardNumberKey;
 @property (nonatomic, readonly) NSArray *subTypes; //cat//angel//merfolk
 @property (nonatomic, readonly) NSString *rarity;
 @property (nonatomic, readonly) NSString *rulesText;
-@property (nonatomic, readonly) NSString *number;
+@property (nonatomic, readonly) NSString *numberInSet;
+
+//Set
+@property (nonatomic) NSString *setCode;
+
+//Image
+@property (nonatomic, readonly) NSString *smallImageURL; //TODO
+@property (nonatomic, readonly) NSString *largeImageURL; //TODO
+
+//Draft
+@property (nonatomic) int pickNumber;
+@property (nonatomic) Player *player;
+
++ (Card *)cardWithDictionary:(NSDictionary *)cardDictionary;
 
 @end

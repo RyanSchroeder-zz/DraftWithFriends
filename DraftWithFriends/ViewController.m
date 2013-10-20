@@ -56,9 +56,9 @@ static NSError *__JSONLoadingError;
 {
     Card *firstCard = [self.cardsInSet firstObject];
     
-    if (![self.currentlyDisplayedCard.number isEqualToString:firstCard.number])
+    if (![self.currentlyDisplayedCard.numberInSet isEqualToString:firstCard.numberInSet])
     {
-        [self setCurrentlyDisplayedCard:[self.cardsInSet objectAtIndex:[self.currentlyDisplayedCard.number intValue] - 2]];
+        [self setCurrentlyDisplayedCard:[self.cardsInSet objectAtIndex:[self.currentlyDisplayedCard.numberInSet intValue] - 2]];
         [self setImageForCurrentCard];
     }
 }
@@ -67,9 +67,9 @@ static NSError *__JSONLoadingError;
 {
     Card *lastCard = [self.cardsInSet lastObject];
     
-    if (![self.currentlyDisplayedCard.number isEqualToString:lastCard.number])
+    if (![self.currentlyDisplayedCard.numberInSet isEqualToString:lastCard.numberInSet])
     {
-        [self setCurrentlyDisplayedCard:[self.cardsInSet objectAtIndex:[self.currentlyDisplayedCard.number intValue]]];
+        [self setCurrentlyDisplayedCard:[self.cardsInSet objectAtIndex:[self.currentlyDisplayedCard.numberInSet intValue]]];
         [self setImageForCurrentCard];
     }
 }
@@ -120,7 +120,7 @@ static NSError *__JSONLoadingError;
 {
     [self.cardImageView setImageWithURL:
      [NSURL URLWithString:
-      [NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", self.currentlySelectedSetCode, self.currentlyDisplayedCard.number]]
+      [NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", self.currentlySelectedSetCode, self.currentlyDisplayedCard.numberInSet]]
                        placeholderImage:nil];
 }
 

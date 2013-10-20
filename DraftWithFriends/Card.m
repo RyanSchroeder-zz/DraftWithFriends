@@ -18,7 +18,7 @@ NSString * const kCardTypesKey = @"types";
 NSString * const kCardSubTypesKey = @"subtypes";
 NSString * const kCardRarityKey = @"rarity";
 NSString * const kCardRulesTextKey = @"text";
-NSString * const kCardNumberKey = @"number";
+NSString * const kCardNumberInSetKey = @"number";
 
 @interface Card ()
     @property (nonatomic, readwrite) int ID;
@@ -32,7 +32,7 @@ NSString * const kCardNumberKey = @"number";
     @property (nonatomic, readwrite) NSArray *subTypes; //cat//angel//merfolk
     @property (nonatomic, readwrite) NSString *rarity;
     @property (nonatomic, readwrite) NSString *rulesText;
-    @property (nonatomic, readwrite) NSString *number;
+    @property (nonatomic, readwrite) NSString *numberInSet;
 @end
 
 @implementation Card
@@ -51,7 +51,7 @@ NSString * const kCardNumberKey = @"number";
     [instance setSubTypes:[cardDictionary valueForKey:kCardSubTypesKey]];
     [instance setRarity:[cardDictionary valueForKey:kCardRarityKey]];
     [instance setRulesText:[cardDictionary valueForKey:kCardRulesTextKey]];
-    [instance setNumber:[cardDictionary valueForKey:kCardNumberKey]];
+    [instance setNumberInSet:[cardDictionary valueForKey:kCardNumberInSetKey]];
     
     return instance;
 }
