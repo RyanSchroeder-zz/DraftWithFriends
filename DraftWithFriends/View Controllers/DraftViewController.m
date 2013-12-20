@@ -8,6 +8,7 @@
 
 #import "DraftViewController.h"
 #import "DraftCardCell.h"
+#import "MTGSetService.h"
 
 NSString * const kDraftCardCellKey = @"draftCardCell";
 
@@ -44,7 +45,7 @@ NSString * const kDraftCardCellKey = @"draftCardCell";
 
 - (void)configureCards
 {
-#warning Mock data
+    [[MTGSetService sharedService] setWithSetCode:@" callback:<#^(NSError *error, id successObject)callback#>]
     NSMutableArray *fetchedCards = [[NSMutableArray alloc] init];
     for (int i = 0; i < 14; i++) {
         UIImage *cardImage = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", i + 1]];

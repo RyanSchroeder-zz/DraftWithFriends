@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A6D3EC6A1863CCA800246D24 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D3EC691863CCA800246D24 /* SDWebImage.framework */; };
 		A6D3EC701863CDDF00246D24 /* DraftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */; };
 		A6D3EC741863CEE000246D24 /* DraftCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3EC731863CEE000246D24 /* DraftCardCell.m */; };
 		A6D3ECA11863D04800246D24 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6D3EC931863D04800246D24 /* 1.jpg */; };
@@ -24,6 +23,8 @@
 		A6D3ECAC1863D04800246D24 /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6D3EC9E1863D04800246D24 /* 12.jpg */; };
 		A6D3ECAD1863D04800246D24 /* 13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6D3EC9F1863D04800246D24 /* 13.jpg */; };
 		A6D3ECAE1863D04800246D24 /* 14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6D3ECA01863D04800246D24 /* 14.jpg */; };
+		DA39903E18643DD100BCDA33 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA39903D18643DD100BCDA33 /* SDWebImage.framework */; };
+		DA39904018643E6C00BCDA33 /* THS.json in Resources */ = {isa = PBXBuildFile; fileRef = DA39903F18643E6C00BCDA33 /* THS.json */; };
 		DA6C8E3C17E1301F001F8A6D /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6C8E3B17E1301F001F8A6D /* Card.m */; };
 		DA6C8EAF17E14371001F8A6D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA6C8EAE17E14371001F8A6D /* ImageIO.framework */; };
 		DA6C8EB117E15335001F8A6D /* M13.json in Resources */ = {isa = PBXBuildFile; fileRef = DA6C8EB017E15335001F8A6D /* M13.json */; };
@@ -64,7 +65,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A6D3EC691863CCA800246D24 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = DraftWithFriends/Frameworks/SDWebImage.framework; sourceTree = "<group>"; };
 		A6D3EC6E1863CDDF00246D24 /* DraftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraftViewController.h; path = "View Controllers/DraftViewController.h"; sourceTree = "<group>"; };
 		A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraftViewController.m; path = "View Controllers/DraftViewController.m"; sourceTree = "<group>"; };
 		A6D3EC721863CEE000246D24 /* DraftCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraftCardCell.h; path = "Custom Cells/DraftCardCell.h"; sourceTree = "<group>"; };
@@ -83,6 +83,8 @@
 		A6D3EC9E1863D04800246D24 /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 12.jpg; path = "Images/test pack/12.jpg"; sourceTree = "<group>"; };
 		A6D3EC9F1863D04800246D24 /* 13.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 13.jpg; path = "Images/test pack/13.jpg"; sourceTree = "<group>"; };
 		A6D3ECA01863D04800246D24 /* 14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 14.jpg; path = "Images/test pack/14.jpg"; sourceTree = "<group>"; };
+		DA39903D18643DD100BCDA33 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		DA39903F18643E6C00BCDA33 /* THS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = THS.json; sourceTree = "<group>"; };
 		DA6C8E3A17E1301F001F8A6D /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		DA6C8E3B17E1301F001F8A6D /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		DA6C8EAE17E14371001F8A6D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -129,7 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6D3EC6A1863CCA800246D24 /* SDWebImage.framework in Frameworks */,
+				DA39903E18643DD100BCDA33 /* SDWebImage.framework in Frameworks */,
 				DA6C8EAF17E14371001F8A6D /* ImageIO.framework in Frameworks */,
 				DAAF3A6017E118BF00048CC6 /* CoreGraphics.framework in Frameworks */,
 				DAAF3A6217E118BF00048CC6 /* UIKit.framework in Frameworks */,
@@ -247,7 +249,7 @@
 		DAAF3A5C17E118BF00048CC6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A6D3EC691863CCA800246D24 /* SDWebImage.framework */,
+				DA39903D18643DD100BCDA33 /* SDWebImage.framework */,
 				DA6C8EAE17E14371001F8A6D /* ImageIO.framework */,
 				DAAF3A5D17E118BF00048CC6 /* Foundation.framework */,
 				DAAF3A5F17E118BF00048CC6 /* CoreGraphics.framework */,
@@ -312,6 +314,7 @@
 				DA6C8EB417E15552001F8A6D /* GTC.json */,
 				DA6C8EB617E15563001F8A6D /* DGM.json */,
 				DAAF3A9417E11F4F00048CC6 /* M14.json */,
+				DA39903F18643E6C00BCDA33 /* THS.json */,
 			);
 			name = SetJSON;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				A6D3ECAE1863D04800246D24 /* 14.jpg in Resources */,
 				A6D3ECA41863D04800246D24 /* 4.jpg in Resources */,
 				A6D3ECA31863D04800246D24 /* 3.jpg in Resources */,
+				DA39904018643E6C00BCDA33 /* THS.json in Resources */,
 				DA6C8EB717E15563001F8A6D /* DGM.json in Resources */,
 				A6D3ECAB1863D04800246D24 /* 11.jpg in Resources */,
 				A6D3ECAA1863D04800246D24 /* 10.jpg in Resources */,
