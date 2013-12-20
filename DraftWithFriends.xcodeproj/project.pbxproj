@@ -165,7 +165,6 @@
 				DA760925181469B300A4E3DD /* BoosterPack.m */,
 				DA76092718146E7400A4E3DD /* MTGSet.h */,
 				DA76092818146E7400A4E3DD /* MTGSet.m */,
->>>>>>> Added booster generation methods for normal sets (Non-RTR block sets).
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
