@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6D3EC6A1863CCA800246D24 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D3EC691863CCA800246D24 /* SDWebImage.framework */; };
 		DA6C8E3C17E1301F001F8A6D /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6C8E3B17E1301F001F8A6D /* Card.m */; };
-		DA6C8EAC17E14318001F8A6D /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA6C8EAB17E14318001F8A6D /* SDWebImage.framework */; };
 		DA6C8EAF17E14371001F8A6D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA6C8EAE17E14371001F8A6D /* ImageIO.framework */; };
 		DA6C8EB117E15335001F8A6D /* M13.json in Resources */ = {isa = PBXBuildFile; fileRef = DA6C8EB017E15335001F8A6D /* M13.json */; };
 		DA6C8EB317E15544001F8A6D /* RTR.json in Resources */ = {isa = PBXBuildFile; fileRef = DA6C8EB217E15544001F8A6D /* RTR.json */; };
@@ -43,9 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A6D3EC691863CCA800246D24 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = DraftWithFriends/Frameworks/SDWebImage.framework; sourceTree = "<group>"; };
 		DA6C8E3A17E1301F001F8A6D /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		DA6C8E3B17E1301F001F8A6D /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
-		DA6C8EAB17E14318001F8A6D /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		DA6C8EAE17E14371001F8A6D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		DA6C8EB017E15335001F8A6D /* M13.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = M13.json; sourceTree = "<group>"; };
 		DA6C8EB217E15544001F8A6D /* RTR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RTR.json; sourceTree = "<group>"; };
@@ -80,8 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6D3EC6A1863CCA800246D24 /* SDWebImage.framework in Frameworks */,
 				DA6C8EAF17E14371001F8A6D /* ImageIO.framework in Frameworks */,
-				DA6C8EAC17E14318001F8A6D /* SDWebImage.framework in Frameworks */,
 				DAAF3A6017E118BF00048CC6 /* CoreGraphics.framework in Frameworks */,
 				DAAF3A6217E118BF00048CC6 /* UIKit.framework in Frameworks */,
 				DAAF3A5E17E118BF00048CC6 /* Foundation.framework in Frameworks */,
@@ -110,15 +110,6 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		DA6C8EAD17E1432F001F8A6D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DA6C8EAE17E14371001F8A6D /* ImageIO.framework */,
-				DA6C8EAB17E14318001F8A6D /* SDWebImage.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		DA6C8EB917E18271001F8A6D /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,7 +122,6 @@
 		DAAF3A5117E118BF00048CC6 = {
 			isa = PBXGroup;
 			children = (
-				DA6C8EAD17E1432F001F8A6D /* Frameworks */,
 				DAAF3A6317E118BF00048CC6 /* DraftWithFriends */,
 				DAAF3A8217E118BF00048CC6 /* DraftWithFriendsTests */,
 				DAAF3A5C17E118BF00048CC6 /* Frameworks */,
@@ -151,6 +141,8 @@
 		DAAF3A5C17E118BF00048CC6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6D3EC691863CCA800246D24 /* SDWebImage.framework */,
+				DA6C8EAE17E14371001F8A6D /* ImageIO.framework */,
 				DAAF3A5D17E118BF00048CC6 /* Foundation.framework */,
 				DAAF3A5F17E118BF00048CC6 /* CoreGraphics.framework */,
 				DAAF3A6117E118BF00048CC6 /* UIKit.framework */,
@@ -480,11 +472,13 @@
 		DAAF3A8D17E118BF00048CC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/ryan.schroeder/Desktop/Developer/DraftWithFriends,
+					/Users/trent.ellingsen/Dev/DraftWithFriends/DraftWithFriends/Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DraftWithFriends/DraftWithFriends-Prefix.pch";
@@ -498,11 +492,13 @@
 		DAAF3A8E17E118BF00048CC6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/ryan.schroeder/Desktop/Developer/DraftWithFriends,
+					/Users/trent.ellingsen/Dev/DraftWithFriends/DraftWithFriends/Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DraftWithFriends/DraftWithFriends-Prefix.pch";
