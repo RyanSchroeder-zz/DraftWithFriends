@@ -21,18 +21,20 @@ NSString * const kCardRulesTextKey = @"text";
 NSString * const kCardNumberInSetKey = @"number";
 
 @interface Card ()
-    @property (nonatomic, readwrite) int ID;
-    @property (nonatomic, readwrite) NSString *name;
-    @property (nonatomic, readwrite) NSArray *names;
-    @property (nonatomic, readwrite) NSString *manaCost; //{U}{G}
-    @property (nonatomic, readwrite) double convertedManaCost;
-    @property (nonatomic, readwrite) NSArray *colors;
-    @property (nonatomic, readwrite) NSArray *superTypes; //legendary//basic//snow
-    @property (nonatomic, readwrite) NSArray *types; //instant//sorcery//creature
-    @property (nonatomic, readwrite) NSArray *subTypes; //cat//angel//merfolk
-    @property (nonatomic, readwrite) NSString *rarity;
-    @property (nonatomic, readwrite) NSString *rulesText;
-    @property (nonatomic, readwrite) NSString *numberInSet;
+
+@property (nonatomic, readwrite) int ID;
+@property (nonatomic, readwrite) NSString *name;
+@property (nonatomic, readwrite) NSArray *names;
+@property (nonatomic, readwrite) NSString *manaCost; //{U}{G}
+@property (nonatomic, readwrite) double convertedManaCost;
+@property (nonatomic, readwrite) NSArray *colors;
+@property (nonatomic, readwrite) NSArray *superTypes; //legendary//basic//snow
+@property (nonatomic, readwrite) NSArray *types; //instant//sorcery//creature
+@property (nonatomic, readwrite) NSArray *subTypes; //cat//angel//merfolk
+@property (nonatomic, readwrite) NSString *rarity;
+@property (nonatomic, readwrite) NSString *rulesText;
+@property (nonatomic, readwrite) NSString *numberInSet;
+
 @end
 
 @implementation Card
