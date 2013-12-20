@@ -17,6 +17,7 @@ NSString * const kSetKey = @"ths";
 @interface DraftViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic) NSArray *cards;
+@property (nonatomic) MTGSet *therosSet;
 
 @end
 
@@ -53,6 +54,7 @@ NSString * const kSetKey = @"ths";
 - (void)configureCards
 {
     [[MTGSetService sharedService] setWithSetCode:@"THS" callback:^(NSError *error, MTGSet *set) {
+        [self setTherosSet:set];
         [self setCards:[set generateBoosterPack]];
         [self.collectionView reloadData];
     }];
@@ -77,7 +79,8 @@ NSString * const kSetKey = @"ths";
 
 - (void) handleTap:(UITapGestureRecognizer *) sender {
     if (sender.state == UIGestureRecognizerStateEnded) {
-        [self configureCards];
+        [self setCards:[self.therosSet generateBoosterPack]];
+        [self.collectionView reloadData];
     }
 }
 
