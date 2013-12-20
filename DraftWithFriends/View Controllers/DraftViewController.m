@@ -9,10 +9,12 @@
 #import "DraftViewController.h"
 #import "DraftCardCell.h"
 #import "MTGSetService.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 NSString * const kDraftCardCellKey = @"draftCardCell";
+NSString * const kSetKey = @"ths";
 
-@interface DraftViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface DraftViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic) NSArray *cards;
 
@@ -31,7 +33,12 @@ NSString * const kDraftCardCellKey = @"draftCardCell";
 {
     DraftCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDraftCardCellKey forIndexPath:indexPath];
 	
-    cell.cardImageView.image = self.cards[indexPath.row];
+    Card *currentCard = self.cards[indexPath.row];
+    
+    [cell.cardImageView setImageWithURL:
+     [NSURL URLWithString:
+      [NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", kSetKey, currentCard.numberInSet]]
+                       placeholderImage:nil];
     
     return cell;
 }
@@ -45,15 +52,10 @@ NSString * const kDraftCardCellKey = @"draftCardCell";
 
 - (void)configureCards
 {
-    [[MTGSetService sharedService] setWithSetCode:@" callback:<#^(NSError *error, id successObject)callback#>]
-    NSMutableArray *fetchedCards = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 14; i++) {
-        UIImage *cardImage = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", i + 1]];
-        [fetchedCards addObject:cardImage];
-    }
-    
-    self.cards = [fetchedCards copy];
-    [self.collectionView reloadData];
+    [[MTGSetService sharedService] setWithSetCode:@"THS" callback:^(NSError *error, MTGSet *set) {
+        [self setCards:[set generateBoosterPack]];
+        [self.collectionView reloadData];
+    }];
 }
 
 - (void)configureCollectionView
@@ -62,11 +64,29 @@ NSString * const kDraftCardCellKey = @"draftCardCell";
     self.collectionView.dataSource = self;
 }
 
+- (void)configureGestureRecognizer
+{
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    [tapRecognizer setNumberOfTouchesRequired:2];
+    [tapRecognizer setNumberOfTapsRequired:1];
+    [tapRecognizer setCancelsTouchesInView:NO];
+    [tapRecognizer setDelegate:self];
+    
+    [self.view addGestureRecognizer:tapRecognizer];
+}
+
+- (void) handleTap:(UITapGestureRecognizer *) sender {
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        [self configureCards];
+    }
+}
+
 #pragma mark - View methods
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self configureGestureRecognizer];
     [self configureCollectionView];
     [self configureCards];
 }
