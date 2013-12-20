@@ -31,6 +31,11 @@
 		DA6C8EB517E15552001F8A6D /* GTC.json in Resources */ = {isa = PBXBuildFile; fileRef = DA6C8EB417E15552001F8A6D /* GTC.json */; };
 		DA6C8EB717E15563001F8A6D /* DGM.json in Resources */ = {isa = PBXBuildFile; fileRef = DA6C8EB617E15563001F8A6D /* DGM.json */; };
 		DA6C8EBC17E1833A001F8A6D /* CardRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6C8EBB17E1833A001F8A6D /* CardRepository.m */; };
+		DA7609201814638100A4E3DD /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DA76091F1814638100A4E3DD /* Player.m */; };
+		DA7609231814679900A4E3DD /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7609221814679900A4E3DD /* Deck.m */; };
+		DA760926181469B300A4E3DD /* BoosterPack.m in Sources */ = {isa = PBXBuildFile; fileRef = DA760925181469B300A4E3DD /* BoosterPack.m */; };
+		DA76092918146E7400A4E3DD /* MTGSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DA76092818146E7400A4E3DD /* MTGSet.m */; };
+		DA76092D1814890600A4E3DD /* MTGSetService.m in Sources */ = {isa = PBXBuildFile; fileRef = DA76092C1814890600A4E3DD /* MTGSetService.m */; };
 		DAAF3A5E17E118BF00048CC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF3A5D17E118BF00048CC6 /* Foundation.framework */; };
 		DAAF3A6017E118BF00048CC6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF3A5F17E118BF00048CC6 /* CoreGraphics.framework */; };
 		DAAF3A6217E118BF00048CC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF3A6117E118BF00048CC6 /* UIKit.framework */; };
@@ -87,6 +92,16 @@
 		DA6C8EB617E15563001F8A6D /* DGM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DGM.json; sourceTree = "<group>"; };
 		DA6C8EBA17E1833A001F8A6D /* CardRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardRepository.h; sourceTree = "<group>"; };
 		DA6C8EBB17E1833A001F8A6D /* CardRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardRepository.m; sourceTree = "<group>"; };
+		DA76091E1814638100A4E3DD /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		DA76091F1814638100A4E3DD /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		DA7609211814679900A4E3DD /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		DA7609221814679900A4E3DD /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
+		DA760924181469B300A4E3DD /* BoosterPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoosterPack.h; sourceTree = "<group>"; };
+		DA760925181469B300A4E3DD /* BoosterPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoosterPack.m; sourceTree = "<group>"; };
+		DA76092718146E7400A4E3DD /* MTGSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGSet.h; sourceTree = "<group>"; };
+		DA76092818146E7400A4E3DD /* MTGSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGSet.m; sourceTree = "<group>"; };
+		DA76092B1814890600A4E3DD /* MTGSetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGSetService.h; sourceTree = "<group>"; };
+		DA76092C1814890600A4E3DD /* MTGSetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGSetService.m; sourceTree = "<group>"; };
 		DAAF3A5A17E118BF00048CC6 /* DraftWithFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DraftWithFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAF3A5D17E118BF00048CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DAAF3A5F17E118BF00048CC6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -140,6 +155,17 @@
 			children = (
 				A6D3EC721863CEE000246D24 /* DraftCardCell.h */,
 				A6D3EC731863CEE000246D24 /* DraftCardCell.m */,
+				DA6C8E3A17E1301F001F8A6D /* Card.h */,
+				DA6C8E3B17E1301F001F8A6D /* Card.m */,
+				DA76091E1814638100A4E3DD /* Player.h */,
+				DA76091F1814638100A4E3DD /* Player.m */,
+				DA7609211814679900A4E3DD /* Deck.h */,
+				DA7609221814679900A4E3DD /* Deck.m */,
+				DA760924181469B300A4E3DD /* BoosterPack.h */,
+				DA760925181469B300A4E3DD /* BoosterPack.m */,
+				DA76092718146E7400A4E3DD /* MTGSet.h */,
+				DA76092818146E7400A4E3DD /* MTGSet.m */,
+>>>>>>> Added booster generation methods for normal sets (Non-RTR block sets).
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -191,6 +217,15 @@
 			name = Repositories;
 			sourceTree = "<group>";
 		};
+		DA76092A181488F000A4E3DD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DA76092B1814890600A4E3DD /* MTGSetService.h */,
+				DA76092C1814890600A4E3DD /* MTGSetService.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		DAAF3A5117E118BF00048CC6 = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +263,7 @@
 			children = (
 				A6D3EC751863CFC100246D24 /* Images */,
 				A6D3EC711863CEAE00246D24 /* CustomCells */,
+				DA76092A181488F000A4E3DD /* Services */,
 				DA6C8EB917E18271001F8A6D /* Repositories */,
 				DA6C8E3917E13000001F8A6D /* Models */,
 				DAAF3A9917E1202F00048CC6 /* Images */,
@@ -435,10 +471,15 @@
 			files = (
 				A6D3EC701863CDDF00246D24 /* DraftViewController.m in Sources */,
 				DA6C8EBC17E1833A001F8A6D /* CardRepository.m in Sources */,
+				DA7609231814679900A4E3DD /* Deck.m in Sources */,
 				DAAF3A7417E118BF00048CC6 /* ViewController.m in Sources */,
 				A6D3EC741863CEE000246D24 /* DraftCardCell.m in Sources */,
+				DA76092D1814890600A4E3DD /* MTGSetService.m in Sources */,
 				DAAF3A6E17E118BF00048CC6 /* AppDelegate.m in Sources */,
 				DAAF3A6A17E118BF00048CC6 /* main.m in Sources */,
+				DA76092918146E7400A4E3DD /* MTGSet.m in Sources */,
+				DA760926181469B300A4E3DD /* BoosterPack.m in Sources */,
+				DA7609201814638100A4E3DD /* Player.m in Sources */,
 				DA6C8E3C17E1301F001F8A6D /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,7 +534,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -532,7 +573,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

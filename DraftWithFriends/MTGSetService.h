@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MTGSet.h"
+#import "Card.h"
 
 typedef void(^ServiceCallback)(NSError *error, id successObject);
 

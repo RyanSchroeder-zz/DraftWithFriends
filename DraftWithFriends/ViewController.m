@@ -11,6 +11,8 @@
 #import "CardRepository.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/SDWebImagePrefetcher.h>
+#import "MTGSet.h"
+#import "MTGSetService.h"
 
 @interface ViewController () <UIGestureRecognizerDelegate>
     @property (weak, nonatomic) IBOutlet UIImageView *cardImageView;
@@ -61,6 +63,10 @@ static NSError *__JSONLoadingError;
         [self setCurrentlyDisplayedCard:[self.cardsInSet objectAtIndex:[self.currentlyDisplayedCard.numberInSet intValue] - 2]];
         [self setImageForCurrentCard];
     }
+    
+    [[MTGSetService sharedService] setWithSetCode:[self.currentlySelectedSetCode uppercaseString] callback:^(NSError *error, MTGSet *mtgSet) {
+        NSLog(@"%@", [mtgSet generateBoosterPack]);
+    }];
 }
 
 - (void)handleCardSwipeLeft:(UIGestureRecognizer *)recognizer
@@ -72,6 +78,10 @@ static NSError *__JSONLoadingError;
         [self setCurrentlyDisplayedCard:[self.cardsInSet objectAtIndex:[self.currentlyDisplayedCard.numberInSet intValue]]];
         [self setImageForCurrentCard];
     }
+    
+    [[MTGSetService sharedService] setWithSetCode:[self.currentlySelectedSetCode uppercaseString] callback:^(NSError *error, MTGSet *mtgSet) {
+        NSLog(@"%@", [mtgSet generateBoosterPack]);
+    }];
 }
 
 - (IBAction)LoadM14Pressed:(id)sender

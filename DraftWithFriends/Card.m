@@ -60,7 +60,7 @@ NSString * const kCardNumberInSetKey = @"number";
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"[[[[\r%@\r%@\r%@\r]]]]", self.manaCost, self.name, self.rulesText];
+    return [NSString stringWithFormat:@"\r\r%@\r%@\r%@\r%@\r\r", self.rarity, self.manaCost, self.name, self.rulesText];
 }
 
 @end

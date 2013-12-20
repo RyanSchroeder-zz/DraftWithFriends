@@ -16,4 +16,12 @@
 + (MTGSet *)setWithCards:(NSArray *)cards
                  setCode:(NSString *)setCode;
 
+- (NSArray *)mythicRares;
+- (NSArray *)rares;
+- (NSArray *)uncommons;
+- (NSArray *)commons;
+- (NSArray *)basicLands;
+
+- (NSArray *)generateBoosterPack;
+
 @end

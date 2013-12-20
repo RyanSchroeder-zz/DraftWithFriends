@@ -7,6 +7,7 @@
 //
 
 #import "MTGSet.h"
+#import "Card.h"
 
 @interface MTGSet ()
 @property (nonatomic, readwrite) NSArray *cardsInSet;
@@ -24,6 +25,173 @@
     [instance setSetCode:setCode];
     
     return instance;
+}
+
+- (NSArray *)mythicRares
+{
+    NSMutableArray *mythicRares = [NSMutableArray arrayWithArray:self.cardsInSet];
+    NSPredicate *mythicRarePredicate = [NSPredicate predicateWithFormat:@"SELF.rarity == 'Mythic Rare'"];
+    
+    return [mythicRares filteredArrayUsingPredicate:mythicRarePredicate];
+}
+- (NSArray *)rares
+{
+    NSMutableArray *rares = [NSMutableArray arrayWithArray:self.cardsInSet];
+    NSPredicate *rarePredicate = [NSPredicate predicateWithFormat:@"SELF.rarity == 'Rare'"];
+    
+    return [rares filteredArrayUsingPredicate:rarePredicate];
+}
+- (NSArray *)uncommons
+{
+    NSMutableArray *uncommons = [NSMutableArray arrayWithArray:self.cardsInSet];
+    NSPredicate *uncommonPredicate = [NSPredicate predicateWithFormat:@"SELF.rarity == 'Uncommon'"];
+    
+    return [uncommons filteredArrayUsingPredicate:uncommonPredicate];
+}
+- (NSArray *)commons
+{
+    NSMutableArray *commons = [NSMutableArray arrayWithArray:self.cardsInSet];
+    NSPredicate *commonPredicate = [NSPredicate predicateWithFormat:@"SELF.rarity == 'Common'"];
+    
+    return [commons filteredArrayUsingPredicate:commonPredicate];
+}
+
+- (NSArray *)basicLands
+{
+    NSMutableArray *basicLands = [NSMutableArray arrayWithArray:self.cardsInSet];
+    NSPredicate *basicLandPredicate = [NSPredicate predicateWithFormat:@"SELF.rarity == 'Basic Land'"];
+    
+    return [basicLands filteredArrayUsingPredicate:basicLandPredicate];
+}
+
+//NOTE: This does not work for RTR,GTC,DGM because those sets did some funky business with lands.
+- (NSArray *)generateBoosterPack
+{
+    NSMutableArray *boosterPack = [[NSMutableArray alloc] init];
+    [boosterPack addObject:[self generateBoosterRareSlot]];
+    [boosterPack addObjectsFromArray:[self generateBoosterUncommonSlots]];
+    [boosterPack addObjectsFromArray:[self generateBoosterCommonAndLandSlots]];
+    
+    return boosterPack;
+}
+
+- (Card *)generateBoosterRareSlot
+{
+    if ([self didGenerateMythicRare])
+    {
+        NSArray *mythics = [self mythicRares];
+        return [mythics objectAtIndex:arc4random_uniform([mythics count])];
+    }
+    else
+    {
+        NSArray *rares = [self rares];
+        return [rares objectAtIndex:arc4random_uniform([rares count])];
+    }
+}
+
+- (NSArray *)generateBoosterUncommonSlots
+{
+    NSUInteger numberOfUncommonsInBooster = 3;
+    NSMutableArray *chosenUncommons = [[NSMutableArray alloc] init];
+    
+    NSArray *uncommons = [self uncommons];
+    
+    while ([chosenUncommons count] < numberOfUncommonsInBooster)
+    {
+        Card *randomUncommon = [uncommons objectAtIndex:arc4random_uniform([uncommons count])];
+        if (![chosenUncommons containsObject:randomUncommon])
+        {
+            [chosenUncommons addObject:randomUncommon];
+        }
+    }
+    
+    return chosenUncommons;
+}
+
+- (NSArray *)generateBoosterCommonAndLandSlots
+{
+    NSMutableArray *chosenCommons = [[NSMutableArray alloc] init];
+    NSUInteger numberOfCommonsInBooster = 10;
+    Card *chosenLand = nil;
+    
+    if ([self didGenerateFoil])
+    {
+        Card *foilCard = [self generateBoosterFoilSlot];
+        if ([foilCard.rarity isEqualToString:@"Basic Land"]) {
+            chosenLand = foilCard;
+        }
+        else {
+            [chosenCommons addObject:foilCard];
+        }
+    }
+    
+    NSArray *commonsInSet = [self commons];
+    
+    while ([chosenCommons count] < numberOfCommonsInBooster)
+    {
+        Card *randomCommon = [commonsInSet objectAtIndex:arc4random_uniform([commonsInSet count])];
+        if (![chosenCommons containsObject:randomCommon])
+        {
+            [chosenCommons addObject:randomCommon];
+        }
+    }
+    
+    if (!chosenLand)
+    {
+        chosenLand = [self generateBoosterBasicLandSlot];
+    }
+    
+    NSMutableArray *chosenCommonsAndLand = [[NSMutableArray alloc] initWithArray:chosenCommons];
+    [chosenCommonsAndLand addObject:chosenLand];
+    
+    return chosenCommonsAndLand;
+}
+
+- (Card *)generateBoosterBasicLandSlot
+{
+    NSArray *basicLands = [self basicLands];
+    return [basicLands objectAtIndex:arc4random_uniform([basicLands count])];
+}
+
+- (Card *)generateBoosterFoilUncommonSlot
+{
+    NSArray *uncommons = [self uncommons];
+    return [uncommons objectAtIndex:arc4random_uniform([uncommons count])];
+}
+
+- (Card *)generateBoosterFoilCommonSlot
+{
+    NSArray *commons = [self commons];
+    return [commons objectAtIndex:arc4random_uniform([commons count])];
+}
+
+- (Card *)generateBoosterFoilSlot
+{
+    //1r, 3u, 10c, 1bl
+    NSUInteger rarityOfFoil = arc4random_uniform(15) + 1;
+    
+    if (rarityOfFoil == 15) { //Rare
+        return [self generateBoosterRareSlot];
+    }
+    else if (rarityOfFoil >= 12) { //Uncommon
+        return [self generateBoosterFoilUncommonSlot];
+    }
+    else if (rarityOfFoil >= 2) { //Common
+        return [self generateBoosterFoilCommonSlot];
+    }
+    else { //Basic Land
+        return [self generateBoosterBasicLandSlot];
+    }
+}
+
+- (BOOL)didGenerateMythicRare
+{
+    return (arc4random_uniform(8) + 1) == 8;
+}
+
+- (BOOL)didGenerateFoil
+{
+    return (arc4random_uniform(4) + 1) == 4;
 }
 
 @end
