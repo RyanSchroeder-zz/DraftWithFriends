@@ -30,8 +30,7 @@ NSString * const kDraftCardCellKey = @"draftCardCell";
 {
     DraftCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDraftCardCellKey forIndexPath:indexPath];
 	
-    NSLog(@"card %d", indexPath.row);
-    cell.cardImageView = self.cards[indexPath.row];
+    cell.cardImageView.image = self.cards[indexPath.row];
     
     return cell;
 }
@@ -42,11 +41,12 @@ NSString * const kDraftCardCellKey = @"draftCardCell";
 #warning Mock data
     NSMutableArray *fetchedCards = [[NSMutableArray alloc] init];
     for (int i = 0; i < 14; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", i + 1]]];
-        [fetchedCards addObject:imageView];
+        UIImage *cardImage = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", i + 1]];
+        [fetchedCards addObject:cardImage];
     }
     
     self.cards = [fetchedCards copy];
+    [self.collectionView reloadData];
 }
 
 - (void)configureCollectionView
@@ -60,8 +60,8 @@ NSString * const kDraftCardCellKey = @"draftCardCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self configureCards];
     [self configureCollectionView];
+    [self configureCards];
 }
 
 @end
