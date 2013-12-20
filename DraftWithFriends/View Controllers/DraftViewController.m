@@ -34,7 +34,13 @@ NSString * const kDraftCardCellKey = @"draftCardCell";
     
     return cell;
 }
+
 #pragma mark - configure methods
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 - (void)configureCards
 {
