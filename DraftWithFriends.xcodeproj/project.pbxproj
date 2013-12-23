@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A665E0791863E25700FCA166 /* StackedCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = A665E0781863E25700FCA166 /* StackedCardView.m */; };
+		A665E07C1863E65C00FCA166 /* DeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A665E07B1863E65C00FCA166 /* DeckViewController.m */; };
+		A665E07F1863E6A800FCA166 /* StackedCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A665E07E1863E6A800FCA166 /* StackedCardCell.m */; };
+		A699AC701867A27600324F8D /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A699AC6F1867A27600324F8D /* UIView+Helpers.m */; };
+		A699AC731867A6F800324F8D /* SlidingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A699AC721867A6F800324F8D /* SlidingImageView.m */; };
 		A6D3EC701863CDDF00246D24 /* DraftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */; };
 		A6D3EC741863CEE000246D24 /* DraftCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3EC731863CEE000246D24 /* DraftCardCell.m */; };
 		A6D3ECA11863D04800246D24 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6D3EC931863D04800246D24 /* 1.jpg */; };
@@ -65,6 +70,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A665E0771863E25700FCA166 /* StackedCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StackedCardView.h; path = "Custom Views/StackedCardView.h"; sourceTree = "<group>"; };
+		A665E0781863E25700FCA166 /* StackedCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StackedCardView.m; path = "Custom Views/StackedCardView.m"; sourceTree = "<group>"; };
+		A665E07A1863E65C00FCA166 /* DeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeckViewController.h; path = "View Controllers/DeckViewController.h"; sourceTree = "<group>"; };
+		A665E07B1863E65C00FCA166 /* DeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeckViewController.m; path = "View Controllers/DeckViewController.m"; sourceTree = "<group>"; };
+		A665E07D1863E6A800FCA166 /* StackedCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StackedCardCell.h; path = "Custom Cells/StackedCardCell.h"; sourceTree = "<group>"; };
+		A665E07E1863E6A800FCA166 /* StackedCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StackedCardCell.m; path = "Custom Cells/StackedCardCell.m"; sourceTree = "<group>"; };
+		A699AC6E1867A27600324F8D /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Helpers.h"; path = "Categories/UIView+Helpers.h"; sourceTree = "<group>"; };
+		A699AC6F1867A27600324F8D /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Helpers.m"; path = "Categories/UIView+Helpers.m"; sourceTree = "<group>"; };
+		A699AC711867A6F800324F8D /* SlidingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlidingImageView.h; path = "Custom Views/SlidingImageView.h"; sourceTree = "<group>"; };
+		A699AC721867A6F800324F8D /* SlidingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlidingImageView.m; path = "Custom Views/SlidingImageView.m"; sourceTree = "<group>"; };
 		A6D3EC6E1863CDDF00246D24 /* DraftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraftViewController.h; path = "View Controllers/DraftViewController.h"; sourceTree = "<group>"; };
 		A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraftViewController.m; path = "View Controllers/DraftViewController.m"; sourceTree = "<group>"; };
 		A6D3EC721863CEE000246D24 /* DraftCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraftCardCell.h; path = "Custom Cells/DraftCardCell.h"; sourceTree = "<group>"; };
@@ -152,6 +167,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A665E0761863E19500FCA166 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				A665E0771863E25700FCA166 /* StackedCardView.h */,
+				A665E0781863E25700FCA166 /* StackedCardView.m */,
+				A699AC711867A6F800324F8D /* SlidingImageView.h */,
+				A699AC721867A6F800324F8D /* SlidingImageView.m */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		A699AC6D1867A25600324F8D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A699AC6E1867A27600324F8D /* UIView+Helpers.h */,
+				A699AC6F1867A27600324F8D /* UIView+Helpers.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		A6D3EC711863CEAE00246D24 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +202,8 @@
 				DA760925181469B300A4E3DD /* BoosterPack.m */,
 				DA76092718146E7400A4E3DD /* MTGSet.h */,
 				DA76092818146E7400A4E3DD /* MTGSet.m */,
+				A665E07D1863E6A800FCA166 /* StackedCardCell.h */,
+				A665E07E1863E6A800FCA166 /* StackedCardCell.m */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -262,6 +299,8 @@
 		DAAF3A6317E118BF00048CC6 /* DraftWithFriends */ = {
 			isa = PBXGroup;
 			children = (
+				A699AC6D1867A25600324F8D /* Categories */,
+				A665E0761863E19500FCA166 /* CustomViews */,
 				A6D3EC751863CFC100246D24 /* Images */,
 				A6D3EC711863CEAE00246D24 /* CustomCells */,
 				DA76092A181488F000A4E3DD /* Services */,
@@ -326,6 +365,8 @@
 				DAAF3A7317E118BF00048CC6 /* ViewController.m */,
 				A6D3EC6E1863CDDF00246D24 /* DraftViewController.h */,
 				A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */,
+				A665E07A1863E65C00FCA166 /* DeckViewController.h */,
+				A665E07B1863E65C00FCA166 /* DeckViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -472,16 +513,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A665E07C1863E65C00FCA166 /* DeckViewController.m in Sources */,
+				A665E0791863E25700FCA166 /* StackedCardView.m in Sources */,
+				A699AC701867A27600324F8D /* UIView+Helpers.m in Sources */,
 				A6D3EC701863CDDF00246D24 /* DraftViewController.m in Sources */,
 				DA6C8EBC17E1833A001F8A6D /* CardRepository.m in Sources */,
 				DA7609231814679900A4E3DD /* Deck.m in Sources */,
 				DAAF3A7417E118BF00048CC6 /* ViewController.m in Sources */,
+				A665E07F1863E6A800FCA166 /* StackedCardCell.m in Sources */,
 				A6D3EC741863CEE000246D24 /* DraftCardCell.m in Sources */,
 				DA76092D1814890600A4E3DD /* MTGSetService.m in Sources */,
 				DAAF3A6E17E118BF00048CC6 /* AppDelegate.m in Sources */,
 				DAAF3A6A17E118BF00048CC6 /* main.m in Sources */,
 				DA76092918146E7400A4E3DD /* MTGSet.m in Sources */,
 				DA760926181469B300A4E3DD /* BoosterPack.m in Sources */,
+				A699AC731867A6F800324F8D /* SlidingImageView.m in Sources */,
 				DA7609201814638100A4E3DD /* Player.m in Sources */,
 				DA6C8E3C17E1301F001F8A6D /* Card.m in Sources */,
 			);

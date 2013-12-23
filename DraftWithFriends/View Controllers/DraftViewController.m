@@ -46,11 +46,6 @@ NSString * const kSetKey = @"ths";
 
 #pragma mark - configure methods
 
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
-
 - (void)configureCards
 {
     [[MTGSetService sharedService] setWithSetCode:@"THS" callback:^(NSError *error, MTGSet *set) {
@@ -85,6 +80,11 @@ NSString * const kSetKey = @"ths";
 }
 
 #pragma mark - View methods
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 - (void)viewDidLoad
 {
