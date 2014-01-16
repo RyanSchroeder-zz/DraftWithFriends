@@ -1,5 +1,5 @@
 //
-//  StackedCardView.h
+//  StackedImageView.h
 //  DraftWithFriends
 //
 //  Created by Trent Ellingsen on 12/19/13.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StackedCardView : UIScrollView
+@interface StackedImageView : UIScrollView
 
-@property (nonatomic) NSInteger visibleCardIndex;
+@property (nonatomic) NSInteger visibleImageIndex;
 
-- (void)setCardStack:(NSArray *)cardStack;
+- (void)setImageStack:(NSArray *)imageStack;
 
 @end

@@ -8,13 +8,14 @@
 
 #import "DeckViewController.h"
 #import "StackedCardCell.h"
-#import "StackedCardView.h"
+#import "StackedImageView.h"
+#import "ImageStack.h"
 
 NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 @interface DeckViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic) NSArray *cardStacks;
+@property (nonatomic) NSArray *imageStacks;
 
 @end
 
@@ -24,18 +25,28 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-	return self.cardStacks.count;
+	return self.imageStacks.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     StackedCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kStackedCardCellKey forIndexPath:indexPath];
 	
-#warning be able to set the visible card
-    [cell.stackedCardView setCardStack:self.cardStacks[indexPath.row]];
+    ImageStack *imageStack = self.imageStacks[indexPath.row];
+    [cell.stackedImageView setVisibleImageIndex:[imageStack visibleImageIndex]];
+    [cell.stackedImageView setImageStack:[imageStack images]];
     
     return cell;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    StackedCardCell *stackedCardCell = (StackedCardCell *)cell;
+	
+    ImageStack *imageStack = self.imageStacks[indexPath.row];
+    imageStack.visibleImageIndex = stackedCardCell.stackedImageView.visibleImageIndex;
+}
+
 #pragma mark - configure methods
 
 - (void)configureCards
@@ -43,7 +54,8 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 #warning Mock data
     NSMutableArray *fetchedCards = [[NSMutableArray alloc] init];
     for (int i = 0; i < 14; i++) {
-        UIImage *cardImage = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", i + 1]];
+        NSString *name = [NSString stringWithFormat:@"%d.jpg", i + 1];
+        UIImage *cardImage = [UIImage imageNamed:name];
         [fetchedCards addObject:cardImage];
     }
     NSMutableArray *fetchedCards2 = [[NSMutableArray alloc] init];
@@ -57,7 +69,9 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
         [fetchedCards3 addObject:cardImage];
     }
     
-    self.cardStacks = @[[fetchedCards copy], [fetchedCards2 copy], [fetchedCards3 copy]];
+    self.imageStacks = @[[[ImageStack alloc] initWithImages:[fetchedCards copy]],
+                        [[ImageStack alloc] initWithImages:[fetchedCards2 copy]],
+                        [[ImageStack alloc] initWithImages:[fetchedCards3 copy]]];
     [self.collectionView reloadData];
 }
 

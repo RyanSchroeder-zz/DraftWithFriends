@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StackedCardView.h"
+#import "StackedImageView.h"
 
 @interface StackedCardCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet StackedCardView *stackedCardView;
+@property (weak, nonatomic) IBOutlet StackedImageView *stackedImageView;
 
 @end
