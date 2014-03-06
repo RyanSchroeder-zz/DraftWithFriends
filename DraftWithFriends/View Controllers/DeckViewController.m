@@ -35,6 +35,21 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     return _deckViewModel;
 }
 
+- (void)setPicks:(NSArray *)picks
+{
+    if (_picks != picks) {
+        _picks = picks;
+        self.deckViewModel.picks = picks;
+    }
+}
+
+#pragma mark - IBActions
+
+- (IBAction)draftButtonTapped
+{
+    [self.delegate returnToDraftView];
+}
+
 #pragma mark - Collection View methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -48,7 +63,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 	
     ImageStack *imageStack = self.imageStacks[indexPath.row];
     [cell.stackedImageView setVisibleImageIndex:[imageStack visibleImageIndex]];
-    [cell.stackedImageView setImageStack:[imageStack images]];
+    [cell.stackedImageView setImageStack:imageStack];
     
     return cell;
 }
@@ -68,7 +83,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     NSMutableArray *imageStacks = [NSMutableArray new];
     
     for (NSArray *cards in self.deckViewModel.potentialCards) {
-        [imageStacks addObject:[[ImageStack alloc] initWithImages:cards]];
+        [imageStacks addObject:[[ImageStack alloc] initWithCards:cards]];
     }
     
     self.imageStacks = imageStacks;

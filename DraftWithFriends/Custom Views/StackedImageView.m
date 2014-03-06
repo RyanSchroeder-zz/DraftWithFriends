@@ -8,6 +8,9 @@
 
 #import "StackedImageView.h"
 #import "SlidingImageView.h"
+#import "ImageStack.h"
+#import "Card.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #define IMAGE_OFFSET 27
 #define IMAGE_HEIGHT 285
@@ -15,6 +18,7 @@
 
 @interface StackedImageView () <UIScrollViewDelegate>
 
+@property (nonatomic) NSArray *cards;
 @property (nonatomic) NSArray *imageViews;
 @property (nonatomic) CGFloat startingContentOffset;
 @property (nonatomic, getter = isConfiguringImages) BOOL configuringImages;
@@ -23,10 +27,12 @@
 
 @implementation StackedImageView
 
-- (void)setImageStack:(NSArray *)imageStack
+- (void)setImageStack:(ImageStack *)imageStack
 {
+    self.cards = imageStack.cards;
+    
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [self configureViewWithImages:imageStack];
+    [self configureViewWithImageStack:imageStack];
     [self displayImages];
     [self scrollToVisibleImage];
 }
@@ -37,7 +43,7 @@
         SlidingImageView *imageView = self.imageViews[i];
         imageView.frame = [self imageFrame];
         NSInteger index = self.imageViews.count - i;
-        imageView.originalY = imageView.frame.size.height + index * IMAGE_OFFSET;
+        imageView.originalY = imageView.frame.size.height * 2 + index * IMAGE_OFFSET;
         imageView.frame = CGRectOffset(imageView.frame, 0, imageView.originalY);
         
         [self addSubview:imageView];
@@ -52,16 +58,33 @@
 - (void)scrollToVisibleImage
 {
     [self setContentOffset:CGPointMake(0, self.startingContentOffset - self.visibleImageIndex * IMAGE_OFFSET) animated:NO];
-    [self updateImagesAnimated:NO];
+    if (self.visibleImageIndex != 0 && self.isConfiguringImages) {
+        [self updateImagesAnimated:NO];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    if (self.visibleImageIndex == 0 && self.isConfiguringImages) {
+        self.configuringImages = NO;
+        return;
+    }
+    
+    [self preventDownScrollIfOnLastCard:scrollView.contentOffset.y];
+    
     if (self.isConfiguringImages) {
         [self updateImagesAnimated:NO];
         self.configuringImages = NO;
     } else {
         [self updateImagesAnimated:YES];
+    }
+}
+
+- (void)preventDownScrollIfOnLastCard:(CGFloat)scrollViewY
+{
+    CGFloat lastCardY = self.startingContentOffset - self.imageViews.count * IMAGE_OFFSET;
+    if (scrollViewY < lastCardY) {
+        [self setContentOffset:CGPointMake(0, lastCardY + 1) animated:NO];
     }
 }
 
@@ -79,7 +102,7 @@
     NSInteger offset = floor((self.startingContentOffset - self.contentOffset.y) / IMAGE_OFFSET);
     BOOL slideAnimationDidOccur = NO;
     
-    if (offset > index) {
+    if (offset > index && index != self.imageViews.count - 1) {
         slideAnimationDidOccur = [image slideDownAnimated:animated];
     } else if (offset < index) {
         slideAnimationDidOccur = [image slideUpAnimated:animated];
@@ -98,17 +121,21 @@
 
 #pragma mark - configure methods
 
-- (void)configureViewWithImages:(NSArray *)images
+- (void)configureViewWithImageStack:(ImageStack *)imageStack
 {
     self.configuringImages = YES;
     
-    NSMutableArray *imageViews = [[NSMutableArray alloc] init];
-    for (UIImage *image in images) {
-        SlidingImageView *imageView = [[SlidingImageView alloc] initWithImage:image];
-        [imageViews addObject:imageView];
+    NSMutableArray *slidingImageViews = [[NSMutableArray alloc] init];
+    
+    for (Card *card in self.cards) {
+        UIImageView *imageView = [UIImageView new];
+        [imageView setImageWithURL:card.smallImageURL placeholderImage:nil];
+        
+        SlidingImageView *slidingImageView = [[SlidingImageView alloc] initWithImage:imageView.image];
+        [slidingImageViews addObject:slidingImageView];
     }
     
-    self.imageViews = [imageViews copy];
+    self.imageViews = [slidingImageViews copy];
     
     // Size of all the images stacked up
     self.contentSize = CGSizeMake(self.frame.size.width,

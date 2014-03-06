@@ -32,6 +32,7 @@
         
         for (id cardJSON in [json valueForKey:@"cards"]) {
             Card *currentCard = [Card cardWithDictionary:cardJSON];
+            currentCard.setCode = [setCode lowercaseString];
             
             [mutableCardsInSet addObject:currentCard];
             [mutableCardImagesInSet addObject:[NSURL URLWithString:[NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", [setCode lowercaseString], currentCard.numberInSet]]];

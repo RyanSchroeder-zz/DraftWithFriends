@@ -40,13 +40,21 @@ extern NSString * const kCardNumberKey;
 @property (nonatomic) NSString *setCode;
 
 //Image
-@property (nonatomic, readonly) NSString *smallImageURL; //TODO
-@property (nonatomic, readonly) NSString *largeImageURL; //TODO
+@property (nonatomic, readonly) NSURL *smallImageURL;
+@property (nonatomic, readonly) NSURL *largeImageURL; //TODO
 
 //Draft
 @property (nonatomic) int pickNumber;
 @property (nonatomic) Player *player;
 
 + (Card *)cardWithDictionary:(NSDictionary *)cardDictionary;
+
+- (BOOL)isBlack;
+- (BOOL)isRed;
+- (BOOL)isWhite;
+- (BOOL)isBlue;
+- (BOOL)isGreen;
+- (BOOL)isMultiColored;
+- (BOOL)isArtifact;
 
 @end

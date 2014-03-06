@@ -7,88 +7,106 @@
 //
 
 #import "DeckViewModel.h"
+#import "Card.h"
 
 @implementation DeckViewModel
 
-- (NSInteger)cardSeperationCount
+- (NSArray *)picks
 {
-    NSInteger count = 0;
-    
-    if (self.blackCards.count > 0) {
-        count++;
-    }
-    if (self.redCards.count > 0) {
-        count++;
-    }
-    if (self.whiteCards.count > 0) {
-        count++;
-    }
-    if (self.blueCards.count > 0) {
-        count++;
-    }
-    if (self.greenCards.count > 0) {
-        count++;
-    }
-    if (self.artifactCards.count > 0) {
-        count++;
-    }
-    if (self.multiColorCards.count > 0) {
-        count++;
-    }
-    if (self.landCards.count > 0) {
-        count++;
-    }
-    
-    return count;
+    return [_picks sortedArrayUsingComparator:^NSComparisonResult(Card *card1, Card *card2) {
+        return card1.convertedManaCost > card2.convertedManaCost;
+    }];
 }
 
 - (NSArray *)blackCards
 {
-    return @[];
+    NSMutableArray *cards = [NSMutableArray new];
+    
+    for (Card *card in self.picks) {
+        if ([card isBlack]) {
+            [cards addObject:card];
+        }
+    }
+    
+    return [cards copy];
 }
 
 - (NSArray *)redCards
 {
-    return @[];
+    NSMutableArray *cards = [NSMutableArray new];
+    
+    for (Card *card in self.picks) {
+        if ([card isRed]) {
+            [cards addObject:card];
+        }
+    }
+    
+    return [cards copy];
 }
 
 - (NSArray *)whiteCards
 {
-    return @[];
+    NSMutableArray *cards = [NSMutableArray new];
+    
+    for (Card *card in self.picks) {
+        if ([card isWhite]) {
+            [cards addObject:card];
+        }
+    }
+    
+    return [cards copy];
 }
 
 - (NSArray *)blueCards
 {
-    NSMutableArray *fetchedCards = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 10; i++) {
-        NSString *name = [NSString stringWithFormat:@"blue%d.jpg", i + 1];
-        UIImage *cardImage = [UIImage imageNamed:name];
-        [fetchedCards addObject:cardImage];
+    NSMutableArray *cards = [NSMutableArray new];
+    
+    for (Card *card in self.picks) {
+        if ([card isBlue]) {
+            [cards addObject:card];
+        }
     }
     
-    return [fetchedCards copy];
+    return [cards copy];
 }
 
 - (NSArray *)greenCards
 {
-    NSMutableArray *fetchedCards = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 5; i++) {
-        NSString *name = [NSString stringWithFormat:@"green%d.jpg", i + 1];
-        UIImage *cardImage = [UIImage imageNamed:name];
-        [fetchedCards addObject:cardImage];
+    NSMutableArray *cards = [NSMutableArray new];
+    
+    for (Card *card in self.picks) {
+        if ([card isGreen]) {
+            [cards addObject:card];
+        }
     }
     
-    return [fetchedCards copy];
+    return [cards copy];
 }
 
 - (NSArray *)artifactCards
 {
-    return @[];
+    NSMutableArray *cards = [NSMutableArray new];
+    
+    for (Card *card in self.picks) {
+        if ([card isArtifact]) {
+            [cards addObject:card];
+        }
+    }
+    
+    return [cards copy];
 }
 
 - (NSArray *)multiColorCards
 {
-    return @[];
+    NSMutableArray *cards = [NSMutableArray new];
+    
+    for (Card *card in self.picks) {
+        if ([card isMultiColored]) {
+            [cards addObject:card];
+        }
+    }
+    
+    return [cards copy];
 }
 
 - (NSArray *)landCards

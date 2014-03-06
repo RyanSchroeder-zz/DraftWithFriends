@@ -12,6 +12,7 @@
 
 @property (nonatomic) CGFloat originalY;
 
+- (id)initWithImage:(UIImage *)image;
 - (BOOL)slideDownAnimated:(BOOL)animated;
 - (BOOL)slideUpAnimated:(BOOL)animated;
 

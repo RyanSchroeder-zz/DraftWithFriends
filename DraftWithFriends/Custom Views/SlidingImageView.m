@@ -10,12 +10,18 @@
 
 @implementation SlidingImageView
 
+- (id)initWithImage:(UIImage *)image
+{
+    self = [super initWithImage:image];
+    return self;
+}
+
 /**
  @return Yes if the animation occured
  */
 - (BOOL)slideDownAnimated:(BOOL)animated
 {
-    if (floor(self.frame.origin.y) == floor(self.originalY + self.frame.size.height)) {
+    if ([self float:self.frame.origin.y isCloseToFloat:self.originalY + self.frame.size.height]) {
         return NO;
     }
 
@@ -34,7 +40,7 @@
  */
 - (BOOL)slideUpAnimated:(BOOL)animated
 {
-    if (floor(self.frame.origin.y) == floor(self.originalY)) {
+    if ([self float:self.frame.origin.y isCloseToFloat:self.originalY]) {
         return NO;
     }
     
@@ -47,6 +53,14 @@
     }
     
     return YES;
+}
+
+- (BOOL)float:(CGFloat)float1 isCloseToFloat:(CGFloat)float2
+{
+    int f1 = (int)floor(float1);
+    int f2 = (int)floor(float2);
+    
+    return (f1 <= f2 + 1) && (f1 >= f2 - 1);
 }
 
 @end

@@ -10,9 +10,9 @@
 
 @interface ImageStack : NSObject
 
-@property (nonatomic) NSArray *images;
+@property (nonatomic) NSArray *cards;
 @property (nonatomic) NSInteger visibleImageIndex;
 
-- (id)initWithImages:(NSArray *)images;
+- (id)initWithCards:(NSArray *)cards;
 
 @end

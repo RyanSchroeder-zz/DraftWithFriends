@@ -35,9 +35,16 @@ NSString * const kCardNumberInSetKey = @"number";
 @property (nonatomic, readwrite) NSString *rulesText;
 @property (nonatomic, readwrite) NSString *numberInSet;
 
+@property (nonatomic, readwrite) UIImage *smallImage;
+
 @end
 
 @implementation Card
+
+- (NSURL *)smallImageURL
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", self.setCode, self.numberInSet]];
+}
 
 + (Card *)cardWithDictionary:(NSDictionary *)cardDictionary
 {
@@ -56,6 +63,91 @@ NSString * const kCardNumberInSetKey = @"number";
     [instance setNumberInSet:[cardDictionary valueForKey:kCardNumberInSetKey]];
     
     return instance;
+}
+
+- (BOOL)isBlack
+{
+    if ([self isMultiColored]) {
+        return NO;
+    }
+    
+    for (NSString *color in self.colors) {
+        if ([[color lowercaseString] isEqualToString:@"black"]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)isRed
+{
+    if ([self isMultiColored]) {
+        return NO;
+    }
+    
+    for (NSString *color in self.colors) {
+        if ([[color lowercaseString] isEqualToString:@"red"]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)isWhite
+{
+    if ([self isMultiColored]) {
+        return NO;
+    }
+    
+    for (NSString *color in self.colors) {
+        if ([[color lowercaseString] isEqualToString:@"white"]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)isBlue
+{
+    if ([self isMultiColored]) {
+        return NO;
+    }
+    
+    for (NSString *color in self.colors) {
+        if ([[color lowercaseString] isEqualToString:@"blue"]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)isGreen
+{
+    if ([self isMultiColored]) {
+        return NO;
+    }
+    
+    for (NSString *color in self.colors) {
+        if ([[color lowercaseString] isEqualToString:@"green"]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)isMultiColored
+{
+    return self.colors.count > 1;
+}
+
+- (BOOL)isArtifact
+{
+    return self.colors.count == 0;
 }
 
 - (NSString *)description

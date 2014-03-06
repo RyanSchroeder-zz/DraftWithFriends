@@ -9,19 +9,37 @@
 #import "DraftViewController.h"
 #import "DraftCardCell.h"
 #import "MTGSetService.h"
+#import "DeckViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 NSString * const kDraftCardCellKey = @"draftCardCell";
 NSString * const kSetKey = @"ths";
 
-@interface DraftViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
+@interface DraftViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, DeckViewControllerDelegate>
 
 @property (nonatomic) NSArray *cards;
 @property (nonatomic) MTGSet *therosSet;
+@property (nonatomic) NSMutableArray *picks;
 
 @end
 
 @implementation DraftViewController
+
+- (NSMutableArray *)picks
+{
+    if (!_picks) {
+        _picks = [NSMutableArray new];
+    }
+    
+    return _picks;
+}
+
+#pragma mark - DeckViewControllerDelegate methods
+
+- (void)returnToDraftView
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark - Collection View methods
 
@@ -36,12 +54,17 @@ NSString * const kSetKey = @"ths";
 	
     Card *currentCard = self.cards[indexPath.row];
     
-    [cell.cardImageView setImageWithURL:
-     [NSURL URLWithString:
-      [NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", kSetKey, currentCard.numberInSet]]
-                       placeholderImage:nil];
+    [cell.cardImageView setImageWithURL:currentCard.smallImageURL placeholderImage:nil];
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.picks addObject:self.cards[indexPath.row]];
+    
+    [self setCards:[self.therosSet generateBoosterPack]];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - configure methods
@@ -61,25 +84,15 @@ NSString * const kSetKey = @"ths";
     self.collectionView.dataSource = self;
 }
 
-- (void)configureGestureRecognizer
-{
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-    [tapRecognizer setNumberOfTouchesRequired:2];
-    [tapRecognizer setNumberOfTapsRequired:1];
-    [tapRecognizer setCancelsTouchesInView:NO];
-    [tapRecognizer setDelegate:self];
-    
-    [self.view addGestureRecognizer:tapRecognizer];
-}
+#pragma mark - View methods
 
-- (void) handleTap:(UITapGestureRecognizer *) sender {
-    if (sender.state == UIGestureRecognizerStateEnded) {
-        [self setCards:[self.therosSet generateBoosterPack]];
-        [self.collectionView reloadData];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showPicks"]) {
+        [segue.destinationViewController setDelegate:self];
+        [segue.destinationViewController setPicks:[self.picks copy]];
     }
 }
-
-#pragma mark - View methods
 
 - (BOOL)prefersStatusBarHidden
 {
@@ -89,7 +102,6 @@ NSString * const kSetKey = @"ths";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self configureGestureRecognizer];
     [self configureCollectionView];
     [self configureCards];
 }

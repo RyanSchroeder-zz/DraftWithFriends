@@ -7,15 +7,16 @@
 //
 
 #import "ImageStack.h"
+#import "Card.h"
 
 @implementation ImageStack
 
-- (id)initWithImages:(NSArray *)images
+- (id)initWithCards:(NSArray *)cards
 {
     self = [super init];
     
     if (self) {
-        self.images = images;
+        self.cards = cards;
         self.visibleImageIndex = 0;
     }
     

@@ -22,6 +22,9 @@
 @property (nonatomic) NSMutableArray *chosenCards;
 @property (nonatomic) NSMutableArray *potentialCards;
 
-- (NSInteger)cardSeperationCount;
+/**
+ Comes straight from the DraftViewController
+ */
+@property (nonatomic) NSArray *picks;
 
 @end

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DraftViewController : UICollectionViewController
+@interface DraftViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

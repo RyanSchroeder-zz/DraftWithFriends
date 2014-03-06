@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class ImageStack;
+
 @interface StackedImageView : UIScrollView
 
 @property (nonatomic) NSInteger visibleImageIndex;
 
-- (void)setImageStack:(NSArray *)imageStack;
+- (void)setImageStack:(ImageStack *)imageStack;
 
 @end
