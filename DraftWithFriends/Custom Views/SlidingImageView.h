@@ -12,7 +12,7 @@
 
 @property (nonatomic) CGFloat originalY;
 
-- (void)slideDown;
-- (void)slideUp;
+- (BOOL)slideDownAnimated:(BOOL)animated;
+- (BOOL)slideUpAnimated:(BOOL)animated;
 
 @end

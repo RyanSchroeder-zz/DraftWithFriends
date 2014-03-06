@@ -17,6 +17,7 @@
 
 @property (nonatomic) NSArray *imageViews;
 @property (nonatomic) CGFloat startingContentOffset;
+@property (nonatomic, getter = isConfiguringImages) BOOL configuringImages;
 
 @end
 
@@ -51,43 +52,37 @@
 - (void)scrollToVisibleImage
 {
     [self setContentOffset:CGPointMake(0, self.startingContentOffset - self.visibleImageIndex * IMAGE_OFFSET) animated:NO];
-    [self showImageAtIndex:self.visibleImageIndex animated:NO];
+    [self updateImagesAnimated:NO];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    self.visibleImageIndex = [self updateImageAtIndex:self.visibleImageIndex animated:YES];
+    if (self.isConfiguringImages) {
+        [self updateImagesAnimated:NO];
+        self.configuringImages = NO;
+    } else {
+        [self updateImagesAnimated:YES];
+    }
 }
 
-- (void)showImageAtIndex:(NSInteger)index animated:(BOOL)animated
+- (void)updateImagesAnimated:(BOOL)animated
 {
-    for (int i = 0; i < index; i++) {
+    for (int i = 0; i < self.imageViews.count; i++) {
         [self updateImageAtIndex:i animated:animated];
     }
 }
 
-- (NSInteger)updateImageAtIndex:(NSInteger)index animated:(BOOL)animated
+- (void)updateImageAtIndex:(NSInteger)index animated:(BOOL)animated
 {
     SlidingImageView *image = self.imageViews[index];
     
     NSInteger offset = floor((self.startingContentOffset - self.contentOffset.y) / IMAGE_OFFSET);
+    BOOL slideAnimationDidOccur = NO;
     
     if (offset > index) {
-        if (animated) {
-            [UIView animateWithDuration:0.2 animations:^{
-                [image slideDown];
-            }];
-        } else {
-            [image slideDown];
-        }
+        slideAnimationDidOccur = [image slideDownAnimated:animated];
     } else if (offset < index) {
-        if (animated) {
-            [UIView animateWithDuration:0.2 animations:^{
-                [image slideUp];
-            }];
-        } else {
-            [image slideUp];
-        }
+        slideAnimationDidOccur = [image slideUpAnimated:animated];
     }
     
     if (offset <= 0) {
@@ -96,13 +91,17 @@
         offset = self.imageViews.count - 1;
     }
     
-    return offset;
+    if (slideAnimationDidOccur) {
+        self.visibleImageIndex = offset;
+    }
 }
 
 #pragma mark - configure methods
 
 - (void)configureViewWithImages:(NSArray *)images
 {
+    self.configuringImages = YES;
+    
     NSMutableArray *imageViews = [[NSMutableArray alloc] init];
     for (UIImage *image in images) {
         SlidingImageView *imageView = [[SlidingImageView alloc] initWithImage:image];

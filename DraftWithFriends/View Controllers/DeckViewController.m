@@ -9,23 +9,37 @@
 #import "DeckViewController.h"
 #import "StackedCardCell.h"
 #import "StackedImageView.h"
+#import "DeckViewModel.h"
 #import "ImageStack.h"
 
 NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 @interface DeckViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
+// Raw data for the deck
+@property (nonatomic) DeckViewModel *deckViewModel;
+
+// The way the data needs to be stored for the view
 @property (nonatomic) NSArray *imageStacks;
 
 @end
 
 @implementation DeckViewController
 
+- (DeckViewModel *)deckViewModel
+{
+    if (!_deckViewModel) {
+        _deckViewModel = [DeckViewModel new];
+    }
+    
+    return _deckViewModel;
+}
+
 #pragma mark - Collection View methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-	return self.imageStacks.count;
+    return self.imageStacks.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -51,27 +65,14 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 - (void)configureCards
 {
-#warning Mock data
-    NSMutableArray *fetchedCards = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 14; i++) {
-        NSString *name = [NSString stringWithFormat:@"%d.jpg", i + 1];
-        UIImage *cardImage = [UIImage imageNamed:name];
-        [fetchedCards addObject:cardImage];
-    }
-    NSMutableArray *fetchedCards2 = [[NSMutableArray alloc] init];
-    for (int i = 13; i > 0; i--) {
-        UIImage *cardImage = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", i + 1]];
-        [fetchedCards2 addObject:cardImage];
-    }
-    NSMutableArray *fetchedCards3 = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 4; i++) {
-        UIImage *cardImage = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", i + 1]];
-        [fetchedCards3 addObject:cardImage];
+    NSMutableArray *imageStacks = [NSMutableArray new];
+    
+    for (NSArray *cards in self.deckViewModel.potentialCards) {
+        [imageStacks addObject:[[ImageStack alloc] initWithImages:cards]];
     }
     
-    self.imageStacks = @[[[ImageStack alloc] initWithImages:[fetchedCards copy]],
-                        [[ImageStack alloc] initWithImages:[fetchedCards2 copy]],
-                        [[ImageStack alloc] initWithImages:[fetchedCards3 copy]]];
+    self.imageStacks = imageStacks;
+    
     [self.collectionView reloadData];
 }
 

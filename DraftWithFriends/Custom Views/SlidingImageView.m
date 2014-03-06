@@ -10,14 +10,43 @@
 
 @implementation SlidingImageView
 
-- (void)slideDown
+/**
+ @return Yes if the animation occured
+ */
+- (BOOL)slideDownAnimated:(BOOL)animated
 {
-    [self setFrameY:self.originalY + self.frame.size.height];
+    if (floor(self.frame.origin.y) == floor(self.originalY + self.frame.size.height)) {
+        return NO;
+    }
+
+    if (animated) {
+        [UIView animateWithDuration:0.2 animations:^{
+            [self setFrameY:self.originalY + self.frame.size.height];
+        }];
+    } else {
+        [self setFrameY:self.originalY + self.frame.size.height];
+    }
+    return YES;
 }
 
-- (void)slideUp
+/**
+ @return Yes if the animation occured
+ */
+- (BOOL)slideUpAnimated:(BOOL)animated
 {
-    [self setFrameY:self.originalY];
+    if (floor(self.frame.origin.y) == floor(self.originalY)) {
+        return NO;
+    }
+    
+    if (animated) {
+        [UIView animateWithDuration:0.2 animations:^{
+            [self setFrameY:self.originalY];
+        }];
+    } else {
+        [self setFrameY:self.originalY];
+    }
+    
+    return YES;
 }
 
 @end
