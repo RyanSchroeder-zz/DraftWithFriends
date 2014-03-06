@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A60ACADD18C87BB800E494F0 /* BNG.json in Resources */ = {isa = PBXBuildFile; fileRef = A60ACADC18C87BB800E494F0 /* BNG.json */; };
+		A6222BB418C86F5D00AFA3EE /* SetPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6222BB318C86F5D00AFA3EE /* SetPickerViewController.m */; };
 		A6512AE418C81D3C006F4973 /* DeckViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6512AE318C81D3C006F4973 /* DeckViewModel.m */; };
 		A6512AF518C82804006F4973 /* blue1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6512AE618C82804006F4973 /* blue1.jpg */; };
 		A6512AF618C82804006F4973 /* blue10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6512AE718C82804006F4973 /* blue10.jpg */; };
@@ -87,6 +89,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A60ACADC18C87BB800E494F0 /* BNG.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BNG.json; sourceTree = "<group>"; };
+		A6222BB218C86F5D00AFA3EE /* SetPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetPickerViewController.h; path = "View Controllers/SetPickerViewController.h"; sourceTree = "<group>"; };
+		A6222BB318C86F5D00AFA3EE /* SetPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetPickerViewController.m; path = "View Controllers/SetPickerViewController.m"; sourceTree = "<group>"; };
 		A6512AE218C81D3C006F4973 /* DeckViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeckViewModel.h; path = Models/DeckViewModel.h; sourceTree = "<group>"; };
 		A6512AE318C81D3C006F4973 /* DeckViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeckViewModel.m; path = Models/DeckViewModel.m; sourceTree = "<group>"; };
 		A6512AE618C82804006F4973 /* blue1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blue1.jpg; sourceTree = "<group>"; };
@@ -412,6 +417,7 @@
 		DAAF3A9217E11EDD00048CC6 /* SetJSON */ = {
 			isa = PBXGroup;
 			children = (
+				A60ACADC18C87BB800E494F0 /* BNG.json */,
 				DA6C8EB017E15335001F8A6D /* M13.json */,
 				DA6C8EB217E15544001F8A6D /* RTR.json */,
 				DA6C8EB417E15552001F8A6D /* GTC.json */,
@@ -431,6 +437,8 @@
 				A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */,
 				A665E07A1863E65C00FCA166 /* DeckViewController.h */,
 				A665E07B1863E65C00FCA166 /* DeckViewController.m */,
+				A6222BB218C86F5D00AFA3EE /* SetPickerViewController.h */,
+				A6222BB318C86F5D00AFA3EE /* SetPickerViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -572,6 +580,7 @@
 				A6512AFA18C82804006F4973 /* blue5.jpg in Resources */,
 				A6D3ECA71863D04800246D24 /* 7.jpg in Resources */,
 				DAAF3A7117E118BF00048CC6 /* Main.storyboard in Resources */,
+				A60ACADD18C87BB800E494F0 /* BNG.json in Resources */,
 				A6512AF618C82804006F4973 /* blue10.jpg in Resources */,
 				DA6C8EB117E15335001F8A6D /* M13.json in Resources */,
 			);
@@ -609,6 +618,7 @@
 				DA76092918146E7400A4E3DD /* MTGSet.m in Sources */,
 				DA760926181469B300A4E3DD /* BoosterPack.m in Sources */,
 				A699AC731867A6F800324F8D /* SlidingImageView.m in Sources */,
+				A6222BB418C86F5D00AFA3EE /* SetPickerViewController.m in Sources */,
 				DA7609201814638100A4E3DD /* Player.m in Sources */,
 				DA6C8E3C17E1301F001F8A6D /* Card.m in Sources */,
 			);

@@ -9,6 +9,12 @@
 #import "MTGSetService.h"
 #import "Card.h"
 
+@interface MTGSetService ()
+
+@property (nonatomic) NSInteger boosterPackSize;
+
+@end
+
 @implementation MTGSetService
 
 - (void)setWithSetCode:(NSString *)setCode callback:(ServiceCallback)callback
@@ -40,10 +46,17 @@
         
         MTGSet *setToReturn = [MTGSet setWithCards:[self sortCardsInSetByNumber:mutableCardsInSet] setCode:setCode];
         
+        self.boosterPackSize = [setToReturn generateBoosterPack].count;
+        
         callback(nil, setToReturn);
     } else {
         callback(error, nil);
     }
+}
+
+- (NSInteger)boosterPackSize
+{
+    return _boosterPackSize;
 }
 
 - (NSArray *)sortCardsInSetByNumber:(NSArray *)cardsInSet

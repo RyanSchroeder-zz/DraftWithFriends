@@ -11,6 +11,7 @@
 #import "StackedImageView.h"
 #import "DeckViewModel.h"
 #import "ImageStack.h"
+#import "MTGSetService.h"
 
 NSString * const kStackedCardCellKey = @"stackedCardCell";
 
@@ -105,12 +106,17 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 - (void)configureDraftButton
 {
-    if (self.picks.count >= 45) {
+    if (self.picks.count >= [[MTGSetService sharedService] boosterPackSize] * 3) {
         self.draftButton.hidden = YES;
     }
 }
 
 #pragma mark - View methods
+
+- (void)dealloc
+{
+    self.picks = nil;
+}
 
 - (BOOL)prefersStatusBarHidden
 {

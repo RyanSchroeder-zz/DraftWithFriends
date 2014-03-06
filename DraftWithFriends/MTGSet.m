@@ -131,8 +131,7 @@
         Card *foilCard = [self generateBoosterFoilSlot];
         if ([foilCard.rarity isEqualToString:@"Basic Land"]) {
             chosenLand = foilCard;
-        }
-        else {
+        } else if (foilCard) {
             [chosenCommons addObject:foilCard];
         }
     }
@@ -154,7 +153,9 @@
     }
     
     NSMutableArray *chosenCommonsAndLand = [[NSMutableArray alloc] initWithArray:chosenCommons];
-    [chosenCommonsAndLand addObject:chosenLand];
+    if (chosenLand) {
+        [chosenCommonsAndLand addObject:chosenLand];
+    }
     
     return chosenCommonsAndLand;
 }
@@ -162,6 +163,9 @@
 - (Card *)generateBoosterBasicLandSlot
 {
     NSArray *basicLands = [self basicLands];
+    if (basicLands.count == 0) {
+        return nil;
+    }
     return [basicLands objectAtIndex:arc4random_uniform([basicLands count])];
 }
 

@@ -14,9 +14,10 @@ typedef void(^ServiceCallback)(NSError *error, id successObject);
 
 @interface MTGSetService : NSObject
 
++ (MTGSetService *)sharedService;
+
 - (void)setWithSetCode:(NSString *)setCode
               callback:(ServiceCallback)callback;
-
-+ (MTGSetService *)sharedService;
+- (NSInteger)boosterPackSize;
 
 @end

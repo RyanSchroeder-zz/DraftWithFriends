@@ -17,8 +17,6 @@ NSString * const kSetKey = @"ths";
 
 @interface DraftViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, DeckViewControllerDelegate>
 
-@property (nonatomic) NSArray *cards;
-@property (nonatomic) MTGSet *cardSet;
 @property (nonatomic) NSMutableArray *picks;
 @property (weak, nonatomic) IBOutlet UIButton *picksButton;
 
@@ -34,6 +32,14 @@ NSString * const kSetKey = @"ths";
     
     return _picks;
 }
+
+#pragma mark - IBAction methods
+
+- (IBAction)newDraftButtonTapped
+{
+    [self.delegate newDraftDesired];
+}
+
 
 #pragma mark - DeckViewControllerDelegate methods
 
@@ -73,8 +79,10 @@ NSString * const kSetKey = @"ths";
     [self.picks addObject:self.cards[indexPath.row]];
     self.picksButton.hidden = NO;
     
-    if (self.picks.count < 45) {
-        [self setCards:[self.cardSet generateBoosterPackMinus:self.picks.count % 15]];
+    NSInteger boosterPackSize = [[MTGSetService sharedService] boosterPackSize];
+    
+    if (self.picks.count < boosterPackSize * 3) {
+        [self setCards:[self.cardSet generateBoosterPackMinus:self.picks.count % boosterPackSize]];
         [self.collectionView reloadData];
     } else {
         [self performSegueWithIdentifier:@"showPicks" sender:self];
@@ -82,15 +90,6 @@ NSString * const kSetKey = @"ths";
 }
 
 #pragma mark - configure methods
-
-- (void)configureCards
-{
-    [[MTGSetService sharedService] setWithSetCode:@"THS" callback:^(NSError *error, MTGSet *set) {
-        [self setCardSet:set];
-        [self setCards:[set generateBoosterPack]];
-        [self.collectionView reloadData];
-    }];
-}
 
 - (void)configureCollectionView
 {
@@ -100,7 +99,7 @@ NSString * const kSetKey = @"ths";
 
 - (void)configurePicksButton
 {
-    if (self.picks.count == 0) {
+    if (!self.picks || self.picks.count == 0) {
         self.picksButton.hidden = YES;
     }
 }
@@ -130,7 +129,6 @@ NSString * const kSetKey = @"ths";
 {
     [super viewDidLoad];
     [self configureCollectionView];
-    [self configureCards];
 }
 
 @end

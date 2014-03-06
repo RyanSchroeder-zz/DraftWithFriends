@@ -18,7 +18,7 @@
 @interface DeckViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic) id<DeckViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<DeckViewControllerDelegate> delegate;
 
 /** The current set of picks from the DraftViewController */
 @property (nonatomic) NSArray *picks;
