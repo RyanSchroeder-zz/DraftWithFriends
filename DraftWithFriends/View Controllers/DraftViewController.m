@@ -18,8 +18,9 @@ NSString * const kSetKey = @"ths";
 @interface DraftViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, DeckViewControllerDelegate>
 
 @property (nonatomic) NSArray *cards;
-@property (nonatomic) MTGSet *therosSet;
+@property (nonatomic) MTGSet *cardSet;
 @property (nonatomic) NSMutableArray *picks;
+@property (weak, nonatomic) IBOutlet UIButton *picksButton;
 
 @end
 
@@ -38,6 +39,14 @@ NSString * const kSetKey = @"ths";
 
 - (void)returnToDraftView
 {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)resetPicks
+{
+    self.picks = nil;
+    [self setCards:[self.cardSet generateBoosterPack]];
+    [self.collectionView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -62,9 +71,14 @@ NSString * const kSetKey = @"ths";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.picks addObject:self.cards[indexPath.row]];
+    self.picksButton.hidden = NO;
     
-    [self setCards:[self.therosSet generateBoosterPack]];
-    [self.collectionView reloadData];
+    if (self.picks.count < 45) {
+        [self setCards:[self.cardSet generateBoosterPackMinus:self.picks.count % 15]];
+        [self.collectionView reloadData];
+    } else {
+        [self performSegueWithIdentifier:@"showPicks" sender:self];
+    }
 }
 
 #pragma mark - configure methods
@@ -72,7 +86,7 @@ NSString * const kSetKey = @"ths";
 - (void)configureCards
 {
     [[MTGSetService sharedService] setWithSetCode:@"THS" callback:^(NSError *error, MTGSet *set) {
-        [self setTherosSet:set];
+        [self setCardSet:set];
         [self setCards:[set generateBoosterPack]];
         [self.collectionView reloadData];
     }];
@@ -82,6 +96,13 @@ NSString * const kSetKey = @"ths";
 {
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+}
+
+- (void)configurePicksButton
+{
+    if (self.picks.count == 0) {
+        self.picksButton.hidden = YES;
+    }
 }
 
 #pragma mark - View methods
@@ -97,6 +118,12 @@ NSString * const kSetKey = @"ths";
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self configurePicksButton];
 }
 
 - (void)viewDidLoad

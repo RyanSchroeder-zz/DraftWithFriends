@@ -75,6 +75,18 @@
     return boosterPack;
 }
 
+- (NSArray *)generateBoosterPackMinus:(NSInteger)numPicked
+{
+    NSMutableArray *booster = [[self generateBoosterPack] mutableCopy];
+    
+    while (numPicked > 0) {
+        [booster removeObjectAtIndex:0];
+        numPicked--;
+    }
+    
+    return [booster copy];
+}
+
 - (Card *)generateBoosterRareSlot
 {
     if ([self didGenerateMythicRare])

@@ -23,5 +23,6 @@
 - (NSArray *)basicLands;
 
 - (NSArray *)generateBoosterPack;
+- (NSArray *)generateBoosterPackMinus:(NSInteger)numPicked;
 
 @end

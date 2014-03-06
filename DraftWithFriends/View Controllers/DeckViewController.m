@@ -21,6 +21,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 // The way the data needs to be stored for the view
 @property (nonatomic) NSArray *imageStacks;
+@property (weak, nonatomic) IBOutlet UIButton *draftButton;
 
 @end
 
@@ -48,6 +49,11 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 - (IBAction)draftButtonTapped
 {
     [self.delegate returnToDraftView];
+}
+
+- (IBAction)resetPicksButtonTapped
+{
+    [self.delegate resetPicks];
 }
 
 #pragma mark - Collection View methods
@@ -97,6 +103,13 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     self.collectionView.dataSource = self;
 }
 
+- (void)configureDraftButton
+{
+    if (self.picks.count >= 45) {
+        self.draftButton.hidden = YES;
+    }
+}
+
 #pragma mark - View methods
 
 - (BOOL)prefersStatusBarHidden
@@ -109,6 +122,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     [super viewDidLoad];
     [self configureCollectionView];
     [self configureCards];
+    [self configureDraftButton];
 }
 
 @end
