@@ -14,6 +14,9 @@
 - (NSArray *)picks
 {
     return [_picks sortedArrayUsingComparator:^NSComparisonResult(Card *card1, Card *card2) {
+        if (card1.convertedManaCost == card2.convertedManaCost) {
+            return [card1.numberInSet compare:card2.numberInSet options:NSNumericSearch];
+        }
         return card1.convertedManaCost > card2.convertedManaCost;
     }];
 }

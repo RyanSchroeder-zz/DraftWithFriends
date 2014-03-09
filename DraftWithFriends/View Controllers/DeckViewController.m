@@ -25,6 +25,8 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 @property (weak, nonatomic) IBOutlet UIButton *draftButton;
 @property (weak, nonatomic) IBOutlet UIButton *addLandsButton;
+@property (weak, nonatomic) IBOutlet UILabel *creatureCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nonCreatureCountLabel;
 @property (nonatomic) BOOL isRemovingEmptyStack;
 
 @end
@@ -158,6 +160,23 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     }
 }
 
+- (void)configureStats
+{
+    NSInteger creatureSpells = 0;
+    NSInteger nonCreatureSpells = 0;
+    
+    for (Card *card in self.picks) {
+        if ([card.types containsObject:@"Creature"]) {
+            creatureSpells++;
+        } else {
+            nonCreatureSpells++;
+        }
+    }
+    
+    [self.creatureCountLabel setText:[NSString stringWithFormat:@"Creatures: %d", creatureSpells]];
+    [self.nonCreatureCountLabel setText:[NSString stringWithFormat:@"Non-Creatures: %d", nonCreatureSpells]];
+}
+
 #pragma mark - View methods
 
 - (void)dealloc
@@ -177,6 +196,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     [self configureCards];
     [self configureDraftButton];
     [self configureAddLandsButton];
+    [self configureStats];
 }
 
 @end

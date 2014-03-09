@@ -197,6 +197,20 @@
                                     <action selector="addLandsButtonTapped" destination="5mw-Rq-vTX" eventType="touchUpInside" id="rFy-HV-Ki5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Creatures: 20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cJ-pF-ob9">
+                                <rect key="frame" x="86" y="514" width="108" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Non-Creatures: 20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrq-ca-3TX">
+                                <rect key="frame" x="86" y="532" width="138" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -210,7 +224,9 @@
                     <connections>
                         <outlet property="addLandsButton" destination="ICL-8t-RMa" id="OiV-aH-ywg"/>
                         <outlet property="collectionView" destination="JNB-Ge-6aK" id="u5Y-ZP-6gA"/>
+                        <outlet property="creatureCountLabel" destination="9cJ-pF-ob9" id="YRf-G0-vNH"/>
                         <outlet property="draftButton" destination="u9B-wM-Fou" id="mZL-K2-D1X"/>
+                        <outlet property="nonCreatureCountLabel" destination="rrq-ca-3TX" id="M4k-tX-fGE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfD-9H-qoX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -360,6 +376,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1.jpg" width="200" height="285"/>
+        <image name="1.jpg" width="200" height="285"/>
         <image name="1.jpg" width="200" height="285"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
