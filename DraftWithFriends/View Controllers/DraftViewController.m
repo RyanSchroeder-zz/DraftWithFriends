@@ -48,14 +48,6 @@ NSString * const kSetKey = @"ths";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)resetPicks
-{
-    self.picks = nil;
-    [self setCards:[self.cardSet generateBoosterPack]];
-    [self.collectionView reloadData];
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark - Collection View methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

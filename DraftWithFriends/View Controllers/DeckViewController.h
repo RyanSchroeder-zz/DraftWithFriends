@@ -11,7 +11,6 @@
 @protocol DeckViewControllerDelegate <NSObject>
 
 - (void)returnToDraftView;
-- (void)resetPicks;
 
 @end
 

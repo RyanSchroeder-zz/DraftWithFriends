@@ -8,11 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@class Card;
+
+@protocol SlidingImageViewDelegate <NSObject>
+
+- (void)cardRemoved:(Card *)card;
+
+@end
+
+
 @interface SlidingImageView : UIImageView
 
 @property (nonatomic) CGFloat originalY;
+@property (nonatomic) id<SlidingImageViewDelegate> delegate;
 
-- (id)initWithImage:(UIImage *)image;
+- (id)initWithImage:(UIImage *)image andCard:(Card *)card;
 - (BOOL)slideDownAnimated:(BOOL)animated;
 - (BOOL)slideUpAnimated:(BOOL)animated;
 

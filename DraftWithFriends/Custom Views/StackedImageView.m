@@ -16,9 +16,9 @@
 #define IMAGE_HEIGHT 285
 #define IMAGE_WIDTH 200
 
-@interface StackedImageView () <UIScrollViewDelegate>
+@interface StackedImageView () <UIScrollViewDelegate, SlidingImageViewDelegate>
 
-@property (nonatomic) NSArray *cards;
+@property (nonatomic) ImageStack *imageStack;
 @property (nonatomic) NSArray *imageViews;
 @property (nonatomic) CGFloat startingContentOffset;
 @property (nonatomic, getter = isConfiguringImages) BOOL configuringImages;
@@ -29,10 +29,16 @@
 
 - (void)setImageStack:(ImageStack *)imageStack
 {
-    self.cards = imageStack.cards;
+    _imageStack = imageStack;
     
+    [self reloadStack];
+}
+
+- (void)reloadStack
+{
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [self configureViewWithImageStack:imageStack];
+    
+    [self configureView];
     [self displayImages];
     [self scrollToVisibleImage];
 }
@@ -119,19 +125,42 @@
     }
 }
 
+#pragma mark - SlidingImageViewDelegate methods
+
+- (void)cardRemoved:(Card *)card
+{
+    NSMutableArray *cards = [self.imageStack.cards mutableCopy];
+    
+    for (NSInteger i = 0; i < cards.count; i++) {
+        if (cards[i] == card) {
+            [cards removeObjectAtIndex:i];
+            break;
+        }
+    }
+    
+    self.imageStack.cards = [cards copy];
+    
+    if (cards.count == 0) {
+        [self.stackedImageViewDelegate stackedViewDidEmpty];
+    } else {
+        [self reloadStack];
+    }
+}
+
 #pragma mark - configure methods
 
-- (void)configureViewWithImageStack:(ImageStack *)imageStack
+- (void)configureView
 {
     self.configuringImages = YES;
     
     NSMutableArray *slidingImageViews = [[NSMutableArray alloc] init];
     
-    for (Card *card in self.cards) {
+    for (Card *card in self.imageStack.cards) {
         UIImageView *imageView = [UIImageView new];
         [imageView setImageWithURL:card.smallImageURL placeholderImage:nil];
         
-        SlidingImageView *slidingImageView = [[SlidingImageView alloc] initWithImage:imageView.image];
+        SlidingImageView *slidingImageView = [[SlidingImageView alloc] initWithImage:imageView.image andCard:card];
+        slidingImageView.delegate = self;
         [slidingImageViews addObject:slidingImageView];
     }
     

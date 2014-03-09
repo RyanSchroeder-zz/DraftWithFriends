@@ -15,14 +15,17 @@
 
 NSString * const kStackedCardCellKey = @"stackedCardCell";
 
-@interface DeckViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface DeckViewController () <UICollectionViewDataSource, UICollectionViewDelegate, StackedImageViewDelegate>
 
 // Raw data for the deck
 @property (nonatomic) DeckViewModel *deckViewModel;
 
 // The way the data needs to be stored for the view
 @property (nonatomic) NSArray *imageStacks;
+
 @property (weak, nonatomic) IBOutlet UIButton *draftButton;
+@property (weak, nonatomic) IBOutlet UIButton *addLandsButton;
+@property (nonatomic) BOOL isRemovingEmptyStack;
 
 @end
 
@@ -45,6 +48,38 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     }
 }
 
+#pragma mark - StackedImageViewDelegate methods
+
+- (void)stackedViewDidEmpty
+{
+    self.isRemovingEmptyStack = YES;
+    NSMutableArray *mutableStacks = [self.imageStacks mutableCopy];
+    
+    for (ImageStack *imageStack in self.imageStacks) {
+        if (imageStack.cards.count == 0) {
+            [mutableStacks removeObject:imageStack];
+            break;
+        }
+    }
+    
+    self.imageStacks = [mutableStacks copy];
+    
+    [self setVisibleImages];
+    
+    [self.collectionView reloadData];
+    self.isRemovingEmptyStack = NO;
+}
+
+- (void)setVisibleImages
+{
+    for (NSInteger i = 0; i < self.imageStacks.count; i++) {
+        StackedCardCell *stackedCardCell = (StackedCardCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        
+        ImageStack *imageStack = self.imageStacks[i];
+        imageStack.visibleImageIndex = stackedCardCell.stackedImageView.visibleImageIndex;
+    }
+}
+
 #pragma mark - IBActions
 
 - (IBAction)draftButtonTapped
@@ -52,9 +87,9 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     [self.delegate returnToDraftView];
 }
 
-- (IBAction)resetPicksButtonTapped
+- (IBAction)addLandsButtonTapped
 {
-    [self.delegate resetPicks];
+
 }
 
 #pragma mark - Collection View methods
@@ -71,12 +106,17 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     ImageStack *imageStack = self.imageStacks[indexPath.row];
     [cell.stackedImageView setVisibleImageIndex:[imageStack visibleImageIndex]];
     [cell.stackedImageView setImageStack:imageStack];
+    [cell.stackedImageView setStackedImageViewDelegate:self];
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.isRemovingEmptyStack) {
+        return;
+    }
+    
     StackedCardCell *stackedCardCell = (StackedCardCell *)cell;
 	
     ImageStack *imageStack = self.imageStacks[indexPath.row];
@@ -111,6 +151,13 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     }
 }
 
+- (void)configureAddLandsButton
+{
+    if (self.picks.count < [[MTGSetService sharedService] boosterPackSize] * 3) {
+        self.addLandsButton.hidden = YES;
+    }
+}
+
 #pragma mark - View methods
 
 - (void)dealloc
@@ -129,6 +176,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     [self configureCollectionView];
     [self configureCards];
     [self configureDraftButton];
+    [self configureAddLandsButton];
 }
 
 @end

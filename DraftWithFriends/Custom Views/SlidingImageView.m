@@ -7,13 +7,37 @@
 //
 
 #import "SlidingImageView.h"
+#import "Card.h"
+
+@interface SlidingImageView () <UIGestureRecognizerDelegate>
+
+@property (nonatomic) Card *card;
+
+@end
 
 @implementation SlidingImageView
 
-- (id)initWithImage:(UIImage *)image
+- (id)initWithImage:(UIImage *)image andCard:(Card *)card
 {
     self = [super initWithImage:image];
+    
+    if (self) {
+        self.card = card;
+        [self setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cardRemoved:)];
+        tapGestureRecognizer.delegate = self;
+        [self addGestureRecognizer:tapGestureRecognizer];
+    }
+    
     return self;
+}
+
+- (void)cardRemoved:(UITapGestureRecognizer *)recognizer
+{
+	if ((recognizer.state == UIGestureRecognizerStateChanged) ||
+		(recognizer.state == UIGestureRecognizerStateEnded)) {
+        [self.delegate cardRemoved:self.card];
+    }
 }
 
 /**
@@ -55,6 +79,10 @@
     return YES;
 }
 
+/**
+ Testing to see if they were equal caused a few issues and it doesn't need to 
+ be an exact match.
+ */
 - (BOOL)float:(CGFloat)float1 isCloseToFloat:(CGFloat)float2
 {
     int f1 = (int)floor(float1);

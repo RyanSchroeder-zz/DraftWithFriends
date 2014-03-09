@@ -174,7 +174,7 @@
                                 </collectionReusableView>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9B-wM-Fou">
-                                <rect key="frame" x="244" y="518" width="56" height="30"/>
+                                <rect key="frame" x="20" y="518" width="56" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Draft">
@@ -185,16 +185,16 @@
                                     <action selector="draftButtonTapped" destination="5mw-Rq-vTX" eventType="touchUpInside" id="56Y-VA-RPU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dg9-fO-RHF">
-                                <rect key="frame" x="20" y="518" width="100" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICL-8t-RMa">
+                                <rect key="frame" x="211" y="518" width="89" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Reset Picks">
+                                <state key="normal" title="Add Lands">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="resetPicksButtonTapped" destination="5mw-Rq-vTX" eventType="touchUpInside" id="sKd-YQ-eeA"/>
+                                    <action selector="addLandsButtonTapped" destination="5mw-Rq-vTX" eventType="touchUpInside" id="rFy-HV-Ki5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -208,6 +208,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="fRG-2a-1AY"/>
                     <connections>
+                        <outlet property="addLandsButton" destination="ICL-8t-RMa" id="OiV-aH-ywg"/>
                         <outlet property="collectionView" destination="JNB-Ge-6aK" id="u5Y-ZP-6gA"/>
                         <outlet property="draftButton" destination="u9B-wM-Fou" id="mZL-K2-D1X"/>
                     </connections>

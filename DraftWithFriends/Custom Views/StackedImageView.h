@@ -10,8 +10,15 @@
 
 @class ImageStack;
 
+@protocol StackedImageViewDelegate <NSObject>
+
+- (void)stackedViewDidEmpty;
+
+@end
+
 @interface StackedImageView : UIScrollView
 
+@property (nonatomic) id<StackedImageViewDelegate> stackedImageViewDelegate;
 @property (nonatomic) NSInteger visibleImageIndex;
 
 - (void)setImageStack:(ImageStack *)imageStack;
