@@ -97,6 +97,13 @@
                         <action selector="doneButtonTapped" destination="9YF-zr-grc" eventType="touchUpInside" id="Yrz-9I-Rlx"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTO-fy-vdW">
+                    <rect key="frame" x="215" y="67" width="94" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.64585755813953494" green="0.43699701490006415" blue="0.23165879999347216" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -112,6 +119,7 @@
                 <outlet property="plainsStepper" destination="67m-7f-yjS" id="6aD-G7-q3R"/>
                 <outlet property="swampLabel" destination="qcK-kH-UsZ" id="zDl-Xr-OZu"/>
                 <outlet property="swampStepper" destination="Whf-jk-sV4" id="3Jf-eW-qfl"/>
+                <outlet property="totalLabel" destination="GTO-fy-vdW" id="lYa-kB-KPO"/>
             </connections>
         </view>
     </objects>

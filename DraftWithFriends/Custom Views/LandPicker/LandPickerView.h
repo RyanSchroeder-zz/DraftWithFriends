@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *plainsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *islandLabel;
 @property (weak, nonatomic) IBOutlet UILabel *forestLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
