@@ -12,10 +12,13 @@
 #import "DeckViewModel.h"
 #import "ImageStack.h"
 #import "MTGSetService.h"
+#import "LandPickerView.h"
+#import "UIView+Helpers.h"
+#import "DrawViewController.h"
 
 NSString * const kStackedCardCellKey = @"stackedCardCell";
 
-@interface DeckViewController () <UICollectionViewDataSource, UICollectionViewDelegate, StackedImageViewDelegate>
+@interface DeckViewController () <UICollectionViewDataSource, UICollectionViewDelegate, StackedImageViewDelegate, LandPickerViewDelegate>
 
 // Raw data for the deck
 @property (nonatomic) DeckViewModel *deckViewModel;
@@ -28,6 +31,8 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 @property (weak, nonatomic) IBOutlet UILabel *creatureCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nonCreatureCountLabel;
 @property (nonatomic) BOOL isRemovingEmptyStack;
+
+@property (nonatomic) LandPickerView *landPickerView;
 
 @end
 
@@ -50,7 +55,41 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     }
 }
 
+#pragma mark - LandPickerViewDelegate methods
+
+- (void)donePickingLands
+{
+    [self.deckViewModel.deckListCards addObjectsFromArray:[self landsForDeck]];
+    [self performSegueWithIdentifier:@"showDraw" sender:self];
+}
+
+- (NSArray *)landsForDeck
+{
+    NSMutableArray *lands = [NSMutableArray new];
+    
+    [lands addObjectsFromArray:[[MTGSetService sharedService] landType:LandSwamp withCount:(int)self.landPickerView.swampStepper.value]];
+    [lands addObjectsFromArray:[[MTGSetService sharedService] landType:LandMountain withCount:(int)self.landPickerView.mountainStepper.value]];
+    [lands addObjectsFromArray:[[MTGSetService sharedService] landType:LandPlains withCount:(int)self.landPickerView.plainsStepper.value]];
+    [lands addObjectsFromArray:[[MTGSetService sharedService] landType:LandIsland withCount:(int)self.landPickerView.islandStepper.value]];
+    [lands addObjectsFromArray:[[MTGSetService sharedService] landType:LandForest withCount:(int)self.landPickerView.forestStepper.value]];
+    
+    return lands;
+}
+
 #pragma mark - StackedImageViewDelegate methods
+
+- (void)didRemoveCard:(Card *)card fromStack:(ImageStack *)imageStack
+{
+    for (NSInteger i = 0; i < self.deckViewModel.deckListCards.count; i++) {
+        if (self.deckViewModel.deckListCards[i] == card) {
+            [self.deckViewModel.potentialCards addObject:card];
+            [self.deckViewModel.deckListCards removeObjectAtIndex:i];
+            break;
+        }
+    }
+    
+    [self configureStats];
+}
 
 - (void)stackedViewDidEmpty
 {
@@ -91,7 +130,15 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 - (IBAction)addLandsButtonTapped
 {
-
+    [self.draftButton removeFromSuperview];
+    [self.addLandsButton removeFromSuperview];
+    [self.creatureCountLabel removeFromSuperview];
+    [self.nonCreatureCountLabel removeFromSuperview];
+    
+    self.landPickerView = [[[NSBundle mainBundle] loadNibNamed:@"LandPickerViewNib" owner:nil options:nil] lastObject];
+    self.landPickerView.delegate = self;
+    [self.landPickerView setFrameY:self.view.frame.size.height - self.landPickerView.frame.size.height];
+    [self.view addSubview:self.landPickerView];
 }
 
 #pragma mark - Collection View methods
@@ -131,7 +178,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 {
     NSMutableArray *imageStacks = [NSMutableArray new];
     
-    for (NSArray *cards in self.deckViewModel.potentialCards) {
+    for (NSArray *cards in self.deckViewModel.chosenCardStacks) {
         [imageStacks addObject:[[ImageStack alloc] initWithCards:cards]];
     }
     
@@ -165,7 +212,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     NSInteger creatureSpells = 0;
     NSInteger nonCreatureSpells = 0;
     
-    for (Card *card in self.picks) {
+    for (Card *card in self.deckViewModel.deckListCards) {
         if ([card.types containsObject:@"Creature"]) {
             creatureSpells++;
         } else {
@@ -178,6 +225,13 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 }
 
 #pragma mark - View methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showDraw"]) {
+        [segue.destinationViewController setDeck:self.deckViewModel.deckListCards];
+    }
+}
 
 - (void)dealloc
 {

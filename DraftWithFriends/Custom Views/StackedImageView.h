@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class ImageStack;
+@class Card;
 
 @protocol StackedImageViewDelegate <NSObject>
 
 - (void)stackedViewDidEmpty;
+- (void)didRemoveCard:(Card *)card fromStack:(ImageStack *)imageStack;
 
 @end
 

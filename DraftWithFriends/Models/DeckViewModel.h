@@ -19,8 +19,9 @@
 @property (nonatomic, readonly) NSArray *multiColorCards;
 @property (nonatomic, readonly) NSArray *landCards;
 
-@property (nonatomic) NSMutableArray *chosenCards;
+@property (nonatomic) NSMutableArray *chosenCardStacks;
 @property (nonatomic) NSMutableArray *potentialCards;
+@property (nonatomic) NSMutableArray *deckListCards;
 
 /**
  Comes straight from the DraftViewController

@@ -145,6 +145,8 @@
     } else {
         [self reloadStack];
     }
+    
+    [self.stackedImageViewDelegate didRemoveCard:card fromStack:self.imageStack];
 }
 
 #pragma mark - configure methods

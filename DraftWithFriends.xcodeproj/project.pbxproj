@@ -31,6 +31,10 @@
 		A66B60C71887C96A002B6867 /* ImageStack.m in Sources */ = {isa = PBXBuildFile; fileRef = A66B60C61887C96A002B6867 /* ImageStack.m */; };
 		A699AC701867A27600324F8D /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A699AC6F1867A27600324F8D /* UIView+Helpers.m */; };
 		A699AC731867A6F800324F8D /* SlidingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A699AC721867A6F800324F8D /* SlidingImageView.m */; };
+		A6BF6E0E18CC0B9B00A80474 /* LandPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BF6E0D18CC0B9B00A80474 /* LandPickerView.m */; };
+		A6BF6E1118CC0BD700A80474 /* LandPickerViewNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6BF6E1018CC0BD700A80474 /* LandPickerViewNib.xib */; };
+		A6BF6E1418CC1D7700A80474 /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BF6E1318CC1D7700A80474 /* DrawViewController.m */; };
+		A6BF6E1718CC209F00A80474 /* DrawViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BF6E1618CC209F00A80474 /* DrawViewModel.m */; };
 		A6D3EC701863CDDF00246D24 /* DraftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */; };
 		A6D3EC741863CEE000246D24 /* DraftCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3EC731863CEE000246D24 /* DraftCardCell.m */; };
 		A6D3ECA11863D04800246D24 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6D3EC931863D04800246D24 /* 1.jpg */; };
@@ -121,6 +125,13 @@
 		A699AC6F1867A27600324F8D /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Helpers.m"; path = "Categories/UIView+Helpers.m"; sourceTree = "<group>"; };
 		A699AC711867A6F800324F8D /* SlidingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlidingImageView.h; path = "Custom Views/SlidingImageView.h"; sourceTree = "<group>"; };
 		A699AC721867A6F800324F8D /* SlidingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlidingImageView.m; path = "Custom Views/SlidingImageView.m"; sourceTree = "<group>"; };
+		A6BF6E0C18CC0B9B00A80474 /* LandPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LandPickerView.h; path = "Custom Views/LandPicker/LandPickerView.h"; sourceTree = "<group>"; };
+		A6BF6E0D18CC0B9B00A80474 /* LandPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LandPickerView.m; path = "Custom Views/LandPicker/LandPickerView.m"; sourceTree = "<group>"; };
+		A6BF6E1018CC0BD700A80474 /* LandPickerViewNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LandPickerViewNib.xib; path = "Custom Views/LandPicker/LandPickerViewNib.xib"; sourceTree = "<group>"; };
+		A6BF6E1218CC1D7700A80474 /* DrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawViewController.h; path = "View Controllers/DrawViewController.h"; sourceTree = "<group>"; };
+		A6BF6E1318CC1D7700A80474 /* DrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawViewController.m; path = "View Controllers/DrawViewController.m"; sourceTree = "<group>"; };
+		A6BF6E1518CC209F00A80474 /* DrawViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawViewModel.h; path = Models/DrawViewModel.h; sourceTree = "<group>"; };
+		A6BF6E1618CC209F00A80474 /* DrawViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawViewModel.m; path = Models/DrawViewModel.m; sourceTree = "<group>"; };
 		A6D3EC6E1863CDDF00246D24 /* DraftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraftViewController.h; path = "View Controllers/DraftViewController.h"; sourceTree = "<group>"; };
 		A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraftViewController.m; path = "View Controllers/DraftViewController.m"; sourceTree = "<group>"; };
 		A6D3EC721863CEE000246D24 /* DraftCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraftCardCell.h; path = "Custom Cells/DraftCardCell.h"; sourceTree = "<group>"; };
@@ -234,6 +245,7 @@
 		A665E0761863E19500FCA166 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				A6BF6E0F18CC0BA700A80474 /* LandPicker */,
 				A665E0771863E25700FCA166 /* StackedImageView.h */,
 				A665E0781863E25700FCA166 /* StackedImageView.m */,
 				A699AC711867A6F800324F8D /* SlidingImageView.h */,
@@ -249,6 +261,16 @@
 				A699AC6F1867A27600324F8D /* UIView+Helpers.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		A6BF6E0F18CC0BA700A80474 /* LandPicker */ = {
+			isa = PBXGroup;
+			children = (
+				A6BF6E0C18CC0B9B00A80474 /* LandPickerView.h */,
+				A6BF6E0D18CC0B9B00A80474 /* LandPickerView.m */,
+				A6BF6E1018CC0BD700A80474 /* LandPickerViewNib.xib */,
+			);
+			name = LandPicker;
 			sourceTree = "<group>";
 		};
 		A6D3EC711863CEAE00246D24 /* CustomCells */ = {
@@ -311,6 +333,8 @@
 				A66B60C61887C96A002B6867 /* ImageStack.m */,
 				A6512AE218C81D3C006F4973 /* DeckViewModel.h */,
 				A6512AE318C81D3C006F4973 /* DeckViewModel.m */,
+				A6BF6E1518CC209F00A80474 /* DrawViewModel.h */,
+				A6BF6E1618CC209F00A80474 /* DrawViewModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -439,6 +463,8 @@
 				A665E07B1863E65C00FCA166 /* DeckViewController.m */,
 				A6222BB218C86F5D00AFA3EE /* SetPickerViewController.h */,
 				A6222BB318C86F5D00AFA3EE /* SetPickerViewController.m */,
+				A6BF6E1218CC1D7700A80474 /* DrawViewController.h */,
+				A6BF6E1318CC1D7700A80474 /* DrawViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -559,6 +585,7 @@
 				A6D3ECAA1863D04800246D24 /* 10.jpg in Resources */,
 				DA6C8EB317E15544001F8A6D /* RTR.json in Resources */,
 				A6D3ECA21863D04800246D24 /* 2.jpg in Resources */,
+				A6BF6E1118CC0BD700A80474 /* LandPickerViewNib.xib in Resources */,
 				A6512B0318C82804006F4973 /* green5.jpg in Resources */,
 				A6512AF818C82804006F4973 /* blue3.jpg in Resources */,
 				DAAF3A7617E118BF00048CC6 /* Images.xcassets in Resources */,
@@ -610,16 +637,19 @@
 				DA6C8EBC17E1833A001F8A6D /* CardRepository.m in Sources */,
 				DA7609231814679900A4E3DD /* Deck.m in Sources */,
 				DAAF3A7417E118BF00048CC6 /* ViewController.m in Sources */,
+				A6BF6E0E18CC0B9B00A80474 /* LandPickerView.m in Sources */,
 				A665E07F1863E6A800FCA166 /* StackedCardCell.m in Sources */,
 				A6D3EC741863CEE000246D24 /* DraftCardCell.m in Sources */,
 				DA76092D1814890600A4E3DD /* MTGSetService.m in Sources */,
 				DAAF3A6E17E118BF00048CC6 /* AppDelegate.m in Sources */,
 				DAAF3A6A17E118BF00048CC6 /* main.m in Sources */,
+				A6BF6E1718CC209F00A80474 /* DrawViewModel.m in Sources */,
 				DA76092918146E7400A4E3DD /* MTGSet.m in Sources */,
 				DA760926181469B300A4E3DD /* BoosterPack.m in Sources */,
 				A699AC731867A6F800324F8D /* SlidingImageView.m in Sources */,
 				A6222BB418C86F5D00AFA3EE /* SetPickerViewController.m in Sources */,
 				DA7609201814638100A4E3DD /* Player.m in Sources */,
+				A6BF6E1418CC1D7700A80474 /* DrawViewController.m in Sources */,
 				DA6C8E3C17E1301F001F8A6D /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

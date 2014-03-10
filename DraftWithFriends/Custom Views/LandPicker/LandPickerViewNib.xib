@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="9YF-zr-grc" customClass="LandPickerView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="127"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="b1g-3j-sI5">
+                    <rect key="frame" x="10" y="88" width="94" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="tintColor" red="0.19035728417844278" green="0.22749701695645638" blue="0.47877906976744189" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="islandStepperChanged" destination="9YF-zr-grc" eventType="valueChanged" id="Cp8-Rm-J4d"/>
+                    </connections>
+                </stepper>
+                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Whf-jk-sV4">
+                    <rect key="frame" x="10" y="32" width="94" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="swampStepperChanged" destination="9YF-zr-grc" eventType="valueChanged" id="6bP-rE-bBE"/>
+                    </connections>
+                </stepper>
+                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="zSp-DL-Uck">
+                    <rect key="frame" x="113" y="32" width="94" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="tintColor" red="0.47877906976744189" green="0.0" blue="0.0051952347201451605" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="mountainStepperChanged" destination="9YF-zr-grc" eventType="valueChanged" id="nql-Qw-vjm"/>
+                    </connections>
+                </stepper>
+                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="VC0-Ts-apM">
+                    <rect key="frame" x="113" y="88" width="94" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="tintColor" red="0.08788168347763177" green="0.32261991279069768" blue="0.0016288765597972862" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="forestStepperChanged" destination="9YF-zr-grc" eventType="valueChanged" id="qta-B0-JeM"/>
+                    </connections>
+                </stepper>
+                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="67m-7f-yjS">
+                    <rect key="frame" x="216" y="32" width="94" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="tintColor" red="0.38303052325581399" green="0.31641460166418223" blue="0.11486769735410171" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="plainsStepperChanged" destination="9YF-zr-grc" eventType="valueChanged" id="vzX-xd-fo5"/>
+                    </connections>
+                </stepper>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Island: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIZ-pO-699">
+                    <rect key="frame" x="10" y="67" width="94" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Forest: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgQ-cW-MM8">
+                    <rect key="frame" x="113" y="67" width="94" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swamp: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcK-kH-UsZ">
+                    <rect key="frame" x="10" y="10" width="94" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mountain: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0p-C2-Yyz">
+                    <rect key="frame" x="102" y="10" width="112" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plains: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIF-NG-slT">
+                    <rect key="frame" x="216" y="10" width="94" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ry-FK-vcD">
+                    <rect key="frame" x="216" y="87" width="94" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Done">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="doneButtonTapped" destination="9YF-zr-grc" eventType="touchUpInside" id="Yrz-9I-Rlx"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.64585755813953494" green="0.43699701490006415" blue="0.23165879999347216" alpha="1" colorSpace="calibratedRGB"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="doneButton" destination="9ry-FK-vcD" id="sgQ-Fs-KCZ"/>
+                <outlet property="forestLabel" destination="HgQ-cW-MM8" id="77P-hz-Kzh"/>
+                <outlet property="forestStepper" destination="VC0-Ts-apM" id="Jf4-aL-geq"/>
+                <outlet property="islandLabel" destination="TIZ-pO-699" id="toa-rM-N8J"/>
+                <outlet property="islandStepper" destination="b1g-3j-sI5" id="eQR-D7-3zJ"/>
+                <outlet property="mountainLabel" destination="g0p-C2-Yyz" id="OEw-VS-SQw"/>
+                <outlet property="mountainStepper" destination="zSp-DL-Uck" id="zZu-fr-886"/>
+                <outlet property="plainsLabel" destination="RIF-NG-slT" id="Puc-lP-weZ"/>
+                <outlet property="plainsStepper" destination="67m-7f-yjS" id="6aD-G7-q3R"/>
+                <outlet property="swampLabel" destination="qcK-kH-UsZ" id="zDl-Xr-OZu"/>
+                <outlet property="swampStepper" destination="Whf-jk-sV4" id="3Jf-eW-qfl"/>
+            </connections>
+        </view>
+    </objects>
+</document>

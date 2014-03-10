@@ -69,6 +69,139 @@
     }];
 }
 
+- (NSArray *)basicTherosLands
+{
+    NSString *setCode = @"THS";
+    
+    NSString *setPath = [[[NSBundle mainBundle] URLForResource:setCode withExtension:@"json"] path];
+    
+    id json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:setPath]
+                                              options:0
+                                                error:nil];
+    
+    NSMutableArray *mutableCardsInSet = [[NSMutableArray alloc] init];
+    NSMutableArray *mutableCardImagesInSet = [[NSMutableArray alloc] init];
+    
+    for (id cardJSON in [json valueForKey:@"cards"]) {
+        Card *currentCard = [Card cardWithDictionary:cardJSON];
+        currentCard.setCode = [setCode lowercaseString];
+        
+        [mutableCardsInSet addObject:currentCard];
+        [mutableCardImagesInSet addObject:[NSURL URLWithString:[NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", [setCode lowercaseString], currentCard.numberInSet]]];
+    }
+    
+    MTGSet *setToReturn = [MTGSet setWithCards:[self sortCardsInSetByNumber:mutableCardsInSet] setCode:setCode];
+    
+    return [setToReturn basicLands];
+}
+
+- (NSArray *)landType:(LandType)landType withCount:(NSInteger)count
+{
+    if (count == 0) {
+        return @[];
+    }
+    
+    NSMutableArray *landsToDeliver = [NSMutableArray new];
+    
+    switch (landType) {
+        case LandSwamp:
+            for (NSInteger i = 0; i < count; i++) {
+                [landsToDeliver addObject:[self swamp]];
+            }
+            break;
+        case LandMountain:
+            for (NSInteger i = 0; i < count; i++) {
+                [landsToDeliver addObject:[self mountain]];
+            }
+            break;
+        case LandPlains:
+            for (NSInteger i = 0; i < count; i++) {
+                [landsToDeliver addObject:[self plains]];
+            }
+            break;
+        case LandIsland:
+            for (NSInteger i = 0; i < count; i++) {
+                [landsToDeliver addObject:[self island]];
+            }
+            break;
+        case LandForest:
+            for (NSInteger i = 0; i < count; i++) {
+                [landsToDeliver addObject:[self forest]];
+            }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return landsToDeliver;
+}
+
+- (Card *)swamp;
+{
+    NSArray *basicLands = [self basicTherosLands];
+    
+    for (Card *land in basicLands) {
+        if ([land.rulesText isEqualToString:@"B"]) {
+            return land;
+        }
+    }
+    
+    return nil;
+}
+
+- (Card *)mountain;
+{
+    NSArray *basicLands = [self basicTherosLands];
+    
+    for (Card *land in basicLands) {
+        if ([land.rulesText isEqualToString:@"R"]) {
+            return land;
+        }
+    }
+    
+    return nil;
+}
+
+- (Card *)plains;
+{
+    NSArray *basicLands = [self basicTherosLands];
+    
+    for (Card *land in basicLands) {
+        if ([land.rulesText isEqualToString:@"W"]) {
+            return land;
+        }
+    }
+    
+    return nil;
+}
+
+- (Card *)island;
+{
+    NSArray *basicLands = [self basicTherosLands];
+    
+    for (Card *land in basicLands) {
+        if ([land.rulesText isEqualToString:@"U"]) {
+            return land;
+        }
+    }
+    
+    return nil;
+}
+
+- (Card *)forest;
+{
+    NSArray *basicLands = [self basicTherosLands];
+    
+    for (Card *land in basicLands) {
+        if ([land.rulesText isEqualToString:@"G"]) {
+            return land;
+        }
+    }
+    
+    return nil;
+}
+
 + (MTGSetService *)sharedService
 {
     static dispatch_once_t pred = 0;

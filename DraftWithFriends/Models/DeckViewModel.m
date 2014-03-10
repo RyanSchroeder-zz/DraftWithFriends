@@ -117,50 +117,59 @@
     return @[];
 }
 
-/**
- Array of card arrays. This is seperated by colors to be displayed.
- */
 - (NSMutableArray *)potentialCards
 {
     if (!_potentialCards) {
         _potentialCards = [NSMutableArray new];
-        
-        if (self.blackCards.count > 0) {
-            [_potentialCards addObject:self.blackCards];
-        }
-        if (self.redCards.count > 0) {
-            [_potentialCards addObject:self.redCards];
-        }
-        if (self.whiteCards.count > 0) {
-            [_potentialCards addObject:self.whiteCards];
-        }
-        if (self.blueCards.count > 0) {
-            [_potentialCards addObject:self.blueCards];
-        }
-        if (self.greenCards.count > 0) {
-            [_potentialCards addObject:self.greenCards];
-        }
-        if (self.artifactCards.count > 0) {
-            [_potentialCards addObject:self.artifactCards];
-        }
-        if (self.multiColorCards.count > 0) {
-            [_potentialCards addObject:self.multiColorCards];
-        }
-        if (self.landCards.count > 0) {
-            [_potentialCards addObject:self.landCards];
-        }
     }
     
     return _potentialCards;
 }
 
-- (NSMutableArray *)chosenCards
+- (NSMutableArray *)deckListCards
 {
-    if (!_chosenCards) {
-        _chosenCards = [NSMutableArray new];
+    if (!_deckListCards) {
+        _deckListCards = [self.picks mutableCopy];
     }
     
-    return _chosenCards;
+    return _deckListCards;
+}
+
+/**
+ Array of card arrays. This is seperated by colors to be displayed.
+ */
+- (NSMutableArray *)chosenCardStacks
+{
+    if (!_chosenCardStacks) {
+        _chosenCardStacks = [NSMutableArray new];
+        
+        if (self.blackCards.count > 0) {
+            [_chosenCardStacks addObject:self.blackCards];
+        }
+        if (self.redCards.count > 0) {
+            [_chosenCardStacks addObject:self.redCards];
+        }
+        if (self.whiteCards.count > 0) {
+            [_chosenCardStacks addObject:self.whiteCards];
+        }
+        if (self.blueCards.count > 0) {
+            [_chosenCardStacks addObject:self.blueCards];
+        }
+        if (self.greenCards.count > 0) {
+            [_chosenCardStacks addObject:self.greenCards];
+        }
+        if (self.artifactCards.count > 0) {
+            [_chosenCardStacks addObject:self.artifactCards];
+        }
+        if (self.multiColorCards.count > 0) {
+            [_chosenCardStacks addObject:self.multiColorCards];
+        }
+        if (self.landCards.count > 0) {
+            [_chosenCardStacks addObject:self.landCards];
+        }
+    }
+    
+    return _chosenCardStacks;
 }
 
 @end
