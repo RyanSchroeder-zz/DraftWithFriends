@@ -80,6 +80,18 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 - (void)didRemoveCard:(Card *)card fromStack:(ImageStack *)imageStack
 {
+    if (imageStack.cards.count == 0) {
+        self.isRemovingEmptyStack = YES;
+        
+        [self setVisibleImages];
+        
+        NSMutableArray *mutableStacks = [self.imageStacks mutableCopy];
+        [mutableStacks removeObject:imageStack];
+        self.imageStacks = [mutableStacks copy];
+        
+        [self.collectionView reloadData];
+        self.isRemovingEmptyStack = NO;
+    }
     for (NSInteger i = 0; i < self.deckViewModel.deckListCards.count; i++) {
         if (self.deckViewModel.deckListCards[i] == card) {
             [self.deckViewModel.potentialCards addObject:card];
@@ -93,22 +105,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 - (void)stackedViewDidEmpty
 {
-    self.isRemovingEmptyStack = YES;
-    NSMutableArray *mutableStacks = [self.imageStacks mutableCopy];
-    
-    for (ImageStack *imageStack in self.imageStacks) {
-        if (imageStack.cards.count == 0) {
-            [mutableStacks removeObject:imageStack];
-            break;
-        }
-    }
-    
-    self.imageStacks = [mutableStacks copy];
-    
-    [self setVisibleImages];
-    
-    [self.collectionView reloadData];
-    self.isRemovingEmptyStack = NO;
+    NSLog(@"hehe");
 }
 
 - (void)setVisibleImages
@@ -126,6 +123,11 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 - (IBAction)draftButtonTapped
 {
     [self.delegate returnToDraftView];
+}
+
+- (IBAction)refreshViewTapped
+{
+    [self.collectionView reloadData];
 }
 
 - (IBAction)addLandsButtonTapped

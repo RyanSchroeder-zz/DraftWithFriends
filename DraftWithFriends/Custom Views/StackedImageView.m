@@ -140,13 +140,13 @@
     
     self.imageStack.cards = [cards copy];
     
+    [self.stackedImageViewDelegate didRemoveCard:card fromStack:self.imageStack];
+    
     if (cards.count == 0) {
         [self.stackedImageViewDelegate stackedViewDidEmpty];
     } else {
         [self reloadStack];
     }
-    
-    [self.stackedImageViewDelegate didRemoveCard:card fromStack:self.imageStack];
 }
 
 #pragma mark - configure methods

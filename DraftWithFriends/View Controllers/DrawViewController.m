@@ -39,8 +39,17 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 
 - (void)reloadCards
 {
-    self.drawImageStack = [[ImageStack alloc] initWithCards:self.drawViewModel.cardsDrawn];
-    self.playedImageStack = [[ImageStack alloc] initWithCards:self.drawViewModel.cardsPlayed];
+    self.imageStacks = [NSArray new];
+    if (!self.drawImageStack) {
+        self.drawImageStack = [[ImageStack alloc] initWithCards:self.drawViewModel.cardsDrawn];
+    } else {
+        [self.drawImageStack setCards:self.drawViewModel.cardsDrawn];
+    }
+    if (!self.playedImageStack) {
+        self.playedImageStack = [[ImageStack alloc] initWithCards:self.drawViewModel.cardsPlayed];
+    } else {
+        [self.playedImageStack setCards:self.drawViewModel.cardsPlayed];
+    }
     
     if (self.drawImageStack.cards.count > 0) {
         self.imageStacks = @[self.drawImageStack];
@@ -49,6 +58,7 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
         self.imageStacks = [self.imageStacks arrayByAddingObject:self.playedImageStack];
     }
     
+    [self setVisibleImages];
     [self.collectionView reloadData];
 }
 
@@ -103,20 +113,10 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 - (void)stackedViewDidEmpty
 {
     self.isRemovingEmptyStack = YES;
-    NSMutableArray *mutableStacks = [self.imageStacks mutableCopy];
-    
-    for (ImageStack *imageStack in self.imageStacks) {
-        if (imageStack.cards.count == 0) {
-            [mutableStacks removeObject:imageStack];
-            break;
-        }
-    }
-    
-    self.imageStacks = [mutableStacks copy];
     
     [self setVisibleImages];
+    [self reloadCards];
     
-    [self.collectionView reloadData];
     self.isRemovingEmptyStack = NO;
 }
 
