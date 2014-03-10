@@ -66,7 +66,7 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (IBAction)mulliganTapped
+- (IBAction)redrawTapped
 {
     [self configureCards];
 }
