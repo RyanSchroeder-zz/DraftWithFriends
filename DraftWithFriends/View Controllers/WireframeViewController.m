@@ -44,7 +44,6 @@
 {
     WelcomeViewController *welcomeViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"WelcomeViewController"];
     UINavigationController *appEntryNavController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
-    [appEntryNavController setNavigationBarHidden:YES];
     self.window.rootViewController = appEntryNavController;
 }
 
@@ -64,7 +63,7 @@
         self.window = window;
         
         MTGUser *user = [[UserService sharedService] currentUser];
-        if (!user) {
+        if (user) {
             [self presentLoggedInViewController];
         } else {
             [self presentWelcomeViewController];

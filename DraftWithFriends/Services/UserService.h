@@ -16,6 +16,7 @@
 
 - (void)logInUser:(MTGUser *)wcUser completed:(ServiceCompletionBlock)completed;
 - (void)signUpUser:(MTGUser *)wcUser completed:(ServiceCompletionBlock)completed;
+- (void)logOut;
 
 + (UserService *)sharedService;
 

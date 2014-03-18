@@ -9,6 +9,7 @@
 #import "SetPickerViewController.h"
 #import "MTGSetService.h"
 #import "DraftViewController.h"
+#import "UserService.h"
 
 @interface SetPickerViewController () <DraftViewControllerDelegate>
 
@@ -72,6 +73,11 @@
         self.set = set;
         [self performSegueWithIdentifier:@"showDraft" sender:self];
     }];
+}
+
+- (IBAction)logoutTapped
+{
+    [[UserService sharedService] logOut];
 }
 
 #pragma mark - DraftViewControllerDelegate methods

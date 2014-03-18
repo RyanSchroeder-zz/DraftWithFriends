@@ -24,14 +24,19 @@
     [self.wireframeViewController logIn];
 }
 
-
 #pragma mark - configuration methods
+
+- (void)configureStyles
+{
+    [[UIBarButtonItem appearance] setTintColor:MTG_DRAFT_COLOR];
+    [[UINavigationBar appearance] setTintColor:MTG_DRAFT_COLOR];
+}
 
 - (void)configureNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(userLogOut:)
-                                                 name:MTGUserLogInNotificationKey
+                                                 name:MTGUserLogOutNotificationKey
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -53,6 +58,7 @@
 {
     [self configureNotifications];
     [self configureParseWithLaunchOptions:launchOptions];
+    [self configureStyles];
     
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     

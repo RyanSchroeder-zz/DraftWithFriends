@@ -42,6 +42,12 @@
     }];
 }
 
+- (void)logOut
+{
+    [PFUser logOut];
+    [[NSNotificationCenter defaultCenter] postNotificationName:MTGUserLogOutNotificationKey object:self];
+}
+
 #pragma mark - private methods
 
 - (void)saveEmail_:(NSString *)email
