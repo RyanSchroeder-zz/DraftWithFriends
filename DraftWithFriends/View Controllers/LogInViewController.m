@@ -28,7 +28,7 @@
 
 - (IBAction)loginTapped
 {
-    NSLog(@"Yo");
+    [self logIn];
 }
 
 #pragma mark - UITextFieldDelegate methods
@@ -47,13 +47,6 @@
 {
 	[self hideErrorMessage];
 	return YES;
-}
-
-#pragma mark - login logic
-
-- (IBAction)logInTapped
-{
-    [self logIn];
 }
 
 - (void)logIn

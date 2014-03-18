@@ -36,6 +36,7 @@
 {
     SetPickerViewController *setPickerViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"SetPickerViewController"];
     UINavigationController *appEntryNavController = [[UINavigationController alloc] initWithRootViewController:setPickerViewController];
+    [appEntryNavController setNavigationBarHidden:YES];
     self.window.rootViewController = appEntryNavController;
 }
 
@@ -43,6 +44,7 @@
 {
     WelcomeViewController *welcomeViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"WelcomeViewController"];
     UINavigationController *appEntryNavController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
+    [appEntryNavController setNavigationBarHidden:YES];
     self.window.rootViewController = appEntryNavController;
 }
 
