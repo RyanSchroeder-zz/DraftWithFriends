@@ -12,7 +12,7 @@
 
 + (NSArray *)mapPFUserArray:(NSArray *)pfUsers
 {
-    NSMutableArray *users = [[NSMutableArray alloc] init];
+    NSMutableArray *users = [NSMutableArray new];
     
     for (PFUser *pfUser in pfUsers) {
         if (pfUser) {
@@ -27,7 +27,7 @@
 {
     if (!pfUser) return nil;
         
-    MTGUser *user = [[MTGUser alloc] init];
+    MTGUser *user = [MTGUser new];
     
     user.userId = pfUser.objectId;
     user.firstName = pfUser[@"firstName"];

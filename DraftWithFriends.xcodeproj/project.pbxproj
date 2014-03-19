@@ -58,6 +58,12 @@
 		A6BF6E1118CC0BD700A80474 /* LandPickerViewNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6BF6E1018CC0BD700A80474 /* LandPickerViewNib.xib */; };
 		A6BF6E1418CC1D7700A80474 /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BF6E1318CC1D7700A80474 /* DrawViewController.m */; };
 		A6BF6E1718CC209F00A80474 /* DrawViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BF6E1618CC209F00A80474 /* DrawViewModel.m */; };
+		A6C28BF918D95B8400D625CA /* DeckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C28BF818D95B8400D625CA /* DeckListViewController.m */; };
+		A6C28BFC18D95BDF00D625CA /* ListedDeckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C28BFB18D95BDF00D625CA /* ListedDeckCell.m */; };
+		A6C28BFF18D95D6400D625CA /* CompleteDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C28BFE18D95D6400D625CA /* CompleteDeck.m */; };
+		A6C28C0218D95E3600D625CA /* DeckService.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C28C0118D95E3600D625CA /* DeckService.m */; };
+		A6C28C0518D95E7F00D625CA /* DeckRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C28C0418D95E7F00D625CA /* DeckRepository.m */; };
+		A6C28C0818D9604600D625CA /* CompleteDeck+Mapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C28C0718D9604600D625CA /* CompleteDeck+Mapper.m */; };
 		A6C6689518D88749001635EB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAAF3A6F17E118BF00048CC6 /* MainStoryboard.storyboard */; };
 		A6C6689718D887F9001635EB /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C6689618D887F9001635EB /* SDWebImage.framework */; };
 		A6C6689818D88A45001635EB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A644171D18D8782D00001411 /* Parse.framework */; };
@@ -194,6 +200,18 @@
 		A6BF6E1318CC1D7700A80474 /* DrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawViewController.m; path = "View Controllers/DrawViewController.m"; sourceTree = "<group>"; };
 		A6BF6E1518CC209F00A80474 /* DrawViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawViewModel.h; path = Models/DrawViewModel.h; sourceTree = "<group>"; };
 		A6BF6E1618CC209F00A80474 /* DrawViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawViewModel.m; path = Models/DrawViewModel.m; sourceTree = "<group>"; };
+		A6C28BF718D95B8400D625CA /* DeckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeckListViewController.h; path = "View Controllers/DeckListViewController.h"; sourceTree = "<group>"; };
+		A6C28BF818D95B8400D625CA /* DeckListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeckListViewController.m; path = "View Controllers/DeckListViewController.m"; sourceTree = "<group>"; };
+		A6C28BFA18D95BDF00D625CA /* ListedDeckCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListedDeckCell.h; path = "Custom Cells/ListedDeckCell.h"; sourceTree = "<group>"; };
+		A6C28BFB18D95BDF00D625CA /* ListedDeckCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListedDeckCell.m; path = "Custom Cells/ListedDeckCell.m"; sourceTree = "<group>"; };
+		A6C28BFD18D95D6400D625CA /* CompleteDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompleteDeck.h; path = Models/CompleteDeck.h; sourceTree = "<group>"; };
+		A6C28BFE18D95D6400D625CA /* CompleteDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompleteDeck.m; path = Models/CompleteDeck.m; sourceTree = "<group>"; };
+		A6C28C0018D95E3600D625CA /* DeckService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeckService.h; path = Services/DeckService.h; sourceTree = "<group>"; };
+		A6C28C0118D95E3600D625CA /* DeckService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeckService.m; path = Services/DeckService.m; sourceTree = "<group>"; };
+		A6C28C0318D95E7F00D625CA /* DeckRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeckRepository.h; path = Repositories/DeckRepository.h; sourceTree = "<group>"; };
+		A6C28C0418D95E7F00D625CA /* DeckRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeckRepository.m; path = Repositories/DeckRepository.m; sourceTree = "<group>"; };
+		A6C28C0618D9604600D625CA /* CompleteDeck+Mapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CompleteDeck+Mapper.h"; path = "Categories/CompleteDeck+Mapper.h"; sourceTree = "<group>"; };
+		A6C28C0718D9604600D625CA /* CompleteDeck+Mapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CompleteDeck+Mapper.m"; path = "Categories/CompleteDeck+Mapper.m"; sourceTree = "<group>"; };
 		A6C6689618D887F9001635EB /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		A6D3EC6E1863CDDF00246D24 /* DraftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraftViewController.h; path = "View Controllers/DraftViewController.h"; sourceTree = "<group>"; };
 		A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraftViewController.m; path = "View Controllers/DraftViewController.m"; sourceTree = "<group>"; };
@@ -334,6 +352,8 @@
 				A699AC6F1867A27600324F8D /* UIView+Helpers.m */,
 				A6A1A3E518D86924006FAB89 /* MTGUser+Mapper.h */,
 				A6A1A3E618D86924006FAB89 /* MTGUser+Mapper.m */,
+				A6C28C0618D9604600D625CA /* CompleteDeck+Mapper.h */,
+				A6C28C0718D9604600D625CA /* CompleteDeck+Mapper.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -376,6 +396,8 @@
 				DA76092818146E7400A4E3DD /* MTGSet.m */,
 				A665E07D1863E6A800FCA166 /* StackedCardCell.h */,
 				A665E07E1863E6A800FCA166 /* StackedCardCell.m */,
+				A6C28BFA18D95BDF00D625CA /* ListedDeckCell.h */,
+				A6C28BFB18D95BDF00D625CA /* ListedDeckCell.m */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -424,6 +446,8 @@
 				A6BF6E1618CC209F00A80474 /* DrawViewModel.m */,
 				A6A1A3E218D868CB006FAB89 /* MTGUser.h */,
 				A6A1A3E318D868CB006FAB89 /* MTGUser.m */,
+				A6C28BFD18D95D6400D625CA /* CompleteDeck.h */,
+				A6C28BFE18D95D6400D625CA /* CompleteDeck.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -437,6 +461,8 @@
 				A644174418D87C1300001411 /* UserRepository.m */,
 				DA6C8EBA17E1833A001F8A6D /* CardRepository.h */,
 				DA6C8EBB17E1833A001F8A6D /* CardRepository.m */,
+				A6C28C0318D95E7F00D625CA /* DeckRepository.h */,
+				A6C28C0418D95E7F00D625CA /* DeckRepository.m */,
 			);
 			name = Repositories;
 			sourceTree = "<group>";
@@ -450,6 +476,8 @@
 				DA76092C1814890600A4E3DD /* MTGSetService.m */,
 				A6A1A3DF18D8683D006FAB89 /* UserService.h */,
 				A6A1A3E018D8683D006FAB89 /* UserService.m */,
+				A6C28C0018D95E3600D625CA /* DeckService.h */,
+				A6C28C0118D95E3600D625CA /* DeckService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -582,6 +610,8 @@
 				A644173318D8795200001411 /* LoginViewController.m */,
 				A644173518D8795B00001411 /* SignupViewController.h */,
 				A644173618D8795B00001411 /* SignupViewController.m */,
+				A6C28BF718D95B8400D625CA /* DeckListViewController.h */,
+				A6C28BF818D95B8400D625CA /* DeckListViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -747,12 +777,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A665E07C1863E65C00FCA166 /* DeckViewController.m in Sources */,
+				A6C28BFC18D95BDF00D625CA /* ListedDeckCell.m in Sources */,
 				A665E0791863E25700FCA166 /* StackedImageView.m in Sources */,
 				A6512AE418C81D3C006F4973 /* DeckViewModel.m in Sources */,
 				A66B60C71887C96A002B6867 /* ImageStack.m in Sources */,
 				A6A1A3E718D86924006FAB89 /* MTGUser+Mapper.m in Sources */,
 				A6A1A3EA18D87353006FAB89 /* WelcomeViewController.m in Sources */,
 				A644173718D8795B00001411 /* SignupViewController.m in Sources */,
+				A6C28C0218D95E3600D625CA /* DeckService.m in Sources */,
 				A699AC701867A27600324F8D /* UIView+Helpers.m in Sources */,
 				A6D3EC701863CDDF00246D24 /* DraftViewController.m in Sources */,
 				DA6C8EBC17E1833A001F8A6D /* CardRepository.m in Sources */,
@@ -770,11 +802,15 @@
 				DAAF3A6E17E118BF00048CC6 /* AppDelegate.m in Sources */,
 				A644174518D87C1300001411 /* RepositoryBase.m in Sources */,
 				DAAF3A6A17E118BF00048CC6 /* main.m in Sources */,
+				A6C28C0818D9604600D625CA /* CompleteDeck+Mapper.m in Sources */,
+				A6C28BFF18D95D6400D625CA /* CompleteDeck.m in Sources */,
 				A6BF6E1718CC209F00A80474 /* DrawViewModel.m in Sources */,
 				DA76092918146E7400A4E3DD /* MTGSet.m in Sources */,
 				DA760926181469B300A4E3DD /* BoosterPack.m in Sources */,
 				A644174618D87C1300001411 /* UserRepository.m in Sources */,
 				A699AC731867A6F800324F8D /* SlidingImageView.m in Sources */,
+				A6C28C0518D95E7F00D625CA /* DeckRepository.m in Sources */,
+				A6C28BF918D95B8400D625CA /* DeckListViewController.m in Sources */,
 				A644174018D87BD200001411 /* ServiceBase.m in Sources */,
 				A6A1A3F218D8747A006FAB89 /* Enums.m in Sources */,
 				A6222BB418C86F5D00AFA3EE /* SetPickerViewController.m in Sources */,

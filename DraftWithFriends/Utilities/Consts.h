@@ -11,3 +11,4 @@ extern NSString * const MTGUserLogOutNotificationKey;
 extern NSString * const MTGUserLogInNotificationKey;
 
 extern NSString * const kEmailKey;
+extern NSString * const kListedDeckCell;

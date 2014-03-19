@@ -80,6 +80,11 @@
     [[UserService sharedService] logOut];
 }
 
+- (IBAction)decksTapped
+{
+
+}
+
 #pragma mark - DraftViewControllerDelegate methods
 
 - (void)newDraftDesired
@@ -89,9 +94,9 @@
 
 #pragma mark - View Methods
 
-- (BOOL)prefersStatusBarHidden
+- (void)configureStyles
 {
-    return YES;
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -101,6 +106,13 @@
         [segue.destinationViewController setCardSet:self.set];
         [segue.destinationViewController setCards:[self.set generateBoosterPack]];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self configureStyles];
 }
 
 @end
