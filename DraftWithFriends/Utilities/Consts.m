@@ -9,4 +9,4 @@ NSString * const MTGUserLogOutNotificationKey = @"MTGUserLogOutNotificationKey";
 NSString * const MTGUserLogInNotificationKey = @"MTGUserLogInNotificationKey";
 
 NSString * const kEmailKey = @"kEmailKey";
-NSString * const kListedDeckCell = @"kListedDeckCell";
+NSString * const kListedDeckCell = @"ListedDeckCell";

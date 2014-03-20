@@ -11,6 +11,7 @@
 
 @interface CompleteDeck (Mapper)
 
++ (PFObject *)mapCompleteDeck:(CompleteDeck *)deck;
 + (NSArray *)mapPFCompleteDeckArray:(NSArray *)pfDecks;
 + (CompleteDeck *)mapPFCompleteDeck:(PFObject *)pfDeck;
 

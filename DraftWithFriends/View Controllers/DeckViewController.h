@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CompleteDeck.h"
 
 @protocol DeckViewControllerDelegate <NSObject>
 
@@ -21,5 +22,8 @@
 
 /** The current set of picks from the DraftViewController */
 @property (nonatomic) NSArray *picks;
+
+/** A finished deck from the DeckListViewController */
+@property (nonatomic) CompleteDeck *completeDeck;
 
 @end

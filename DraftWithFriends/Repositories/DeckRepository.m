@@ -21,7 +21,7 @@
         }
     }
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Deck"];
+    PFQuery *query = [PFQuery queryWithClassName:@"CompleteDeck"];
     [query whereKey:@"userId" equalTo:userId];
     [query setCachePolicy:kPFCachePolicyNetworkElseCache];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -35,7 +35,20 @@
 
 - (void)saveDeck:(CompleteDeck *)deck
 {
+    PFObject *pfDeck = [CompleteDeck mapCompleteDeck:deck];
     
+    [pfDeck saveInBackground];
+}
+
+- (void)deleteDeck:(CompleteDeck *)deck
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"CompleteDeck"];
+    [query whereKey:@"objectId" equalTo:deck.pfCompletedDeck.objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!error) {
+            [object deleteInBackground];
+        }
+    }];
 }
 
 + (DeckRepository *)sharedRepository

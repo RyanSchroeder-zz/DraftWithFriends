@@ -80,11 +80,6 @@
     [[UserService sharedService] logOut];
 }
 
-- (IBAction)decksTapped
-{
-
-}
-
 #pragma mark - DraftViewControllerDelegate methods
 
 - (void)newDraftDesired
@@ -92,12 +87,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - View Methods
+#pragma mark - configure methods
 
 - (void)configureStyles
 {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
+
+#pragma mark - View Methods
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

@@ -27,7 +27,7 @@ extern NSString * const kCardNumberKey;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSArray *names;
 @property (nonatomic, readonly) NSString *manaCost; //{U}{G}
-@property (nonatomic, readonly) double convertedManaCost;
+@property (nonatomic, readonly) CGFloat convertedManaCost;
 @property (nonatomic, readonly) NSArray *colors;
 @property (nonatomic, readonly) NSArray *superTypes; //legendary//basic//snow
 @property (nonatomic, readonly) NSArray *types; //instant//sorcery//creature

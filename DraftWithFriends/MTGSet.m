@@ -7,7 +7,6 @@
 //
 
 #import "MTGSet.h"
-#import "Card.h"
 
 @interface MTGSet ()
 @property (nonatomic, readwrite) NSArray *cardsInSet;
@@ -62,6 +61,14 @@
     NSPredicate *basicLandPredicate = [NSPredicate predicateWithFormat:@"SELF.rarity == 'Basic Land'"];
     
     return [basicLands filteredArrayUsingPredicate:basicLandPredicate];
+}
+
+- (Card *)cardWithNumber:(NSString *)number
+{
+    NSMutableArray *cards = [NSMutableArray arrayWithArray:self.cardsInSet];
+    NSPredicate *cardPredicate = [NSPredicate predicateWithFormat:@"SELF.numberInSet == %@", number];
+    
+    return [[cards filteredArrayUsingPredicate:cardPredicate] firstObject];
 }
 
 //NOTE: This does not work for RTR,GTC,DGM because those sets did some funky business with lands.

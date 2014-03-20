@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Card.h"
 
 @interface MTGSet : NSObject
+
 
 @property (nonatomic, readonly) NSString *setCode;
 @property (nonatomic, readonly) NSArray *cardsInSet;
@@ -21,6 +23,7 @@
 - (NSArray *)uncommons;
 - (NSArray *)commons;
 - (NSArray *)basicLands;
+- (Card *)cardWithNumber:(NSString *)number;
 
 - (NSArray *)generateBoosterPack;
 - (NSArray *)generateBoosterPackMinus:(NSInteger)numPicked;

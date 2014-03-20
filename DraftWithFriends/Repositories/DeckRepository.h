@@ -13,6 +13,7 @@
 
 - (void)decksWithUserId:(NSString *)userId completed:(RepositoryCompletionBlock)completed;
 - (void)saveDeck:(CompleteDeck *)deck;
+- (void)deleteDeck:(CompleteDeck *)deck;
 
 + (DeckRepository *)sharedRepository;
 

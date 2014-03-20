@@ -21,11 +21,30 @@
     }];
 }
 
+- (NSArray *)completeDeckCards
+{
+    return [_completeDeckCards sortedArrayUsingComparator:^NSComparisonResult(Card *card1, Card *card2) {
+        if (card1.convertedManaCost == card2.convertedManaCost) {
+            return [card1.numberInSet compare:card2.numberInSet options:NSNumericSearch];
+        }
+        return card1.convertedManaCost > card2.convertedManaCost;
+    }];
+}
+
+- (NSArray *)cards_
+{
+    if (self.picks.count) {
+        return self.picks;
+    }
+    
+    return self.completeDeckCards;
+}
+
 - (NSArray *)blackCards
 {
     NSMutableArray *cards = [NSMutableArray new];
     
-    for (Card *card in self.picks) {
+    for (Card *card in self.cards_) {
         if ([card isBlack]) {
             [cards addObject:card];
         }
@@ -38,7 +57,7 @@
 {
     NSMutableArray *cards = [NSMutableArray new];
     
-    for (Card *card in self.picks) {
+    for (Card *card in self.cards_) {
         if ([card isRed]) {
             [cards addObject:card];
         }
@@ -51,7 +70,7 @@
 {
     NSMutableArray *cards = [NSMutableArray new];
     
-    for (Card *card in self.picks) {
+    for (Card *card in self.cards_) {
         if ([card isWhite]) {
             [cards addObject:card];
         }
@@ -64,7 +83,7 @@
 {
     NSMutableArray *cards = [NSMutableArray new];
     
-    for (Card *card in self.picks) {
+    for (Card *card in self.cards_) {
         if ([card isBlue]) {
             [cards addObject:card];
         }
@@ -77,7 +96,7 @@
 {
     NSMutableArray *cards = [NSMutableArray new];
     
-    for (Card *card in self.picks) {
+    for (Card *card in self.cards_) {
         if ([card isGreen]) {
             [cards addObject:card];
         }
@@ -90,7 +109,7 @@
 {
     NSMutableArray *cards = [NSMutableArray new];
     
-    for (Card *card in self.picks) {
+    for (Card *card in self.cards_) {
         if ([card isArtifact]) {
             [cards addObject:card];
         }
@@ -103,7 +122,7 @@
 {
     NSMutableArray *cards = [NSMutableArray new];
     
-    for (Card *card in self.picks) {
+    for (Card *card in self.cards_) {
         if ([card isMultiColored]) {
             [cards addObject:card];
         }
@@ -128,6 +147,10 @@
 
 - (NSMutableArray *)deckListCards
 {
+    if (_completeDeckCards) {
+        return [_completeDeckCards mutableCopy];
+    }
+    
     if (!_deckListCards) {
         _deckListCards = [self.picks mutableCopy];
     }

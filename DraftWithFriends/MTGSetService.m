@@ -54,6 +54,45 @@
     }
 }
 
+
+- (MTGSet *)setWithSetCode:(NSString *)setCode
+{
+    NSError *error;
+    
+    setCode = [setCode uppercaseString];
+    
+    NSString *setPath = [[[NSBundle mainBundle] URLForResource:setCode withExtension:@"json"] path];
+    
+    if (!setPath) {
+        return nil;
+    }
+    
+    id json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:setPath]
+                                              options:0
+                                                error:&error];
+    
+    if (!error) {
+        NSMutableArray *mutableCardsInSet = [[NSMutableArray alloc] init];
+        NSMutableArray *mutableCardImagesInSet = [[NSMutableArray alloc] init];
+        
+        for (id cardJSON in [json valueForKey:@"cards"]) {
+            Card *currentCard = [Card cardWithDictionary:cardJSON];
+            currentCard.setCode = [setCode lowercaseString];
+            
+            [mutableCardsInSet addObject:currentCard];
+            [mutableCardImagesInSet addObject:[NSURL URLWithString:[NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", [setCode lowercaseString], currentCard.numberInSet]]];
+        }
+        
+        MTGSet *setToReturn = [MTGSet setWithCards:[self sortCardsInSetByNumber:mutableCardsInSet] setCode:setCode];
+        
+        self.boosterPackSize = [setToReturn generateBoosterPack].count;
+        
+        return setToReturn;
+    }
+    
+    return nil;
+}
+
 - (NSInteger)boosterPackSize
 {
     return _boosterPackSize;
@@ -93,6 +132,11 @@
     MTGSet *setToReturn = [MTGSet setWithCards:[self sortCardsInSetByNumber:mutableCardsInSet] setCode:setCode];
     
     return [setToReturn basicLands];
+}
+
+- (Card *)cardWithSetCode:(NSString *)setCode andNumber:(NSString *)number
+{
+    return [[self setWithSetCode:setCode] cardWithNumber:number];
 }
 
 - (NSArray *)landType:(LandType)landType withCount:(NSInteger)count

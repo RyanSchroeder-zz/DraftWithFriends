@@ -7,25 +7,41 @@
 //  Copyright (c) 2014 Ryan Schroeder. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "DeckListViewController.h"
 #import "Consts.h"
 #import "ListedDeckCell.h"
 #import "UserService.h"
 #import "DeckService.h"
 #import "CompleteDeck.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "DeckViewController.h"
 
-@interface DeckListViewController ()
+@interface DeckListViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic) NSArray *decks;
+@property (nonatomic) NSMutableArray *decks;
 @property (nonatomic) CompleteDeck *selectedDeck;
 
 @end
 
 @implementation DeckListViewController
 
+#pragma mark - IBActions
+
+- (IBAction)editTapped:(id)sender
+{
+    [self.tableView setEditing:YES animated:YES];
+}
 
 #pragma mark - Table view data source
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CompleteDeck *deckToDelete = self.decks[indexPath.row];
+    [self.decks removeObject:deckToDelete];
+    
+    [[DeckService sharedService] deleteDeck:deckToDelete];
+    [self.tableView reloadData];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -43,14 +59,11 @@
     CompleteDeck *deck = self.decks[indexPath.row];
     
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"hh:mm a"];
-    cell.timeLabel.text = [dateFormatter stringFromDate:deck.dateDrafted];
-    
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setDateFormat:@"hh:mm a, MMM dd, YYYY"];
     cell.dateLabel.text = [dateFormatter stringFromDate:deck.dateDrafted];
     
-    cell.colorsLabel.text = [deck.colors description];
-    [cell.imageView setImageWithURL:deck.featuredCard.smallImageURL placeholderImage:nil];
+    cell.colorsLabel.text = [self deckColors_:deck.colors];
+    [cell.cardImageView setImageWithURL:deck.featuredCard.smallImageURL placeholderImage:nil];
     
     return cell;
 }
@@ -58,16 +71,33 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedDeck = self.decks[indexPath.row];
-    NSLog(@"%@", self.selectedDeck.featuredCard);
+    [self performSegueWithIdentifier:@"showDeck" sender:nil];
+}
+
+#pragma mark - private methods
+
+- (NSString *)deckColors_:(NSArray *)colors
+{
+    NSString *colorsString = @"";
+    
+    for (NSString *color in colors) {
+        colorsString = [colorsString stringByAppendingString:[NSString stringWithFormat:@"%@, ", color]];
+    }
+    
+    colorsString = [colorsString substringToIndex:colorsString.length - 2];
+    
+    return colorsString;
 }
 
 #pragma mark - Configure methods
 
 - (void)configureDeckList
 {
+    NSLog(@"Loading...");
+ 
     NSString *userId = [[UserService sharedService] currentUser].userId;
     [[DeckService sharedService] decksWithUserId:userId completed:^(id failureObject, NSArray *decks) {
-        self.decks = decks;
+        self.decks = [decks mutableCopy];
         [self.tableView reloadData];
     }];
 }
@@ -77,14 +107,34 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+- (void)configureTableView
+{
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+}
+
 #pragma mark - View methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showDeck"]) {
+        [segue.destinationViewController setCompleteDeck:self.selectedDeck];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self configureStyles];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self configureStyles];
     [self configureDeckList];
+    [self configureTableView];
 }
 
 @end

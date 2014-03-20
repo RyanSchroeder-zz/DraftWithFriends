@@ -26,7 +26,7 @@ NSString * const kCardNumberInSetKey = @"number";
 @property (nonatomic, readwrite) NSString *name;
 @property (nonatomic, readwrite) NSArray *names;
 @property (nonatomic, readwrite) NSString *manaCost; //{U}{G}
-@property (nonatomic, readwrite) double convertedManaCost;
+@property (nonatomic, readwrite) CGFloat convertedManaCost;
 @property (nonatomic, readwrite) NSArray *colors;
 @property (nonatomic, readwrite) NSArray *superTypes; //legendary//basic//snow
 @property (nonatomic, readwrite) NSArray *types; //instant//sorcery//creature

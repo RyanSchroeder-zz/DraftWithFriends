@@ -153,21 +153,14 @@
                                                     <rect key="frame" x="10" y="10" width="70" height="100"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9:55 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FR5-lh-VsD">
-                                                    <rect key="frame" x="88" y="70" width="192" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9:55 PM, March 18, 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jc3-xI-Hca">
+                                                    <rect key="frame" x="88" y="89" width="194" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="March 18, 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jc3-xI-Hca">
-                                                    <rect key="frame" x="88" y="89" width="192" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Green / White" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqw-Kc-eIM">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Green, White" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqw-Kc-eIM">
                                                     <rect key="frame" x="88" y="10" width="192" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -188,8 +181,6 @@
                                             <outlet property="cardImageView" destination="PqZ-LB-dzt" id="lLS-Ou-PWq"/>
                                             <outlet property="colorsLabel" destination="Fqw-Kc-eIM" id="XVV-QB-bSE"/>
                                             <outlet property="dateLabel" destination="Jc3-xI-Hca" id="qTC-hK-WRv"/>
-                                            <outlet property="imageView" destination="G0p-UW-YRQ" id="sKb-u3-cUw"/>
-                                            <outlet property="timeLabel" destination="FR5-lh-VsD" id="BiT-Su-qKS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -197,10 +188,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Decks" id="YeP-yL-od2"/>
+                    <navigationItem key="navigationItem" title="Decks" id="YeP-yL-od2">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="xQ7-xz-rWf">
+                            <connections>
+                                <action selector="editTapped:" destination="NdI-hy-Mpl" id="Nwo-Ke-Qdo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="dz5-St-kWe" id="Ujd-4h-ius"/>
+                        <segue destination="5mw-Rq-vTX" kind="push" identifier="showDeck" id="vtv-m1-45e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZU-vZ-hnZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,7 +229,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stackedCardCell" id="Rmd-Lj-aU4" customClass="StackedCardCell">
-                                        <rect key="frame" x="10" y="0.0" width="180" height="568"/>
+                                        <rect key="frame" x="10" y="64" width="180" height="568"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="568"/>
@@ -251,7 +249,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cV3-VZ-OwQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="10" height="568"/>
+                                    <rect key="frame" x="0.0" y="64" width="10" height="568"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
@@ -352,7 +350,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stackedCardCell" id="R8j-2G-rSC" customClass="StackedCardCell">
-                                        <rect key="frame" x="10" y="0.0" width="180" height="568"/>
+                                        <rect key="frame" x="10" y="64" width="180" height="568"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="568"/>
@@ -372,7 +370,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ndH-mT-NJB">
-                                    <rect key="frame" x="0.0" y="0.0" width="10" height="568"/>
+                                    <rect key="frame" x="0.0" y="64" width="10" height="568"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
@@ -649,7 +647,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="decksTapped" destination="Jse-8H-mqt" eventType="touchUpInside" id="qXg-FC-hZ8"/>
                                     <segue destination="NdI-hy-Mpl" kind="push" identifier="showDecks" id="7LG-qF-CkR"/>
                                 </connections>
                             </button>
@@ -887,5 +884,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="YhI-ha-Bwt"/>
+        <segue reference="vtv-m1-45e"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CompleteDeck.h"
 
 @interface DrawViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic) NSArray *deck;
+@property (nonatomic) NSArray *cards;
+
+@property (nonatomic) CompleteDeck *completeDeck;
 
 @end

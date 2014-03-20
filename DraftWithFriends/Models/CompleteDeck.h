@@ -7,15 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 #import "Card.h"
 
 @interface CompleteDeck : NSObject
 
-@property (nonatomic) NSNumber *userId;
-@property (nonatomic) Card *featuredCard;
-@property (nonatomic) NSArray *cards;
-@property (nonatomic) NSArray *colors;
-@property (nonatomic) NSNumber *averageCMC;
-@property (nonatomic) NSDate *dateDrafted;
+@property (nonatomic, readonly) NSString *userId;
+@property (nonatomic, readonly) Card *featuredCard;
+@property (nonatomic, readonly) NSArray *cards;
+@property (nonatomic, readonly) NSArray *colors;
+@property (nonatomic, readonly) NSNumber *averageCMC;
+@property (nonatomic, readonly) NSDate *dateDrafted;
+@property (nonatomic) PFObject *pfCompletedDeck;
+
+- (id)initWithCards:(NSArray *)cards
+       featuredCard:(Card *)card
+             userId:(NSString *)userId
+        dateDrafted:(NSDate *)dateDrafted;
 
 @end

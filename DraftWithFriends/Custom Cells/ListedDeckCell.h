@@ -11,7 +11,6 @@
 @interface ListedDeckCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *cardImageView;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *colorsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *averageCMCLabel;

@@ -28,6 +28,7 @@ typedef NS_ENUM(NSUInteger, LandType) {
               callback:(ServiceCallback)callback;
 - (NSInteger)boosterPackSize;
 
+- (Card *)cardWithSetCode:(NSString *)setCode andNumber:(NSString *)number;
 - (NSArray *)landType:(LandType)landType withCount:(NSInteger)count;
 
 @end

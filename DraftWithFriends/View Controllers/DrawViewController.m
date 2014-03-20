@@ -10,6 +10,8 @@
 #import "StackedCardCell.h"
 #import "ImageStack.h"
 #import "DrawViewModel.h"
+#import "DeckService.h"
+#import "UserService.h"
 
 NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 
@@ -166,7 +168,7 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 
 - (void)configureCards
 {
-    self.drawViewModel.cardsInLibrary = [self.deck mutableCopy];
+    self.drawViewModel.cardsInLibrary = [self.cards mutableCopy];
     self.drawViewModel.cardsDrawn = [NSMutableArray new];
     self.drawViewModel.cardsPlayed = [NSMutableArray new];
     [self.drawViewModel drawHand];
@@ -185,6 +187,22 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if (self.completeDeck) {
+        return;
+    }
+    
+    CompleteDeck *deck = [[CompleteDeck alloc] initWithCards:self.cards
+                                                featuredCard:[self.cards firstObject]
+                                                      userId:[[UserService sharedService] currentUser].userId
+                                                 dateDrafted:[NSDate date]];
+    
+    [[DeckService sharedService] saveDeck:deck];
 }
 
 - (void)viewDidLoad

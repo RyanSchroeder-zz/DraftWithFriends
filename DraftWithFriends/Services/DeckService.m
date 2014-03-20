@@ -16,6 +16,11 @@
     [[DeckRepository sharedRepository] saveDeck:deck];
 }
 
+- (void)deleteDeck:(CompleteDeck *)deck
+{
+    [[DeckRepository sharedRepository] deleteDeck:deck];
+}
+
 - (void)decksWithUserId:(NSString *)userId completed:(ServiceCompletionBlock)completed
 {
     [[DeckRepository sharedRepository] decksWithUserId:userId completed:completed];

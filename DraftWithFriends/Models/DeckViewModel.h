@@ -28,4 +28,9 @@
  */
 @property (nonatomic) NSArray *picks;
 
+/**
+ Comes straight from the DeckListViewController
+ */
+@property (nonatomic) NSArray *completeDeckCards;
+
 @end
