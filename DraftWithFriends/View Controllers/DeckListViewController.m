@@ -61,9 +61,14 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     [dateFormatter setDateFormat:@"hh:mm a, MMM dd, YYYY"];
     cell.dateLabel.text = [dateFormatter stringFromDate:deck.dateDrafted];
-    
+    cell.averageCMCLabel.text = [NSString stringWithFormat:@"Average CMC: %.2f", [deck.averageCMC floatValue]];
     cell.colorsLabel.text = [self deckColors_:deck.colors];
     [cell.cardImageView setImageWithURL:deck.featuredCard.smallImageURL placeholderImage:nil];
+    
+    if (![deck.userId isEqualToString:[[UserService sharedService] currentUser].userId]) {
+        [cell.draftedByLabel setHidden:NO];
+        [cell.draftedByLabel setText:[NSString stringWithFormat:@"Drafted By: Mock"]];
+    }
     
     return cell;
 }

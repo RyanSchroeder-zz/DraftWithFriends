@@ -10,6 +10,7 @@
 #import "DraftCardCell.h"
 #import "MTGSetService.h"
 #import "DeckViewController.h"
+#import "CardDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 NSString * const kDraftCardCellKey = @"draftCardCell";
@@ -19,6 +20,7 @@ NSString * const kSetKey = @"ths";
 
 @property (nonatomic) NSMutableArray *picks;
 @property (weak, nonatomic) IBOutlet UIButton *picksButton;
+@property (nonatomic) CardDetailViewController *cardDetailViewController;
 
 @end
 
@@ -33,13 +35,24 @@ NSString * const kSetKey = @"ths";
     return _picks;
 }
 
+- (void)showCardDetails:(UIGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        UIImage *cardImage = [(DraftCardCell *)recognizer.view cardImageView].image;
+        Card *card = [(DraftCardCell *)recognizer.view card];
+        
+        CardDetailViewController *cardDetailViewController = [[CardDetailViewController alloc] initWithImage:cardImage card:card];
+        [self setCardDetailViewController:cardDetailViewController];
+        [cardDetailViewController presentModalViewInView:self.view.window];
+    }
+}
+
 #pragma mark - IBAction methods
 
 - (IBAction)newDraftButtonTapped
 {
     [self.delegate newDraftDesired];
 }
-
 
 #pragma mark - DeckViewControllerDelegate methods
 
@@ -58,10 +71,13 @@ NSString * const kSetKey = @"ths";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DraftCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDraftCardCellKey forIndexPath:indexPath];
-	
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showCardDetails:)];
+    
     Card *currentCard = self.cards[indexPath.row];
     
     [cell.cardImageView setImageWithURL:currentCard.smallImageURL placeholderImage:nil];
+    [cell setCard:currentCard];
+    [cell addGestureRecognizer:longPressGestureRecognizer];
     
     return cell;
 }

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Card.h"
 
 @interface DraftCardCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *cardImageView;
+@property (nonatomic) Card *card;
 
 @end

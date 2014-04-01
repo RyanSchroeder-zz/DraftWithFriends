@@ -23,6 +23,7 @@
     
     PFQuery *query = [PFQuery queryWithClassName:@"CompleteDeck"];
     [query whereKey:@"userId" equalTo:userId];
+    [query orderByDescending:@"createdAt"];
     [query setCachePolicy:kPFCachePolicyNetworkElseCache];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {

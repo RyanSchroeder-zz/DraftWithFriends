@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *colorsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *averageCMCLabel;
+@property (weak, nonatomic) IBOutlet UILabel *draftedByLabel;
 
 @end
