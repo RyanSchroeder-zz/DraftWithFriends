@@ -20,6 +20,7 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 // The way the data needs to be stored for the view
 @property (nonatomic) NSArray *imageStacks;
 
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (nonatomic) DrawViewModel *drawViewModel;
 @property (nonatomic) BOOL isRemovingEmptyStack;
 
@@ -64,6 +65,13 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
     [self.collectionView reloadData];
 }
 
+- (void)showShareDeck
+{
+    if (self.completeDeck) {
+        [[DeckService sharedService] shareDeck:self.completeDeck withUserEmail:@"jnnmark@gmail.com"];
+    }
+}
+
 #pragma mark - IBActions
 
 - (IBAction)drawTapped
@@ -86,6 +94,11 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 - (IBAction)refreshTapped
 {
     [self reloadCards];
+}
+
+- (IBAction)shareTapped
+{
+    [self showShareDeck];
 }
 
 #pragma mark - StackedImageViewDelegate methods
@@ -166,6 +179,13 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 
 #pragma mark - configure methods
 
+- (void)configureShareButton
+{
+    if (!self.completeDeck) {
+        self.shareButton.hidden = YES;
+    }
+}
+
 - (void)configureCards
 {
     self.drawViewModel.cardsInLibrary = [self.cards mutableCopy];
@@ -198,7 +218,7 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
     }
     
     CompleteDeck *deck = [[CompleteDeck alloc] initWithCards:self.cards
-                                                featuredCard:[self.cards firstObject]
+                                                featuredCard:self.firstPick
                                                       userId:[[UserService sharedService] currentUser].userId
                                                  dateDrafted:[NSDate date]];
     

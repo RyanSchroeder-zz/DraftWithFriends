@@ -12,8 +12,10 @@
 @interface DeckRepository : RepositoryBase
 
 - (void)decksWithUserId:(NSString *)userId completed:(RepositoryCompletionBlock)completed;
+- (void)decksSharedWithUserId:(NSString *)userId completed:(RepositoryCompletionBlock)completed;
 - (void)saveDeck:(CompleteDeck *)deck;
 - (void)deleteDeck:(CompleteDeck *)deck;
+- (void)shareDeck:(CompleteDeck *)deck withUserEmail:(NSString *)email;
 
 + (DeckRepository *)sharedRepository;
 

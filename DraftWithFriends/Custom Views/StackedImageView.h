@@ -13,8 +13,10 @@
 
 @protocol StackedImageViewDelegate <NSObject>
 
-- (void)stackedViewDidEmpty;
 - (void)didRemoveCard:(Card *)card fromStack:(ImageStack *)imageStack;
+
+@optional
+- (void)stackedViewDidEmpty;
 
 @end
 

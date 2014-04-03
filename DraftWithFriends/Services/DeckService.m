@@ -7,6 +7,7 @@
 //
 
 #import "DeckService.h"
+#import "UserService.h"
 #import "DeckRepository.h"
 
 @implementation DeckService
@@ -24,6 +25,16 @@
 - (void)decksWithUserId:(NSString *)userId completed:(ServiceCompletionBlock)completed
 {
     [[DeckRepository sharedRepository] decksWithUserId:userId completed:completed];
+}
+
+- (void)decksSharedWithUserId:(NSString *)userId completed:(ServiceCompletionBlock)completed
+{
+    [[DeckRepository sharedRepository] decksSharedWithUserId:userId completed:completed];
+}
+
+- (void)shareDeck:(CompleteDeck *)deck withUserEmail:(NSString *)email
+{
+    [[DeckRepository sharedRepository] shareDeck:deck withUserEmail:email];
 }
 
 + (DeckService *)sharedService

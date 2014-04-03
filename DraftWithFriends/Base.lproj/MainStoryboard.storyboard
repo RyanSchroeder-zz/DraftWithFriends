@@ -205,6 +205,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="editButton" destination="xQ7-xz-rWf" id="xMc-eN-tPz"/>
                         <outlet property="tableView" destination="dz5-St-kWe" id="Ujd-4h-ius"/>
                         <segue destination="5mw-Rq-vTX" kind="push" identifier="showDeck" id="vtv-m1-45e"/>
                     </connections>
@@ -237,7 +238,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stackedCardCell" id="Rmd-Lj-aU4" customClass="StackedCardCell">
-                                        <rect key="frame" x="10" y="0.0" width="180" height="568"/>
+                                        <rect key="frame" x="10" y="64" width="180" height="568"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="568"/>
@@ -257,7 +258,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cV3-VZ-OwQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="10" height="568"/>
+                                    <rect key="frame" x="0.0" y="64" width="10" height="568"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
@@ -358,7 +359,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stackedCardCell" id="R8j-2G-rSC" customClass="StackedCardCell">
-                                        <rect key="frame" x="10" y="0.0" width="180" height="568"/>
+                                        <rect key="frame" x="10" y="64" width="180" height="568"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="568"/>
@@ -378,7 +379,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ndH-mT-NJB">
-                                    <rect key="frame" x="0.0" y="0.0" width="10" height="568"/>
+                                    <rect key="frame" x="0.0" y="64" width="10" height="568"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
@@ -430,6 +431,18 @@
                                     <action selector="redrawTapped" destination="lqP-fp-rof" eventType="touchUpInside" id="dA7-Cv-mQP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQr-Bi-Zuf">
+                                <rect key="frame" x="195" y="58" width="105" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Share">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareTapped" destination="lqP-fp-rof" eventType="touchUpInside" id="ZJh-HY-q7F"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -442,6 +455,7 @@
                     <navigationItem key="navigationItem" id="qxT-zT-QEZ"/>
                     <connections>
                         <outlet property="collectionView" destination="SWO-Vw-5Cv" id="hmw-6u-2ny"/>
+                        <outlet property="shareButton" destination="IQr-Bi-Zuf" id="VQ3-lv-jCD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCr-ym-Yh2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -656,6 +670,18 @@
                                 </state>
                                 <connections>
                                     <segue destination="NdI-hy-Mpl" kind="push" identifier="showDecks" id="7LG-qF-CkR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZy-CI-dEv">
+                                <rect key="frame" x="119" y="518" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Shared">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="NdI-hy-Mpl" kind="push" identifier="showSharedDecks" id="JyN-UW-Gun"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -891,7 +917,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="vtv-m1-45e"/>
+        <segue reference="JyN-UW-Gun"/>
         <segue reference="YhI-ha-Bwt"/>
-        <segue reference="A8M-7W-Dqx"/>
     </inferredMetricsTieBreakers>
 </document>

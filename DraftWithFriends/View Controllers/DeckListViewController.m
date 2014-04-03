@@ -20,6 +20,7 @@
 
 @property (nonatomic) NSMutableArray *decks;
 @property (nonatomic) CompleteDeck *selectedDeck;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 
 @end
 
@@ -30,6 +31,19 @@
 - (IBAction)editTapped:(id)sender
 {
     [self.tableView setEditing:YES animated:YES];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                                style:UIBarButtonItemStyleDone
+                                                                               target:self 
+                                                                               action:@selector(doneTapped:)] animated:YES];
+}
+
+- (void)doneTapped:(id)sender
+{
+    [self.tableView setEditing:NO animated:YES];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Edit"
+                                                                                style:UIBarButtonItemStylePlain
+                                                                               target:self
+                                                                               action:@selector(editTapped:)] animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -107,6 +121,33 @@
     }];
 }
 
+- (void)configureSharedDeckList
+{
+    NSLog(@"Loading Shared...");
+    
+    NSString *userId = [[UserService sharedService] currentUser].userId;
+    [[DeckService sharedService] decksSharedWithUserId:userId completed:^(id failureObject, NSArray *decks) {
+        self.decks = [decks mutableCopy];
+        [self.tableView reloadData];
+    }];
+}
+
+- (void)configureList
+{
+    if (self.isSharedDeckList) {
+        [self configureSharedDeckList];
+    } else {
+        [self configureDeckList];
+    }
+}
+
+- (void)configureButtons
+{
+    if (self.isSharedDeckList) {
+        [self.navigationItem setRightBarButtonItem:nil];
+    }
+}
+
 - (void)configureStyles
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -138,7 +179,8 @@
 {
     [super viewDidLoad];
     
-    [self configureDeckList];
+    [self configureButtons];
+    [self configureList];
     [self configureTableView];
 }
 

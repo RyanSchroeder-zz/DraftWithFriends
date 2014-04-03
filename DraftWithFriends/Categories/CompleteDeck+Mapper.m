@@ -32,7 +32,7 @@
     CompleteDeck *deck = [[CompleteDeck alloc] initWithCards:[self cardsForKeys_:pfDeck[@"cards"]]
                                                 featuredCard:[self cardForKey_:pfDeck[@"featuredCard"]]
                                                       userId:pfDeck[@"userId"]
-                                                 dateDrafted:pfDeck.createdAt];;
+                                                 dateDrafted:pfDeck.createdAt];
     
     return deck;
 }
@@ -42,7 +42,7 @@
 {
     PFObject *deckObject = [PFObject objectWithClassName:@"CompleteDeck"];
     
-    deckObject[@"userId"] = [[UserService sharedService] currentUser].userId;
+    deckObject[@"userId"] = deck.userId;
     deckObject[@"featuredCard"] = [self keyForCard_:deck.featuredCard];
     deckObject[@"cards"] = [self keysForCards_:deck.cards];
     deckObject[@"colors"] = deck.colors;

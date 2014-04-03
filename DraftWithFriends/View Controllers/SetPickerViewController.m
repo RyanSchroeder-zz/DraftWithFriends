@@ -8,6 +8,7 @@
 
 #import "SetPickerViewController.h"
 #import "MTGSetService.h"
+#import "DeckListViewController.h"
 #import "DraftViewController.h"
 #import "UserService.h"
 
@@ -102,6 +103,10 @@
         [segue.destinationViewController setDelegate:self];
         [segue.destinationViewController setCardSet:self.set];
         [segue.destinationViewController setCards:[self.set generateBoosterPack]];
+    } else if ([segue.identifier isEqualToString:@"showDecks"]) {
+        [segue.destinationViewController setSharedDeckList:NO];
+    } else if ([segue.identifier isEqualToString:@"showSharedDecks"]) {
+        [segue.destinationViewController setSharedDeckList:YES];
     }
 }
 

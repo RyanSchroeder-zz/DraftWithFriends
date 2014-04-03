@@ -11,5 +11,6 @@
 @interface DeckListViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, getter = isSharedDeckList) BOOL sharedDeckList;
 
 @end

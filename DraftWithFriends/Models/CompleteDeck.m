@@ -7,6 +7,7 @@
 //
 
 #import "CompleteDeck.h"
+#import "DeckService.h"
 
 @interface CompleteDeck ()
 
@@ -18,7 +19,6 @@
 @end
 
 @implementation CompleteDeck
-
 
 - (id)initWithCards:(NSArray *)cards
        featuredCard:(Card *)card

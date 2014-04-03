@@ -15,6 +15,7 @@
 #import "LandPickerView.h"
 #import "UIView+Helpers.h"
 #import "DrawViewController.h"
+#import "DeckService.h"
 
 NSString * const kStackedCardCellKey = @"stackedCardCell";
 
@@ -30,6 +31,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 @property (weak, nonatomic) IBOutlet UIButton *addLandsButton;
 @property (weak, nonatomic) IBOutlet UILabel *creatureCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nonCreatureCountLabel;
+@property (nonatomic) Card *firstPick;
 @property (nonatomic) BOOL isRemovingEmptyStack;
 
 @property (nonatomic) LandPickerView *landPickerView;
@@ -51,6 +53,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 {
     if (_picks != picks) {
         _picks = picks;
+        self.firstPick = picks.firstObject;
         self.deckViewModel.picks = picks;
     }
 }
@@ -61,6 +64,11 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
         _completeDeck = completeDeck;
         self.deckViewModel.completeDeckCards = completeDeck.cards;
     }
+}
+
+- (BOOL)isFinishedDrafting
+{
+    return self.picks.count >= [[MTGSetService sharedService] boosterPackSize] * 3;
 }
 
 #pragma mark - LandPickerViewDelegate methods
@@ -109,11 +117,6 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     }
     
     [self configureStats];
-}
-
-- (void)stackedViewDidEmpty
-{
-#warning check if needed
 }
 
 - (void)setVisibleImages
@@ -212,11 +215,17 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     self.collectionView.dataSource = self;
 }
 
+- (void)configureButtons
+{
+    [self configureDraftButton];
+    [self configureAddLandsButton];
+}
+
 - (void)configureDraftButton
 {
     if (self.completeDeck) {
         [self.draftButton setTitle:@"Decks" forState:UIControlStateNormal];
-    } else if (self.picks.count >= [[MTGSetService sharedService] boosterPackSize] * 3 || self.completeDeck) {
+    } else if ([self isFinishedDrafting]) {
         self.draftButton.hidden = YES;
     }
 }
@@ -225,7 +234,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 {
     if (self.completeDeck) {
         [self.addLandsButton setTitle:@"Test Deck" forState:UIControlStateNormal];
-    } else if (self.picks.count < [[MTGSetService sharedService] boosterPackSize] * 3) {
+    } else if (![self isFinishedDrafting]) {
         self.addLandsButton.hidden = YES;
     }
 }
@@ -257,6 +266,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showDraw"]) {
+        [segue.destinationViewController setFirstPick:self.firstPick];
         [segue.destinationViewController setCards:self.deckViewModel.deckListCards];
         [segue.destinationViewController setCompleteDeck:self.completeDeck];
     }
@@ -272,8 +282,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     [self configureStyles];
     [self configureCollectionView];
     [self configureCards];
-    [self configureDraftButton];
-    [self configureAddLandsButton];
+    [self configureButtons];
     [self configureStats];
 }
 

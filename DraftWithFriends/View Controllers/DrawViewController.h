@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) NSArray *cards;
+@property (nonatomic) Card *firstPick;
 
 @property (nonatomic) CompleteDeck *completeDeck;
 

@@ -12,8 +12,10 @@
 @interface DeckService : ServiceBase
 
 - (void)decksWithUserId:(NSString *)userId completed:(ServiceCompletionBlock)completed;
+- (void)decksSharedWithUserId:(NSString *)userId completed:(ServiceCompletionBlock)completed;
 - (void)saveDeck:(CompleteDeck *)deck;
 - (void)deleteDeck:(CompleteDeck *)deck;
+- (void)shareDeck:(CompleteDeck *)deck withUserEmail:(NSString *)email;
 
 + (DeckService *)sharedService;
 
