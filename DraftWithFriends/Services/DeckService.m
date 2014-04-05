@@ -32,9 +32,14 @@
     [[DeckRepository sharedRepository] decksSharedWithUserId:userId completed:completed];
 }
 
-- (void)shareDeck:(CompleteDeck *)deck withUserEmail:(NSString *)email
+- (void)shareDeck:(CompleteDeck *)deck withUserEmail:(NSString *)email completed:(ServiceCompletionBlock)completed
 {
-    [[DeckRepository sharedRepository] shareDeck:deck withUserEmail:email];
+    [[DeckRepository sharedRepository] shareDeck:deck withUserEmail:email completed:completed];
+}
+
+- (void)deck:(CompleteDeck *)deck fetchCards:(ServiceCompletionBlock)completed;
+{
+    [[DeckRepository sharedRepository] deck:deck fetchCards:completed];
 }
 
 + (DeckService *)sharedService

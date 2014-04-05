@@ -7,36 +7,19 @@
 //
 
 #import "CompleteDeck.h"
-#import "DeckService.h"
 
 @interface CompleteDeck ()
-
-@property (nonatomic, readwrite) NSString *userId;
-@property (nonatomic, readwrite) Card *featuredCard;
-@property (nonatomic, readwrite) NSArray *cards;
-@property (nonatomic, readwrite) NSDate *dateDrafted;
 
 @end
 
 @implementation CompleteDeck
 
-- (id)initWithCards:(NSArray *)cards
-       featuredCard:(Card *)card
-             userId:(NSString *)userId
-        dateDrafted:(NSDate *)dateDrafted
-{
-    self = [super init];
-    
-    self.cards = cards;
-    self.featuredCard = card;
-    self.userId = userId;
-    self.dateDrafted = dateDrafted;
-    
-    return self;
-}
-
 - (NSArray *)colors
 {
+    if (_colors) {
+        return _colors;
+    }
+    
     NSMutableSet *colors = [NSMutableSet new];
     
     for (Card *card in self.cards) {
@@ -53,6 +36,10 @@
 
 - (NSNumber *)averageCMC
 {
+    if (_averageCMC) {
+        return _averageCMC;
+    }
+    
     CGFloat totalCMC = 0;
     
     for (Card *card in self.cards) {

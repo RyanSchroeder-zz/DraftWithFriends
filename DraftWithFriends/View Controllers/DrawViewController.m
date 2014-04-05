@@ -12,10 +12,12 @@
 #import "DrawViewModel.h"
 #import "DeckService.h"
 #import "UserService.h"
+#import "ShareDeckView.h"
+#import "UIView+Helpers.h"
 
 NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 
-@interface DrawViewController () <UICollectionViewDataSource, UICollectionViewDelegate, StackedImageViewDelegate>
+@interface DrawViewController () <UICollectionViewDataSource, UICollectionViewDelegate, StackedImageViewDelegate, ShareDeckViewDelegate>
 
 // The way the data needs to be stored for the view
 @property (nonatomic) NSArray *imageStacks;
@@ -26,6 +28,7 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 
 @property (nonatomic) ImageStack *drawImageStack;
 @property (nonatomic) ImageStack *playedImageStack;
+@property (nonatomic) ShareDeckView *shareDeckView;
 
 @end
 
@@ -67,9 +70,37 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 
 - (void)showShareDeck
 {
-    if (self.completeDeck) {
-        [[DeckService sharedService] shareDeck:self.completeDeck withUserEmail:@"jnnmark@gmail.com"];
-    }
+    self.shareDeckView = [ShareDeckView new];
+    self.shareDeckView.delegate = self;
+    [self.shareDeckView setFrameY:-self.shareDeckView.frameHeight];
+    [self.view addSubview:self.shareDeckView];
+    
+    [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.shareDeckView.center = CGPointMake(self.view.center.x, self.view.center.y / 2);
+    } completion:nil];
+    
+    [self.shareDeckView.emailTextField becomeFirstResponder];
+}
+
+#pragma mark - ShareViewDelegate methods
+
+/**
+ Delegate method for the share view
+ */
+- (void)didTapShare
+{
+    [[DeckService sharedService] shareDeck:self.completeDeck withUserEmail:self.shareDeckView.emailTextField.text completed:^(id failureObject, id object) {
+        if (!failureObject) {
+            
+            [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                [self.shareDeckView setFrameY:-self.shareDeckView.frameHeight];
+            } completion:^(BOOL finished) {
+                [self.shareDeckView removeFromSuperview];
+            }];
+        } else {
+            NSLog(@"%@", failureObject);
+        }
+    }];
 }
 
 #pragma mark - IBActions
@@ -217,10 +248,12 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
         return;
     }
     
-    CompleteDeck *deck = [[CompleteDeck alloc] initWithCards:self.cards
-                                                featuredCard:self.firstPick
-                                                      userId:[[UserService sharedService] currentUser].userId
-                                                 dateDrafted:[NSDate date]];
+    CompleteDeck *deck = [CompleteDeck new];
+    deck.cards = self.cards;
+    deck.featuredCard = self.firstPick;
+    deck.userId = [[UserService sharedService] currentUser].userId;
+    deck.dateDrafted = [NSDate date];
+    deck.draftedBy = [[UserService sharedService] currentUser].name;
     
     [[DeckService sharedService] saveDeck:deck];
 }
@@ -230,6 +263,7 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
     [super viewDidLoad];
     [self configureCollectionView];
     [self configureCards];
+    [self configureShareButton];
 }
 
 

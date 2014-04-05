@@ -72,7 +72,7 @@
     }];
 }
 
-- (void)shareDeck:(CompleteDeck *)deck withUserEmail:(NSString *)email
+- (void)shareDeck:(CompleteDeck *)deck withUserEmail:(NSString *)email completed:(RepositoryCompletionBlock)completed
 {
     PFQuery *query = [PFUser query];
     [query whereKey:@"email" equalTo:email];
@@ -80,9 +80,16 @@
         if (!error) {
             PFObject *pfSharedDeck = [self shareDeck:deck withUserId:object.objectId];
             [pfSharedDeck saveInBackground];
-        } else {
-            NSLog(@"error sharing:%@", error);
         }
+        if (completed) completed(error, nil);
+    }];
+}
+
+- (void)deck:(CompleteDeck *)deck fetchCards:(RepositoryCompletionBlock)completed
+{
+    PFObject *cardList = deck.pfCompletedDeck[@"cardList"];
+    [cardList fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (completed) completed(error, nil);
     }];
 }
 

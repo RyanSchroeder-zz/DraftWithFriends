@@ -10,4 +10,9 @@
 
 @implementation MTGUser
 
+- (NSString *)name
+{
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+}
+
 @end

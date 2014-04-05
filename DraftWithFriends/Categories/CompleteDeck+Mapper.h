@@ -14,5 +14,6 @@
 + (PFObject *)mapCompleteDeck:(CompleteDeck *)deck;
 + (NSArray *)mapPFCompleteDeckArray:(NSArray *)pfDecks;
 + (CompleteDeck *)mapPFCompleteDeck:(PFObject *)pfDeck;
+- (void)fetchCards:(void(^)())completed;
 
 @end

@@ -30,4 +30,24 @@
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, height);
 }
 
+- (CGFloat)frameX
+{
+    return self.frame.origin.x;
+}
+
+- (CGFloat)frameY
+{
+    return self.frame.origin.y;
+}
+
+- (CGFloat)frameWidth
+{
+    return self.frame.size.width;
+}
+
+- (CGFloat)frameHeight
+{
+    return self.frame.size.height;
+}
+
 @end

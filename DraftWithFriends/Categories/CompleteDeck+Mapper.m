@@ -9,6 +9,7 @@
 #import "CompleteDeck+Mapper.h"
 #import "MTGSetService.h"
 #import "UserService.h"
+#import "DeckService.h"
 
 @implementation CompleteDeck (Mapper)
 
@@ -18,7 +19,6 @@
     
     for (PFObject *pfDeck in pfDecks) {
         CompleteDeck *deck = [self mapPFCompleteDeck:pfDeck];
-        deck.pfCompletedDeck = pfDeck;
         [decks addObject:deck];
     }
     
@@ -29,10 +29,14 @@
 {
     if (!pfDeck) return nil;
     
-    CompleteDeck *deck = [[CompleteDeck alloc] initWithCards:[self cardsForKeys_:pfDeck[@"cards"]]
-                                                featuredCard:[self cardForKey_:pfDeck[@"featuredCard"]]
-                                                      userId:pfDeck[@"userId"]
-                                                 dateDrafted:pfDeck.createdAt];
+    CompleteDeck *deck = [CompleteDeck new];
+    deck.featuredCard = [self cardForKey_:pfDeck[@"featuredCard"]];
+    deck.userId = pfDeck[@"userId"];
+    deck.dateDrafted = pfDeck.createdAt;
+    deck.averageCMC = pfDeck[@"averageCMC"];
+    deck.colors = pfDeck[@"colors"];
+    deck.draftedBy = pfDeck[@"draftedBy"];
+    deck.pfCompletedDeck = pfDeck;
     
     return deck;
 }
@@ -44,15 +48,29 @@
     
     deckObject[@"userId"] = deck.userId;
     deckObject[@"featuredCard"] = [self keyForCard_:deck.featuredCard];
-    deckObject[@"cards"] = [self keysForCards_:deck.cards];
     deckObject[@"colors"] = deck.colors;
     deckObject[@"averageCMC"] = deck.averageCMC;
+    deckObject[@"draftedBy"] = deck.draftedBy;
+    
+    PFObject *cardListObject = [PFObject objectWithClassName:@"CardList"];
+    cardListObject[@"cards"] = [self keysForCards_:deck.cards];
+    
+    deckObject[@"cardList"] = cardListObject;
     
     return deckObject;
 }
 
-#pragma mark - Private methods
+- (void)fetchCards:(void(^)())completed
+{
+    [[DeckService sharedService] deck:self fetchCards:^(id failureObject, id success) {
+        if (!failureObject) {
+            self.cards = [[self class] cardsForKeys_:self.pfCompletedDeck[@"cardList"][@"cards"]];
+        }
+        if (completed) completed();
+    }];
+}
 
+#pragma mark - Private methods
 
 + (NSArray *)cardsForKeys_:(NSArray *)keys
 {

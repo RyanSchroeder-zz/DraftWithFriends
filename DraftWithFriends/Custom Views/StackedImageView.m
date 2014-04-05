@@ -143,7 +143,9 @@
     [self.stackedImageViewDelegate didRemoveCard:card fromStack:self.imageStack];
     
     if (cards.count == 0) {
-        [self.stackedImageViewDelegate stackedViewDidEmpty];
+        if ([self.stackedImageViewDelegate respondsToSelector:@selector(stackedViewDidEmpty)]) {
+            [self.stackedImageViewDelegate stackedViewDidEmpty];
+        }
     } else {
         [self reloadStack];
     }
@@ -169,6 +171,9 @@
     self.imageViews = [slidingImageViews copy];
     
     // Size of all the images stacked up
+    if (self.imageViews.count) {
+        
+    }
     self.contentSize = CGSizeMake(self.frame.size.width,
                                   [self.imageViews[0] size].height * 2 + (self.imageViews.count * IMAGE_OFFSET));
     

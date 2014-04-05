@@ -81,7 +81,7 @@
     
     if (![deck.userId isEqualToString:[[UserService sharedService] currentUser].userId]) {
         [cell.draftedByLabel setHidden:NO];
-        [cell.draftedByLabel setText:[NSString stringWithFormat:@"Drafted By: Mock"]];
+        [cell.draftedByLabel setText:[NSString stringWithFormat:@"Drafted By: %@", deck.draftedBy]];
     }
     
     return cell;
@@ -97,6 +97,10 @@
 
 - (NSString *)deckColors_:(NSArray *)colors
 {
+    if (!colors.count) {
+        return @"Colorless";
+    }
+    
     NSString *colorsString = @"";
     
     for (NSString *color in colors) {

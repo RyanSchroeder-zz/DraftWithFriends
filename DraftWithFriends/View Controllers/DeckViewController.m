@@ -16,6 +16,7 @@
 #import "UIView+Helpers.h"
 #import "DrawViewController.h"
 #import "DeckService.h"
+#import "CompleteDeck+Mapper.h"
 
 NSString * const kStackedCardCellKey = @"stackedCardCell";
 
@@ -55,14 +56,6 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
         _picks = picks;
         self.firstPick = picks.firstObject;
         self.deckViewModel.picks = picks;
-    }
-}
-
-- (void)setCompleteDeck:(CompleteDeck *)completeDeck
-{
-    if (_completeDeck != completeDeck) {
-        _completeDeck = completeDeck;
-        self.deckViewModel.completeDeckCards = completeDeck.cards;
     }
 }
 
@@ -198,6 +191,20 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 - (void)configureCards
 {
+    if (!self.completeDeck) {
+        [self configureCardsView];
+        return;
+    }
+    
+    [self.completeDeck fetchCards:^{
+        self.deckViewModel.completeDeckCards = self.completeDeck.cards;
+        
+        [self configureCardsView];
+    }];
+}
+
+- (void)configureCardsView
+{
     NSMutableArray *imageStacks = [NSMutableArray new];
     
     for (NSArray *cards in self.deckViewModel.chosenCardStacks) {
@@ -207,6 +214,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     self.imageStacks = imageStacks;
     
     [self.collectionView reloadData];
+    [self configureStats];
 }
 
 - (void)configureCollectionView
@@ -239,6 +247,14 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     }
 }
 
+- (void)configureStatsDisplay
+{
+    if (self.completeDeck) {
+        [self.creatureCountLabel setHidden:YES];
+        [self.nonCreatureCountLabel setHidden:YES];
+    }
+}
+
 - (void)configureStats
 {
     NSInteger creatureSpells = 0;
@@ -254,6 +270,9 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     
     [self.creatureCountLabel setText:[NSString stringWithFormat:@"Creatures: %d", creatureSpells]];
     [self.nonCreatureCountLabel setText:[NSString stringWithFormat:@"Non-Creatures: %d", nonCreatureSpells]];
+    
+    [self.creatureCountLabel setHidden:NO];
+    [self.nonCreatureCountLabel setHidden:NO];
 }
 
 - (void)configureStyles
@@ -283,7 +302,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     [self configureCollectionView];
     [self configureCards];
     [self configureButtons];
-    [self configureStats];
+    [self configureStatsDisplay];
 }
 
 @end

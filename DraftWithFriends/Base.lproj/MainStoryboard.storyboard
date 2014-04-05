@@ -238,7 +238,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stackedCardCell" id="Rmd-Lj-aU4" customClass="StackedCardCell">
-                                        <rect key="frame" x="10" y="64" width="180" height="568"/>
+                                        <rect key="frame" x="10" y="0.0" width="180" height="568"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="568"/>
@@ -258,7 +258,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cV3-VZ-OwQ">
-                                    <rect key="frame" x="0.0" y="64" width="10" height="568"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="10" height="568"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
@@ -322,6 +322,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fRG-2a-1AY"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="addLandsButton" destination="ICL-8t-RMa" id="OiV-aH-ywg"/>
                         <outlet property="collectionView" destination="JNB-Ge-6aK" id="u5Y-ZP-6gA"/>
@@ -359,7 +360,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stackedCardCell" id="R8j-2G-rSC" customClass="StackedCardCell">
-                                        <rect key="frame" x="10" y="64" width="180" height="568"/>
+                                        <rect key="frame" x="10" y="0.0" width="180" height="568"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="568"/>
@@ -379,7 +380,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ndH-mT-NJB">
-                                    <rect key="frame" x="0.0" y="64" width="10" height="568"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="10" height="568"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
@@ -917,8 +918,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vtv-m1-45e"/>
+        <segue reference="22q-5h-wFQ"/>
         <segue reference="JyN-UW-Gun"/>
-        <segue reference="YhI-ha-Bwt"/>
+        <segue reference="vtv-m1-45e"/>
     </inferredMetricsTieBreakers>
 </document>

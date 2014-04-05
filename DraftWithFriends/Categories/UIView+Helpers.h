@@ -15,4 +15,9 @@
 - (void)setFrameWidth:(CGFloat)width;
 - (void)setFrameHeight:(CGFloat)height;
 
+- (CGFloat)frameX;
+- (CGFloat)frameY;
+- (CGFloat)frameWidth;
+- (CGFloat)frameHeight;
+
 @end

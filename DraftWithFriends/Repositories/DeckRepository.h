@@ -15,7 +15,8 @@
 - (void)decksSharedWithUserId:(NSString *)userId completed:(RepositoryCompletionBlock)completed;
 - (void)saveDeck:(CompleteDeck *)deck;
 - (void)deleteDeck:(CompleteDeck *)deck;
-- (void)shareDeck:(CompleteDeck *)deck withUserEmail:(NSString *)email;
+- (void)shareDeck:(CompleteDeck *)deck withUserEmail:(NSString *)email completed:(RepositoryCompletionBlock)completed;
+- (void)deck:(CompleteDeck *)deck fetchCards:(RepositoryCompletionBlock)completed;
 
 + (DeckRepository *)sharedRepository;
 
