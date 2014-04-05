@@ -30,6 +30,8 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 @property (nonatomic) ImageStack *playedImageStack;
 @property (nonatomic) ShareDeckView *shareDeckView;
 
+@property (nonatomic) UIView *overlay;
+
 @end
 
 @implementation DrawViewController
@@ -70,6 +72,8 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 
 - (void)showShareDeck
 {
+    [self showOverlay];
+    
     self.shareDeckView = [ShareDeckView new];
     self.shareDeckView.delegate = self;
     [self.shareDeckView setFrameY:-self.shareDeckView.frameHeight];
@@ -77,9 +81,33 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
     
     [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.shareDeckView.center = CGPointMake(self.view.center.x, self.view.center.y / 2);
+        [self.overlay setAlpha:0.5];
     } completion:nil];
     
     [self.shareDeckView.emailTextField becomeFirstResponder];
+}
+
+- (void)showOverlay
+{
+    [self setOverlay:[[UIView alloc] initWithFrame:self.view.frame]];
+    [self.overlay setBackgroundColor:[UIColor blackColor]];
+    [self.overlay setAlpha:0.0];
+    [self.view addSubview:self.overlay];
+    
+    [self.overlay addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissShareView)]];
+}
+
+- (void)dismissShareView
+{
+    [self.shareDeckView.emailTextField endEditing:YES];
+    
+    [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self.shareDeckView setFrameY:-self.shareDeckView.frameHeight];
+        [self.overlay setAlpha:0.0];
+    } completion:^(BOOL finished) {
+        [self.shareDeckView removeFromSuperview];
+        [self.overlay removeFromSuperview];
+    }];
 }
 
 #pragma mark - ShareViewDelegate methods
@@ -91,12 +119,7 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 {
     [[DeckService sharedService] shareDeck:self.completeDeck withUserEmail:self.shareDeckView.emailTextField.text completed:^(id failureObject, id object) {
         if (!failureObject) {
-            
-            [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                [self.shareDeckView setFrameY:-self.shareDeckView.frameHeight];
-            } completion:^(BOOL finished) {
-                [self.shareDeckView removeFromSuperview];
-            }];
+            [self dismissShareView];
         } else {
             NSLog(@"%@", failureObject);
         }
