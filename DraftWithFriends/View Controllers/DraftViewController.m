@@ -11,7 +11,7 @@
 #import "MTGSetService.h"
 #import "DeckViewController.h"
 #import "CardDetailViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 NSString * const kDraftCardCellKey = @"draftCardCell";
 NSString * const kSetKey = @"ths";
@@ -21,6 +21,7 @@ NSString * const kSetKey = @"ths";
 @property (nonatomic) NSMutableArray *picks;
 @property (weak, nonatomic) IBOutlet UIButton *picksButton;
 @property (nonatomic) CardDetailViewController *cardDetailViewController;
+@property (nonatomic) UIImage *cardBack;
 
 @end
 
@@ -75,7 +76,7 @@ NSString * const kSetKey = @"ths";
     
     Card *currentCard = self.cards[indexPath.row];
     
-    [cell.cardImageView setImageWithURL:currentCard.smallImageURL placeholderImage:nil];
+    [cell.cardImageView setImageWithURL:currentCard.smallImageURL placeholderImage:self.cardBack];
     [cell setCard:currentCard];
     [cell addGestureRecognizer:longPressGestureRecognizer];
     
@@ -103,6 +104,7 @@ NSString * const kSetKey = @"ths";
 {
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.cardBack = [UIImage imageNamed:@"cardback.jpg"];
 }
 
 - (void)configurePicksButton

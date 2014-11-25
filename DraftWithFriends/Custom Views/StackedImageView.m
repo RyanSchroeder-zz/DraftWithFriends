@@ -22,6 +22,7 @@
 @property (nonatomic) NSArray *imageViews;
 @property (nonatomic) CGFloat startingContentOffset;
 @property (nonatomic, getter = isConfiguringImages) BOOL configuringImages;
+@property (nonatomic) UIImage *cardBack;
 
 @end
 
@@ -161,7 +162,7 @@
     
     for (Card *card in self.imageStack.cards) {
         UIImageView *imageView = [UIImageView new];
-        [imageView setImageWithURL:card.smallImageURL placeholderImage:nil];
+        [imageView setImageWithURL:card.smallImageURL placeholderImage:self.cardBack];
         
         SlidingImageView *slidingImageView = [[SlidingImageView alloc] initWithImage:imageView.image andCard:card];
         slidingImageView.delegate = self;
@@ -179,6 +180,8 @@
     
     // Scroll to bottom of the list
     self.startingContentOffset = self.contentSize.height - self.frame.size.height;
+    
+    self.cardBack = [UIImage imageNamed:@"cardback.jpg"];
 }
 
 #pragma mark - custom inits

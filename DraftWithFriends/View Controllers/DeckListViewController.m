@@ -21,6 +21,7 @@
 @property (nonatomic) NSMutableArray *decks;
 @property (nonatomic) CompleteDeck *selectedDeck;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property (nonatomic) UIImage *cardBack;
 
 @end
 
@@ -77,7 +78,7 @@
     cell.dateLabel.text = [dateFormatter stringFromDate:deck.dateDrafted];
     cell.averageCMCLabel.text = [NSString stringWithFormat:@"Average CMC: %.2f", [deck.averageCMC floatValue]];
     cell.colorsLabel.text = [self deckColors_:deck.colors];
-    [cell.cardImageView setImageWithURL:deck.featuredCard.smallImageURL placeholderImage:nil];
+    [cell.cardImageView setImageWithURL:deck.featuredCard.smallImageURL placeholderImage:self.cardBack];
     
     if (![deck.userId isEqualToString:[[UserService sharedService] currentUser].userId]) {
         [cell.draftedByLabel setHidden:NO];
@@ -161,6 +162,7 @@
 {
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.cardBack = [UIImage imageNamed:@"cardback.jpg"];
 }
 
 #pragma mark - View methods
