@@ -22,7 +22,7 @@
 @property (nonatomic) CGFloat originalY;
 @property (nonatomic) id<SlidingImageViewDelegate> delegate;
 
-- (id)initWithImage:(UIImage *)image andCard:(Card *)card;
+- (id)initWithCard:(Card *)card;
 - (BOOL)slideDownAnimated:(BOOL)animated;
 - (BOOL)slideUpAnimated:(BOOL)animated;
 

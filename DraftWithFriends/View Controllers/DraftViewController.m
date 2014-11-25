@@ -132,12 +132,72 @@ NSString * const kSetKey = @"ths";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     [self configurePicksButton];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    
+    [self preloadCards];
+}
+
+- (void)preloadCards
+{
+    
+    [self.picks addObject:self.cards[0]];
+    [self.picks addObject:self.cards[1]];
+    [self.picks addObject:self.cards[2]];
+    [self.picks addObject:self.cards[3]];
+    [self.picks addObject:self.cards[4]];
+    [self.picks addObject:self.cards[5]];
+    [self.picks addObject:self.cards[6]];
+    [self.picks addObject:self.cards[7]];
+    [self.picks addObject:self.cards[8]];
+    [self.picks addObject:self.cards[9]];
+    [self.picks addObject:self.cards[10]];
+    [self.picks addObject:self.cards[11]];
+    [self.picks addObject:self.cards[12]];
+    [self.picks addObject:self.cards[13]];
+    [self.picks addObject:self.cards[0]];
+    [self.picks addObject:self.cards[1]];
+    [self.picks addObject:self.cards[2]];
+    [self.picks addObject:self.cards[3]];
+    [self.picks addObject:self.cards[4]];
+    [self.picks addObject:self.cards[5]];
+    [self.picks addObject:self.cards[6]];
+    [self.picks addObject:self.cards[7]];
+    [self.picks addObject:self.cards[8]];
+    [self.picks addObject:self.cards[9]];
+    [self.picks addObject:self.cards[10]];
+    [self.picks addObject:self.cards[11]];
+    [self.picks addObject:self.cards[12]];
+    [self.picks addObject:self.cards[13]];
+    [self.picks addObject:self.cards[0]];
+    [self.picks addObject:self.cards[1]];
+    [self.picks addObject:self.cards[2]];
+    [self.picks addObject:self.cards[3]];
+    [self.picks addObject:self.cards[4]];
+    [self.picks addObject:self.cards[5]];
+    [self.picks addObject:self.cards[6]];
+    [self.picks addObject:self.cards[7]];
+    [self.picks addObject:self.cards[8]];
+    [self.picks addObject:self.cards[9]];
+    [self.picks addObject:self.cards[10]];
+    [self.picks addObject:self.cards[11]];
+    [self.picks addObject:self.cards[12]];
+    [self.picks addObject:self.cards[13]];
+    self.picksButton.hidden = NO;
+    
+    [self performSegueWithIdentifier:@"showPicks" sender:self];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self configureCollectionView];
 }
 

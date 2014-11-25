@@ -19,7 +19,7 @@
 @interface StackedImageView () <UIScrollViewDelegate, SlidingImageViewDelegate>
 
 @property (nonatomic) ImageStack *imageStack;
-@property (nonatomic) NSArray *imageViews;
+@property (nonatomic) NSMutableArray *imageViews;
 @property (nonatomic) CGFloat startingContentOffset;
 @property (nonatomic, getter = isConfiguringImages) BOOL configuringImages;
 @property (nonatomic) UIImage *cardBack;
@@ -40,26 +40,12 @@
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     [self configureView];
-    [self displayImages];
     [self scrollToVisibleImage];
 }
 
-- (void)displayImages
+- (CGRect)cardFrameAtY:(CGFloat)yCoordinate
 {
-    for (NSInteger i = self.imageViews.count - 1; i >= 0; i--) {
-        SlidingImageView *imageView = self.imageViews[i];
-        imageView.frame = [self imageFrame];
-        NSInteger index = self.imageViews.count - i;
-        imageView.originalY = imageView.frame.size.height * 2 + index * IMAGE_OFFSET;
-        imageView.frame = CGRectOffset(imageView.frame, 0, imageView.originalY);
-        
-        [self addSubview:imageView];
-    }
-}
-
-- (CGRect)imageFrame
-{
-    return CGRectMake(0, 0, self.frame.size.width, self.frame.size.width * IMAGE_HEIGHT / IMAGE_WIDTH);
+    return CGRectMake(0, yCoordinate, self.frame.size.width, self.frame.size.width * IMAGE_HEIGHT / IMAGE_WIDTH);
 }
 
 - (void)scrollToVisibleImage
@@ -158,23 +144,22 @@
 {
     self.configuringImages = YES;
     
-    NSMutableArray *slidingImageViews = [[NSMutableArray alloc] init];
+    self.imageViews = [NSMutableArray new];
     
-    for (Card *card in self.imageStack.cards) {
-        UIImageView *imageView = [UIImageView new];
-        [imageView setImageWithURL:card.smallImageURL placeholderImage:self.cardBack];
+    for (NSInteger i = self.imageStack.cards.count - 1; i >= 0; i--) {
+        Card *card = self.imageStack.cards[i];
+        SlidingImageView *slidingImageView = [[SlidingImageView alloc] initWithCard:card];
         
-        SlidingImageView *slidingImageView = [[SlidingImageView alloc] initWithImage:imageView.image andCard:card];
+        [slidingImageView setImageWithURL:card.smallImageURL placeholderImage:self.cardBack];
         slidingImageView.delegate = self;
-        [slidingImageViews addObject:slidingImageView];
+        slidingImageView.originalY = (self.imageStack.cards.count - i) * IMAGE_OFFSET;
+        slidingImageView.frame = [self cardFrameAtY:slidingImageView.originalY];
+        
+        [self.imageViews insertObject:slidingImageView atIndex:0];
+        [self addSubview:slidingImageView];
     }
-    
-    self.imageViews = [slidingImageViews copy];
     
     // Size of all the images stacked up
-    if (self.imageViews.count) {
-        
-    }
     self.contentSize = CGSizeMake(self.frame.size.width,
                                   [self.imageViews[0] size].height * 2 + (self.imageViews.count * IMAGE_OFFSET));
     

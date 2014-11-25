@@ -17,9 +17,9 @@
 
 @implementation SlidingImageView
 
-- (id)initWithImage:(UIImage *)image andCard:(Card *)card
+- (id)initWithCard:(Card *)card
 {
-    self = [super initWithImage:image];
+    self = [super init];
     
     if (self) {
         self.card = card;

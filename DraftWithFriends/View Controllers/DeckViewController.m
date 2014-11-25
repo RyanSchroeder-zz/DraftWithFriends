@@ -100,6 +100,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
         [self.collectionView reloadData];
         self.isRemovingEmptyStack = NO;
     }
+    
     for (NSInteger i = 0; i < self.deckViewModel.deckListCards.count; i++) {
         if (self.deckViewModel.deckListCards[i] == card) {
             [self.deckViewModel.potentialCards addObject:card];
@@ -292,9 +293,11 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 {
     self.picks = nil;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self configureStyles];
     [self configureCollectionView];
     [self configureCards];
