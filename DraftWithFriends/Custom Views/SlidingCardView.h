@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define IMAGE_OFFSET 27
+
 @class Card;
 
 @protocol SlidingCardViewDelegate <NSObject>
@@ -19,11 +21,11 @@
 
 @interface SlidingCardView : UIImageView
 
+@property (nonatomic) NSInteger index;
 @property (nonatomic) CGFloat originalY;
 @property (nonatomic) id<SlidingCardViewDelegate> delegate;
 
 - (id)initWithCard:(Card *)card;
-- (BOOL)slideDownAnimated:(BOOL)animated;
-- (BOOL)slideUpAnimated:(BOOL)animated;
+- (void)slideToShowIndex:(NSInteger)index animated:(BOOL)animated;
 
 @end

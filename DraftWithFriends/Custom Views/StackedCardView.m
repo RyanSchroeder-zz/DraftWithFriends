@@ -12,7 +12,6 @@
 #import "Card.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
-#define IMAGE_OFFSET 27
 #define IMAGE_HEIGHT 285
 #define IMAGE_WIDTH 200
 
@@ -21,8 +20,8 @@
 @property (nonatomic) CardStack *cardStack;
 @property (nonatomic) NSMutableArray *cardViews;
 @property (nonatomic) CGFloat normalizedContentOffset;
-@property (nonatomic, getter = isConfiguringImages) BOOL configuringImages;
 @property (nonatomic) UIImage *cardBack;
+@property (nonatomic, getter=isConfiguringCardDisplay) BOOL configuringCardDisplay;
 
 @end
 
@@ -39,59 +38,35 @@
 {
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    [self configureImages];
-    [self configureWithHighlightedImageDisplayed];
+    [self configureCardDisplay];
 }
 
-- (void)slideImagesIfNeededAnimated:(BOOL)animated
+- (void)slideCardsIfNeededAnimated:(BOOL)animated
 {
-    for (int i = 0; i < self.cardViews.count; i++) {
-        [self slideImageIfNeededAtIndex:i animated:animated];
+    for (int i = 0; i < self.cardViews.count - 1; i++) {
+        [self slideCardIfNeededAtIndex:i animated:animated];
     }
 }
 
-- (void)slideImageIfNeededAtIndex:(NSInteger)index animated:(BOOL)animated
+- (void)slideCardIfNeededAtIndex:(NSInteger)index animated:(BOOL)animated
 {
-    return;
-    SlidingCardView *image = self.cardViews[index];
-    
-    BOOL slideAnimationDidOccur = NO;
-    
-    NSInteger offset = [self currentIndex];
-    
-    if (offset > index && index != self.cardViews.count - 1) {
-        slideAnimationDidOccur = [image slideDownAnimated:animated];
-    } else if (offset < index) {
-        slideAnimationDidOccur = [image slideUpAnimated:animated];
-    }
-    
-    if (offset <= 0) {
-        offset = 0;
-    } else if (offset >= self.cardViews.count) {
-        offset = self.cardViews.count - 1;
-    }
-    
-    if (slideAnimationDidOccur) {
-        self.highlightCardIndex = offset;
-    }
+    SlidingCardView *card = self.cardViews[index];
+    [card slideToShowIndex:[self currentIndex] animated:animated];
 }
 
 - (NSInteger)currentIndex
 {
-    return floor((self.normalizedContentOffset - self.contentOffset.y) / IMAGE_OFFSET);
+    return floor((self.normalizedContentOffset - self.contentOffset.y + 1) / IMAGE_OFFSET);
 }
 
 #pragma mark - UIScrollViewDelegate methods
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (self.isConfiguringImages) {
-        [self slideImagesIfNeededAnimated:NO];
-        self.configuringImages = NO;
-        return;
+    if (!self.isConfiguringCardDisplay) {
+        [self slideCardsIfNeededAnimated:YES];
+        self.highlightedCardIndex = self.currentIndex;
     }
-    
-    [self slideImagesIfNeededAnimated:YES];
 }
 
 #pragma mark - SlidingImageViewDelegate methods
@@ -110,15 +85,11 @@
 
 #pragma mark - configure methods
 
-- (void)configureWithHighlightedImageDisplayed
-{
-    [self setContentOffset:CGPointMake(0, self.normalizedContentOffset - 1 * IMAGE_OFFSET) animated:NO];
-    [self slideImagesIfNeededAnimated:NO];
-}
 
-- (void)configureImages
+- (void)configureCardDisplay
 {
-    self.configuringImages = YES;
+    self.configuringCardDisplay = YES;
+    self.cardViews = [NSMutableArray new];
     
     for (NSInteger i = self.cardStack.cards.count - 1; i >= 0; i--) {
         Card *card = self.cardStack.cards[i];
@@ -127,16 +98,18 @@
     
     [self configureContentSizeToHeightOfStackedImages];
     [self configureNormalizedOffset];
+    
+    [self highlightedImageDisplayed];
+    self.configuringCardDisplay = NO;
 }
 
 - (void)configureCardInStack:(Card *)card atIndex:(NSInteger)index
 {
-    self.cardViews = [NSMutableArray new];
-    
     SlidingCardView *slidingImageView = [[SlidingCardView alloc] initWithCard:card];
     
     [slidingImageView setImageWithURL:card.smallImageURL placeholderImage:self.cardBack];
     slidingImageView.delegate = self;
+    slidingImageView.index = index;
     slidingImageView.originalY = (self.cardStack.cards.count - index) * IMAGE_OFFSET;
     slidingImageView.frame = [self cardFrameAtY:slidingImageView.originalY];
     
@@ -159,6 +132,12 @@
 - (void)configureNormalizedOffset
 {
     self.normalizedContentOffset = self.contentSize.height - self.frame.size.height;
+}
+
+- (void)highlightedImageDisplayed
+{
+    [self setContentOffset:CGPointMake(0, self.normalizedContentOffset - self.highlightedCardIndex * IMAGE_OFFSET) animated:NO];
+    [self slideCardsIfNeededAnimated:NO];
 }
 
 #pragma mark - custom inits

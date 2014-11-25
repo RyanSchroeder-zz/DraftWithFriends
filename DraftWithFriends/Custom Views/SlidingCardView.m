@@ -40,15 +40,20 @@
     }
 }
 
+- (void)slideToShowIndex:(NSInteger)index animated:(BOOL)animated;
+{
+    if (self.index >= index) {
+        [self slideUpAnimated:animated];
+    } else {
+        [self slideDownAnimated:animated];
+    }
+}
+
 /**
  @return Yes if the animation occured
  */
 - (BOOL)slideDownAnimated:(BOOL)animated
 {
-    if ([self float:self.frame.origin.y isCloseToFloat:self.originalY + self.frame.size.height]) {
-        return NO;
-    }
-
     if (animated) {
         [UIView animateWithDuration:0.2 animations:^{
             [self setFrameY:self.originalY + self.frame.size.height];
@@ -65,10 +70,6 @@
  */
 - (BOOL)slideUpAnimated:(BOOL)animated
 {
-    if ([self float:self.frame.origin.y isCloseToFloat:self.originalY]) {
-        return NO;
-    }
-    
     if (animated) {
         [UIView animateWithDuration:0.2 animations:^{
             [self setFrameY:self.originalY];
@@ -78,18 +79,6 @@
     }
     
     return YES;
-}
-
-/**
- Testing to see if they were equal caused a few issues and it doesn't need to 
- be an exact match.
- */
-- (BOOL)float:(CGFloat)float1 isCloseToFloat:(CGFloat)float2
-{
-    int f1 = (int)floor(float1);
-    int f2 = (int)floor(float2);
-    
-    return (f1 <= f2 + 1) && (f1 >= f2 - 1);
 }
 
 @end

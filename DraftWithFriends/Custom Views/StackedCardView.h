@@ -23,8 +23,9 @@
 @interface StackedCardView : UIScrollView
 
 @property (nonatomic) id<StackedCardViewDelegate> stackedCardViewDelegate;
-@property (nonatomic) NSInteger highlightCardIndex;
+@property (nonatomic) NSInteger highlightedCardIndex;
 
 - (void)setCardStack:(CardStack *)cardStack;
+- (NSInteger)currentIndex;
 
 @end

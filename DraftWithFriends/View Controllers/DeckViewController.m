@@ -91,7 +91,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     if (cardStack.cards.count == 0) {
         self.isRemovingEmptyStack = YES;
         
-        [self setVisibleImages];
+        [self displayHighlightedCards];
         
         NSMutableArray *mutableStacks = [self.cardStacks mutableCopy];
         [mutableStacks removeObject:cardStack];
@@ -112,13 +112,13 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     [self configureStats];
 }
 
-- (void)setVisibleImages
+- (void)displayHighlightedCards
 {
     for (NSInteger i = 0; i < self.cardStacks.count; i++) {
         StackedCardCell *stackedCardCell = (StackedCardCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         
         CardStack *cardStack = self.cardStacks[i];
-        cardStack.highlightedCardIndex = stackedCardCell.stackedCardView.highlightCardIndex;
+        cardStack.highlightedCardIndex = stackedCardCell.stackedCardView.highlightedCardIndex;
     }
 }
 
@@ -131,11 +131,6 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     } else {
         [self.delegate returnToDraftView];
     }
-}
-
-- (IBAction)refreshViewTapped
-{
-    [self.collectionView reloadData];
 }
 
 - (IBAction)addLandsButtonTapped
@@ -168,7 +163,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     StackedCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kStackedCardCellKey forIndexPath:indexPath];
 	
     CardStack *cardStack = self.cardStacks[indexPath.row];
-    [cell.stackedCardView setHighlightCardIndex:[cardStack highlightedCardIndex]];
+    [cell.stackedCardView setHighlightedCardIndex:[cardStack highlightedCardIndex]];
     [cell.stackedCardView setCardStack:cardStack];
     [cell.stackedCardView setStackedCardViewDelegate:self];
     
@@ -184,7 +179,7 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     StackedCardCell *stackedCardCell = (StackedCardCell *)cell;
 	
     CardStack *cardStack = self.cardStacks[indexPath.row];
-    cardStack.highlightedCardIndex = stackedCardCell.stackedCardView.highlightCardIndex;
+    cardStack.highlightedCardIndex = stackedCardCell.stackedCardView.highlightedCardIndex;
 }
 
 #pragma mark - configure methods
