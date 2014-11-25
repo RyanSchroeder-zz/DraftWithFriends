@@ -3,14 +3,14 @@
 //  DraftWithFriends
 //
 //  Created by Trent Ellingsen on 12/19/13.
-//  Copyright (c) 2013 Ryan Schroeder. All rights reserved.
+//  Copyright (c) 2013 Trent Ellingsen. All rights reserved.
 //
 
 #import "StackedImageView.h"
 #import "SlidingImageView.h"
 #import "ImageStack.h"
 #import "Card.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 #define IMAGE_OFFSET 27
 #define IMAGE_HEIGHT 285

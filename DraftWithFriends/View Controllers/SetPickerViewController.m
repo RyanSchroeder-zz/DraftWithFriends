@@ -3,7 +3,7 @@
 //  DraftWithFriends
 //
 //  Created by Trent Ellingsen on 3/6/14.
-//  Copyright (c) 2014 Ryan Schroeder. All rights reserved.
+//  Copyright (c) 2014 Trent Ellingsen. All rights reserved.
 //
 
 #import "SetPickerViewController.h"
@@ -76,11 +76,6 @@
     }];
 }
 
-- (IBAction)logoutTapped
-{
-    [[UserService sharedService] logOut];
-}
-
 #pragma mark - DraftViewControllerDelegate methods
 
 - (void)newDraftDesired
@@ -103,10 +98,6 @@
         [(DraftViewController *)segue.destinationViewController setDelegate:self];
         [segue.destinationViewController setCardSet:self.set];
         [segue.destinationViewController setCards:[self.set generateBoosterPack]];
-    } else if ([segue.identifier isEqualToString:@"showDecks"]) {
-        [segue.destinationViewController setSharedDeckList:NO];
-    } else if ([segue.identifier isEqualToString:@"showSharedDecks"]) {
-        [segue.destinationViewController setSharedDeckList:YES];
     }
 }
 

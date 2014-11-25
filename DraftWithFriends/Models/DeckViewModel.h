@@ -3,7 +3,7 @@
 //  DraftWithFriends
 //
 //  Created by Trent Ellingsen on 3/5/14.
-//  Copyright (c) 2014 Ryan Schroeder. All rights reserved.
+//  Copyright (c) 2014 Trent Ellingsen. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

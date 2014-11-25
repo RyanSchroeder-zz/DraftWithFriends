@@ -4,10 +4,10 @@
 //  DraftWithFriends
 //
 //  Created by Trent Ellingsen on 3/18/14.
-//  Copyright (c) 2014 Ryan Schroeder. All rights reserved.
+//  Copyright (c) 2014 Trent Ellingsen. All rights reserved.
 //
 
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 #import "DeckListViewController.h"
 #import "Consts.h"
 #import "ListedDeckCell.h"
@@ -126,33 +126,6 @@
     }];
 }
 
-- (void)configureSharedDeckList
-{
-    NSLog(@"Loading Shared...");
-    
-    NSString *userId = [[UserService sharedService] currentUser].userId;
-    [[DeckService sharedService] decksSharedWithUserId:userId completed:^(id failureObject, NSArray *decks) {
-        self.decks = [decks mutableCopy];
-        [self.tableView reloadData];
-    }];
-}
-
-- (void)configureList
-{
-    if (self.isSharedDeckList) {
-        [self configureSharedDeckList];
-    } else {
-        [self configureDeckList];
-    }
-}
-
-- (void)configureButtons
-{
-    if (self.isSharedDeckList) {
-        [self.navigationItem setRightBarButtonItem:nil];
-    }
-}
-
 - (void)configureStyles
 {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -185,8 +158,7 @@
 {
     [super viewDidLoad];
     
-    [self configureButtons];
-    [self configureList];
+    [self configureDeckList];
     [self configureTableView];
 }
 

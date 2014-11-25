@@ -3,7 +3,7 @@
 //  DraftWithFriends
 //
 //  Created by Trent Ellingsen on 12/19/13.
-//  Copyright (c) 2013 Ryan Schroeder. All rights reserved.
+//  Copyright (c) 2013 Trent Ellingsen. All rights reserved.
 //
 
 #import "DraftCardCell.h"

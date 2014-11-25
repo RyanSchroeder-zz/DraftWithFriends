@@ -2,11 +2,11 @@
 //  CardRepository.m
 //  DraftWithFriends
 //
-//  Created by Ryan Schroeder on 9/11/13.
-//  Copyright (c) 2013 Ryan Schroeder. All rights reserved.
+//  Created by Trent Ellingsen on 9/11/13.
+//  Copyright (c) 2013 Trent Ellingsen. All rights reserved.
 //
 
-#import <SDWebImage/SDWebImagePrefetcher.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 #import "CardRepository.h"
 #import "Card.h"
 
