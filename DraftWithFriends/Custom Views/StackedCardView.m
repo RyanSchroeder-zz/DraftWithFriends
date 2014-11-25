@@ -71,10 +71,12 @@
 
 #pragma mark - SlidingImageViewDelegate methods
 
-- (void)cardRemoved:(Card *)card
+- (void)cardRemoved:(Card *)cardRemoved
 {
-    [self.cardStack.cards removeObjectIdenticalTo:card];
-    [self.stackedCardViewDelegate didRemoveCard:card fromStack:self.cardStack];
+    // Removes a single card instead of all equal instances
+    [self.cardStack.cards removeObjectAtIndex:[self.cardStack.cards indexOfObject:cardRemoved]];
+    
+    [self.stackedCardViewDelegate didRemoveCard:cardRemoved fromStack:self.cardStack];
     
     if (self.cardStack.cards.count == 0 && [self.stackedCardViewDelegate respondsToSelector:@selector(stackedViewDidEmpty)]) {
         [self.stackedCardViewDelegate stackedViewDidEmpty];
