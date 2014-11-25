@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E58B5460CECD8381E55FDD2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2D525C2E84375E00F329D4 /* libPods.a */; };
 		A60ACADD18C87BB800E494F0 /* BNG.json in Resources */ = {isa = PBXBuildFile; fileRef = A60ACADC18C87BB800E494F0 /* BNG.json */; };
 		A60DB1EF18EFCDF700BA452F /* ShareDeckView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A60DB1EE18EFCDF700BA452F /* ShareDeckView.xib */; };
 		A60DB1F818EFD18800BA452F /* ShareDeckView.m in Sources */ = {isa = PBXBuildFile; fileRef = A60DB1F718EFD18800BA452F /* ShareDeckView.m */; };
@@ -96,8 +97,6 @@
 		DAAF3A7617E118BF00048CC6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAAF3A7517E118BF00048CC6 /* Images.xcassets */; };
 		DAAF3A7E17E118BF00048CC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF3A5D17E118BF00048CC6 /* Foundation.framework */; };
 		DAAF3A7F17E118BF00048CC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF3A6117E118BF00048CC6 /* UIKit.framework */; };
-		DAAF3A8717E118BF00048CC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAAF3A8517E118BF00048CC6 /* InfoPlist.strings */; };
-		DAAF3A8917E118BF00048CC6 /* DraftWithFriendsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAF3A8817E118BF00048CC6 /* DraftWithFriendsTests.m */; };
 		DAAF3A9517E11F4F00048CC6 /* M14.json in Resources */ = {isa = PBXBuildFile; fileRef = DAAF3A9417E11F4F00048CC6 /* M14.json */; };
 /* End PBXBuildFile section */
 
@@ -112,18 +111,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05FF5D521FC9EFAE00F6C743 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4E2821D2C6670445C225B6D7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A60ACADC18C87BB800E494F0 /* BNG.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BNG.json; sourceTree = "<group>"; };
 		A60DB1EE18EFCDF700BA452F /* ShareDeckView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShareDeckView.xib; path = "Custom Views/ShareDeckView.xib"; sourceTree = "<group>"; };
 		A60DB1F618EFD18800BA452F /* ShareDeckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareDeckView.h; path = "Custom Views/ShareDeckView.h"; sourceTree = "<group>"; };
 		A60DB1F718EFD18800BA452F /* ShareDeckView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareDeckView.m; path = "Custom Views/ShareDeckView.m"; sourceTree = "<group>"; };
 		A6222BB218C86F5D00AFA3EE /* SetPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetPickerViewController.h; path = "View Controllers/SetPickerViewController.h"; sourceTree = "<group>"; };
 		A6222BB318C86F5D00AFA3EE /* SetPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetPickerViewController.m; path = "View Controllers/SetPickerViewController.m"; sourceTree = "<group>"; };
-		A644171D18D8782D00001411 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A644171F18D8785E00001411 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A644172118D8786500001411 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		A644172318D8787100001411 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A644172518D8787900001411 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		A644172718D8788000001411 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A644172918D8788B00001411 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A644173818D87A5200001411 /* PrettyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrettyButton.h; path = "Custom Views/PrettyButton.h"; sourceTree = "<group>"; };
 		A644173918D87A5200001411 /* PrettyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrettyButton.m; path = "Custom Views/PrettyButton.m"; sourceTree = "<group>"; };
@@ -166,7 +163,6 @@
 		A699AC6F1867A27600324F8D /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Helpers.m"; path = "Categories/UIView+Helpers.m"; sourceTree = "<group>"; };
 		A699AC711867A6F800324F8D /* SlidingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlidingImageView.h; path = "Custom Views/SlidingImageView.h"; sourceTree = "<group>"; };
 		A699AC721867A6F800324F8D /* SlidingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlidingImageView.m; path = "Custom Views/SlidingImageView.m"; sourceTree = "<group>"; };
-		A69CA31318D88AE9001FFED8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A6A1A3DF18D8683D006FAB89 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserService.h; path = Services/UserService.h; sourceTree = "<group>"; };
 		A6A1A3E018D8683D006FAB89 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserService.m; path = Services/UserService.m; sourceTree = "<group>"; };
 		A6A1A3E218D868CB006FAB89 /* MTGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTGUser.h; path = Models/MTGUser.h; sourceTree = "<group>"; };
@@ -212,6 +208,7 @@
 		A6D3EC9E1863D04800246D24 /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 12.jpg; path = "Images/test pack/12.jpg"; sourceTree = "<group>"; };
 		A6D3EC9F1863D04800246D24 /* 13.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 13.jpg; path = "Images/test pack/13.jpg"; sourceTree = "<group>"; };
 		A6D3ECA01863D04800246D24 /* 14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 14.jpg; path = "Images/test pack/14.jpg"; sourceTree = "<group>"; };
+		BF2D525C2E84375E00F329D4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA39903F18643E6C00BCDA33 /* THS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = THS.json; sourceTree = "<group>"; };
 		DA6C8E3A17E1301F001F8A6D /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		DA6C8E3B17E1301F001F8A6D /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
@@ -245,9 +242,6 @@
 		DAAF3A7017E118BF00048CC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DAAF3A7517E118BF00048CC6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DAAF3A7B17E118BF00048CC6 /* DraftWithFriendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DraftWithFriendsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAAF3A8417E118BF00048CC6 /* DraftWithFriendsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DraftWithFriendsTests-Info.plist"; sourceTree = "<group>"; };
-		DAAF3A8617E118BF00048CC6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DAAF3A8817E118BF00048CC6 /* DraftWithFriendsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DraftWithFriendsTests.m; sourceTree = "<group>"; };
 		DAAF3A9417E11F4F00048CC6 /* M14.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = M14.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -263,6 +257,7 @@
 				DAAF3A6017E118BF00048CC6 /* CoreGraphics.framework in Frameworks */,
 				DAAF3A6217E118BF00048CC6 /* UIKit.framework in Frameworks */,
 				DAAF3A5E17E118BF00048CC6 /* Foundation.framework in Frameworks */,
+				4E58B5460CECD8381E55FDD2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +273,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C693B35FC986E6C6B4319D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05FF5D521FC9EFAE00F6C743 /* Pods.debug.xcconfig */,
+				4E2821D2C6670445C225B6D7 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A6461DE718EA50D60052A2E4 /* CardDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,9 +468,9 @@
 			isa = PBXGroup;
 			children = (
 				DAAF3A6317E118BF00048CC6 /* DraftWithFriends */,
-				DAAF3A8217E118BF00048CC6 /* DraftWithFriendsTests */,
 				DAAF3A5C17E118BF00048CC6 /* Frameworks */,
 				DAAF3A5B17E118BF00048CC6 /* Products */,
+				6C693B35FC986E6C6B4319D9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -482,18 +486,14 @@
 		DAAF3A5C17E118BF00048CC6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A69CA31318D88AE9001FFED8 /* Social.framework */,
 				A644172918D8788B00001411 /* QuartzCore.framework */,
-				A644172718D8788000001411 /* MobileCoreServices.framework */,
 				A644172518D8787900001411 /* CFNetwork.framework */,
-				A644172318D8787100001411 /* Security.framework */,
-				A644172118D8786500001411 /* StoreKit.framework */,
 				A644171F18D8785E00001411 /* SystemConfiguration.framework */,
-				A644171D18D8782D00001411 /* Parse.framework */,
 				DA6C8EAE17E14371001F8A6D /* ImageIO.framework */,
 				DAAF3A5D17E118BF00048CC6 /* Foundation.framework */,
 				DAAF3A5F17E118BF00048CC6 /* CoreGraphics.framework */,
 				DAAF3A6117E118BF00048CC6 /* UIKit.framework */,
+				BF2D525C2E84375E00F329D4 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -526,24 +526,6 @@
 				DAAF3A6617E118BF00048CC6 /* InfoPlist.strings */,
 				DAAF3A6917E118BF00048CC6 /* main.m */,
 				DAAF3A6B17E118BF00048CC6 /* DraftWithFriends-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		DAAF3A8217E118BF00048CC6 /* DraftWithFriendsTests */ = {
-			isa = PBXGroup;
-			children = (
-				DAAF3A8817E118BF00048CC6 /* DraftWithFriendsTests.m */,
-				DAAF3A8317E118BF00048CC6 /* Supporting Files */,
-			);
-			path = DraftWithFriendsTests;
-			sourceTree = "<group>";
-		};
-		DAAF3A8317E118BF00048CC6 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				DAAF3A8417E118BF00048CC6 /* DraftWithFriendsTests-Info.plist */,
-				DAAF3A8517E118BF00048CC6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -614,9 +596,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAAF3A8C17E118BF00048CC6 /* Build configuration list for PBXNativeTarget "DraftWithFriends" */;
 			buildPhases = (
+				936210D515D3F2C0D98B7ED3 /* Check Pods Manifest.lock */,
 				DAAF3A5617E118BF00048CC6 /* Sources */,
 				DAAF3A5717E118BF00048CC6 /* Frameworks */,
 				DAAF3A5817E118BF00048CC6 /* Resources */,
+				3F9C0645B8F86D470B2BA009 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -736,11 +720,43 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAAF3A8717E118BF00048CC6 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3F9C0645B8F86D470B2BA009 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		936210D515D3F2C0D98B7ED3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DAAF3A5617E118BF00048CC6 /* Sources */ = {
@@ -792,7 +808,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAAF3A8917E118BF00048CC6 /* DraftWithFriendsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,14 +836,6 @@
 				DAAF3A7017E118BF00048CC6 /* Base */,
 			);
 			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		DAAF3A8517E118BF00048CC6 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DAAF3A8617E118BF00048CC6 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -906,6 +913,7 @@
 		};
 		DAAF3A8D17E118BF00048CC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05FF5D521FC9EFAE00F6C743 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -921,7 +929,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DraftWithFriends/DraftWithFriends-Prefix.pch";
 				INFOPLIST_FILE = "DraftWithFriends/DraftWithFriends-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -930,6 +938,7 @@
 		};
 		DAAF3A8E17E118BF00048CC6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E2821D2C6670445C225B6D7 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -946,7 +955,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DraftWithFriends/DraftWithFriends-Prefix.pch";
 				INFOPLIST_FILE = "DraftWithFriends/DraftWithFriends-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
