@@ -12,9 +12,6 @@
 
 @property (nonatomic) UIWindow *window;
 
-- (void)logIn;
-- (void)logOut;
-
 - (id)initWithWindow:(UIWindow *)window;
 
 @end

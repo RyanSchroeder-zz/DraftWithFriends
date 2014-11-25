@@ -6,23 +6,10 @@
 //  Copyright (c) 2013 Ryan Schroeder. All rights reserved.
 //
 
-#import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "Consts.h"
 
 @implementation AppDelegate
-
-#pragma mark - notification selector methods
-
-- (void)userLogOut:(NSNotification *)notification
-{
-    [self.wireframeViewController logOut];
-}
-
-- (void)userLogIn:(NSNotification *)notification
-{
-    [self.wireframeViewController logIn];
-}
 
 #pragma mark - configuration methods
 
@@ -32,32 +19,10 @@
     [[UINavigationBar appearance] setTintColor:MTG_DRAFT_COLOR];
 }
 
-- (void)configureNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(userLogOut:)
-                                                 name:MTGUserLogOutNotificationKey
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(userLogIn:)
-                                                 name:MTGUserLogInNotificationKey
-                                               object:nil];
-}
-
-- (void)configureParseWithLaunchOptions:(NSDictionary *)launchOptions
-{
-    [Parse setApplicationId:@"MaANXOh7VHs2wCnEwKI6Oa0P1pJRe9UlbOnxtodE"
-                  clientKey:@"BeIJrjDOcnOtoP1UP7JGALqmsfF3MeaXUKb3xzU2"];
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-}
-
 #pragma mark - application methods
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self configureNotifications];
-    [self configureParseWithLaunchOptions:launchOptions];
     [self configureStyles];
     
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];

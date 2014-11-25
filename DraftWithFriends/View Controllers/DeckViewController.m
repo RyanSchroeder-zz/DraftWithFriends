@@ -16,7 +16,6 @@
 #import "UIView+Helpers.h"
 #import "DrawViewController.h"
 #import "DeckService.h"
-#import "CompleteDeck+Mapper.h"
 
 NSString * const kStackedCardCellKey = @"stackedCardCell";
 
@@ -196,11 +195,9 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
         return;
     }
     
-    [self.completeDeck fetchCards:^{
-        self.deckViewModel.completeDeckCards = self.completeDeck.cards;
-        
-        [self configureCardsView];
-    }];
+    self.deckViewModel.completeDeckCards = self.completeDeck.cards;
+    
+    [self configureCardsView];
 }
 
 - (void)configureCardsView
@@ -268,8 +265,8 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
         }
     }
     
-    [self.creatureCountLabel setText:[NSString stringWithFormat:@"Creatures: %d", creatureSpells]];
-    [self.nonCreatureCountLabel setText:[NSString stringWithFormat:@"Non-Creatures: %d", nonCreatureSpells]];
+    [self.creatureCountLabel setText:[NSString stringWithFormat:@"Creatures: %ld", (long)creatureSpells]];
+    [self.nonCreatureCountLabel setText:[NSString stringWithFormat:@"Non-Creatures: %d", (int)nonCreatureSpells]];
     
     [self.creatureCountLabel setHidden:NO];
     [self.nonCreatureCountLabel setHidden:NO];

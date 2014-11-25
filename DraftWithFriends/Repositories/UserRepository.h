@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Trent Ellingsen. All rights reserved.
 //
 
-#import <Parse/Parse.h>
 #import "RepositoryBase.h"
 #import "MTGUser.h"
 

@@ -42,7 +42,7 @@
 - (void)drawHand
 {
     for (NSInteger i = 0; i < FULL_HAND_OF_CARDS; i++) {
-        NSInteger randomCardIndex = arc4random_uniform(self.cardsInLibrary.count);
+        NSInteger randomCardIndex = arc4random_uniform((int)self.cardsInLibrary.count);
         [self.cardsDrawn addObject:self.cardsInLibrary[randomCardIndex]];
         [self.cardsInLibrary removeObjectAtIndex:randomCardIndex];
     }
@@ -50,7 +50,7 @@
 
 - (void)drawCard
 {
-    NSInteger randomCardIndex = arc4random_uniform(self.cardsInLibrary.count);
+    NSInteger randomCardIndex = arc4random_uniform((int)self.cardsInLibrary.count);
     [self.cardsDrawn addObject:self.cardsInLibrary[randomCardIndex]];
     [self.cardsInLibrary removeObjectAtIndex:randomCardIndex];
 }

@@ -6,101 +6,38 @@
 //  Copyright (c) 2014 Ryan Schroeder. All rights reserved.
 //
 
-#import <Parse/Parse.h>
 #import "DeckRepository.h"
-#import "CompleteDeck+Mapper.h"
 
 @implementation DeckRepository
 
 - (void)decksWithUserId:(NSString *)userId completed:(RepositoryCompletionBlock)completed
 {
-    if (!userId) {
-        if (completed) {
-            completed(nil, @[]);
-            return;
-        }
-    }
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"CompleteDeck"];
-    [query whereKey:@"userId" equalTo:userId];
-    [query orderByDescending:@"createdAt"];
-    [query setCachePolicy:kPFCachePolicyNetworkElseCache];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            if (completed) completed(nil, [CompleteDeck mapPFCompleteDeckArray:objects]);
-        } else {
-            if (completed) completed(error, nil);
-        }
-    }];
+    if (completed) completed(nil, nil);
 }
 
 - (void)decksSharedWithUserId:(NSString *)userId completed:(RepositoryCompletionBlock)completed
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"ShareDeck"];
-    [query whereKey:@"sharedWithId" equalTo:userId];
-    [query orderByDescending:@"createdAt"];
-    [query setCachePolicy:kPFCachePolicyNetworkElseCache];
-    [query includeKey:@"deck"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *shareDecks, NSError *error) {
-        if (!error) {
-            NSMutableArray *pfDecks = [NSMutableArray new];
-            for (id shareDeck in shareDecks) {
-                [pfDecks addObject:shareDeck[@"deck"]];
-            }
-            if (completed) completed(nil, [CompleteDeck mapPFCompleteDeckArray:[pfDecks copy]]);
-        } else {
-            if (completed) completed(error, nil);
-        }
-    }];
+    if (completed) completed(nil, nil);
 }
 
 - (void)saveDeck:(CompleteDeck *)deck
 {
-    PFObject *pfDeck = [CompleteDeck mapCompleteDeck:deck];
-    
-    [pfDeck saveInBackground];
+    // Not implemented
 }
 
 - (void)deleteDeck:(CompleteDeck *)deck
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"CompleteDeck"];
-    [query whereKey:@"objectId" equalTo:deck.pfCompletedDeck.objectId];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if (!error) {
-            [object deleteInBackground];
-        }
-    }];
+    // Not implemented
 }
 
 - (void)shareDeck:(CompleteDeck *)deck withUserEmail:(NSString *)email completed:(RepositoryCompletionBlock)completed
 {
-    PFQuery *query = [PFUser query];
-    [query whereKey:@"email" equalTo:email];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if (!error) {
-            PFObject *pfSharedDeck = [self shareDeck:deck withUserId:object.objectId];
-            [pfSharedDeck saveInBackground];
-        }
-        if (completed) completed(error, nil);
-    }];
+    if (completed) completed(nil, nil);
 }
 
-- (void)deck:(CompleteDeck *)deck fetchCards:(RepositoryCompletionBlock)completed
+- (id)shareDeck:(CompleteDeck *)deck withUserId:(NSString *)sharedWithId
 {
-    PFObject *cardList = deck.pfCompletedDeck[@"cardList"];
-    [cardList fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if (completed) completed(error, nil);
-    }];
-}
-
-- (PFObject *)shareDeck:(CompleteDeck *)deck withUserId:(NSString *)sharedWithId
-{
-    PFObject *shareDeck = [PFObject objectWithClassName:@"ShareDeck"];
-    
-    shareDeck[@"deck"] = deck.pfCompletedDeck;
-    shareDeck[@"sharedWithId"] = sharedWithId;
-    
-    return shareDeck;
+    return nil;
 }
 
 + (DeckRepository *)sharedRepository

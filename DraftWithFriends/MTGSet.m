@@ -99,12 +99,12 @@
     if ([self didGenerateMythicRare])
     {
         NSArray *mythics = [self mythicRares];
-        return [mythics objectAtIndex:arc4random_uniform([mythics count])];
+        return [mythics objectAtIndex:arc4random_uniform((int)[mythics count])];
     }
     else
     {
         NSArray *rares = [self rares];
-        return [rares objectAtIndex:arc4random_uniform([rares count])];
+        return [rares objectAtIndex:arc4random_uniform((int)[rares count])];
     }
 }
 
@@ -117,7 +117,7 @@
     
     while ([chosenUncommons count] < numberOfUncommonsInBooster)
     {
-        Card *randomUncommon = [uncommons objectAtIndex:arc4random_uniform([uncommons count])];
+        Card *randomUncommon = [uncommons objectAtIndex:arc4random_uniform((int)[uncommons count])];
         if (![chosenUncommons containsObject:randomUncommon])
         {
             [chosenUncommons addObject:randomUncommon];
@@ -147,7 +147,7 @@
     
     while ([chosenCommons count] < numberOfCommonsInBooster)
     {
-        Card *randomCommon = [commonsInSet objectAtIndex:arc4random_uniform([commonsInSet count])];
+        Card *randomCommon = [commonsInSet objectAtIndex:arc4random_uniform((int)[commonsInSet count])];
         if (![chosenCommons containsObject:randomCommon])
         {
             [chosenCommons addObject:randomCommon];
@@ -173,19 +173,19 @@
     if (basicLands.count == 0) {
         return nil;
     }
-    return [basicLands objectAtIndex:arc4random_uniform([basicLands count])];
+    return [basicLands objectAtIndex:arc4random_uniform((int)[basicLands count])];
 }
 
 - (Card *)generateBoosterFoilUncommonSlot
 {
     NSArray *uncommons = [self uncommons];
-    return [uncommons objectAtIndex:arc4random_uniform([uncommons count])];
+    return [uncommons objectAtIndex:arc4random_uniform((int)[uncommons count])];
 }
 
 - (Card *)generateBoosterFoilCommonSlot
 {
     NSArray *commons = [self commons];
-    return [commons objectAtIndex:arc4random_uniform([commons count])];
+    return [commons objectAtIndex:arc4random_uniform((int)[commons count])];
 }
 
 - (Card *)generateBoosterFoilSlot

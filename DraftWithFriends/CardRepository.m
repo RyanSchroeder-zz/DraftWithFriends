@@ -36,7 +36,6 @@
             [mutableCardsInSet addObject:currentCard];
             [mutableCardImagesInSet addObject:[NSURL URLWithString:[NSString stringWithFormat:@"http://magiccards.info/scans/en/%@/%@.jpg", [setCode lowercaseString], currentCard.numberInSet]]];
         }
-        [self preloadCardImages:mutableCardImagesInSet];
         [instance setCards:[self sortCardsInSetByNumber:mutableCardsInSet]];
     }
     return instance;
@@ -49,13 +48,6 @@
         NSString *numberForCard_B = ((Card *)b).numberInSet;
         
         return [numberForCard_A compare:numberForCard_B options:NSNumericSearch];
-    }];
-}
-
-+ (void)preloadCardImages:(NSArray *)cardsInSet
-{
-    [[SDWebImagePrefetcher sharedImagePrefetcher] prefetchURLs:cardsInSet completed:^(NSUInteger finishedCount, NSUInteger skippedCount) {
-        
     }];
 }
 

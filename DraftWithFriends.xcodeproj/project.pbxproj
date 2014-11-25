@@ -12,15 +12,9 @@
 		A60DB1F818EFD18800BA452F /* ShareDeckView.m in Sources */ = {isa = PBXBuildFile; fileRef = A60DB1F718EFD18800BA452F /* ShareDeckView.m */; };
 		A6222BB418C86F5D00AFA3EE /* SetPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6222BB318C86F5D00AFA3EE /* SetPickerViewController.m */; };
 		A644172018D8785E00001411 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A644171F18D8785E00001411 /* SystemConfiguration.framework */; };
-		A644172218D8786500001411 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A644172118D8786500001411 /* StoreKit.framework */; };
-		A644172418D8787100001411 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A644172318D8787100001411 /* Security.framework */; };
 		A644172618D8787900001411 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A644172518D8787900001411 /* CFNetwork.framework */; };
-		A644172818D8788000001411 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A644172718D8788000001411 /* MobileCoreServices.framework */; };
 		A644172A18D8788B00001411 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A644172918D8788B00001411 /* QuartzCore.framework */; };
-		A644173418D8795200001411 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A644173318D8795200001411 /* LoginViewController.m */; };
-		A644173718D8795B00001411 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A644173618D8795B00001411 /* SignupViewController.m */; };
 		A644173A18D87A5200001411 /* PrettyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A644173918D87A5200001411 /* PrettyButton.m */; };
-		A644173D18D87B1600001411 /* FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A644173C18D87B1600001411 /* FormViewController.m */; };
 		A644174018D87BD200001411 /* ServiceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A644173F18D87BD200001411 /* ServiceBase.m */; };
 		A644174518D87C1300001411 /* RepositoryBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A644174218D87C1300001411 /* RepositoryBase.m */; };
 		A644174618D87C1300001411 /* UserRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = A644174418D87C1300001411 /* UserRepository.m */; };
@@ -49,12 +43,8 @@
 		A66B60C71887C96A002B6867 /* ImageStack.m in Sources */ = {isa = PBXBuildFile; fileRef = A66B60C61887C96A002B6867 /* ImageStack.m */; };
 		A699AC701867A27600324F8D /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A699AC6F1867A27600324F8D /* UIView+Helpers.m */; };
 		A699AC731867A6F800324F8D /* SlidingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A699AC721867A6F800324F8D /* SlidingImageView.m */; };
-		A69CA31418D88AE9001FFED8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A69CA31318D88AE9001FFED8 /* Social.framework */; };
-		A69CA31618D88B26001FFED8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A69CA31518D88B26001FFED8 /* FacebookSDK.framework */; };
 		A6A1A3E118D8683D006FAB89 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A1A3E018D8683D006FAB89 /* UserService.m */; };
 		A6A1A3E418D868CB006FAB89 /* MTGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A1A3E318D868CB006FAB89 /* MTGUser.m */; };
-		A6A1A3E718D86924006FAB89 /* MTGUser+Mapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A1A3E618D86924006FAB89 /* MTGUser+Mapper.m */; };
-		A6A1A3EA18D87353006FAB89 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A1A3E918D87353006FAB89 /* WelcomeViewController.m */; };
 		A6A1A3F118D8747A006FAB89 /* Consts.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A1A3EE18D8747A006FAB89 /* Consts.m */; };
 		A6A1A3F218D8747A006FAB89 /* Enums.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A1A3F018D8747A006FAB89 /* Enums.m */; };
 		A6A1A3F518D876F5006FAB89 /* WireframeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A1A3F418D876F5006FAB89 /* WireframeViewController.m */; };
@@ -67,10 +57,7 @@
 		A6C28BFF18D95D6400D625CA /* CompleteDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C28BFE18D95D6400D625CA /* CompleteDeck.m */; };
 		A6C28C0218D95E3600D625CA /* DeckService.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C28C0118D95E3600D625CA /* DeckService.m */; };
 		A6C28C0518D95E7F00D625CA /* DeckRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C28C0418D95E7F00D625CA /* DeckRepository.m */; };
-		A6C28C0818D9604600D625CA /* CompleteDeck+Mapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C28C0718D9604600D625CA /* CompleteDeck+Mapper.m */; };
 		A6C6689518D88749001635EB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAAF3A6F17E118BF00048CC6 /* MainStoryboard.storyboard */; };
-		A6C6689718D887F9001635EB /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C6689618D887F9001635EB /* SDWebImage.framework */; };
-		A6C6689818D88A45001635EB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A644171D18D8782D00001411 /* Parse.framework */; };
 		A6D3EC701863CDDF00246D24 /* DraftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */; };
 		A6D3EC741863CEE000246D24 /* DraftCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3EC731863CEE000246D24 /* DraftCardCell.m */; };
 		A6D3ECA11863D04800246D24 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6D3EC931863D04800246D24 /* 1.jpg */; };
@@ -106,9 +93,7 @@
 		DAAF3A6817E118BF00048CC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAAF3A6617E118BF00048CC6 /* InfoPlist.strings */; };
 		DAAF3A6A17E118BF00048CC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAF3A6917E118BF00048CC6 /* main.m */; };
 		DAAF3A6E17E118BF00048CC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAF3A6D17E118BF00048CC6 /* AppDelegate.m */; };
-		DAAF3A7417E118BF00048CC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAF3A7317E118BF00048CC6 /* ViewController.m */; };
 		DAAF3A7617E118BF00048CC6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAAF3A7517E118BF00048CC6 /* Images.xcassets */; };
-		DAAF3A7D17E118BF00048CC6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF3A7C17E118BF00048CC6 /* XCTest.framework */; };
 		DAAF3A7E17E118BF00048CC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF3A5D17E118BF00048CC6 /* Foundation.framework */; };
 		DAAF3A7F17E118BF00048CC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF3A6117E118BF00048CC6 /* UIKit.framework */; };
 		DAAF3A8717E118BF00048CC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAAF3A8517E118BF00048CC6 /* InfoPlist.strings */; };
@@ -140,14 +125,8 @@
 		A644172518D8787900001411 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A644172718D8788000001411 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A644172918D8788B00001411 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		A644173218D8795200001411 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = "View Controllers/LoginViewController.h"; sourceTree = "<group>"; };
-		A644173318D8795200001411 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = "View Controllers/LoginViewController.m"; sourceTree = "<group>"; };
-		A644173518D8795B00001411 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = "View Controllers/SignupViewController.h"; sourceTree = "<group>"; };
-		A644173618D8795B00001411 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = "View Controllers/SignupViewController.m"; sourceTree = "<group>"; };
 		A644173818D87A5200001411 /* PrettyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrettyButton.h; path = "Custom Views/PrettyButton.h"; sourceTree = "<group>"; };
 		A644173918D87A5200001411 /* PrettyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrettyButton.m; path = "Custom Views/PrettyButton.m"; sourceTree = "<group>"; };
-		A644173B18D87B1600001411 /* FormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormViewController.h; path = "View Controllers/FormViewController.h"; sourceTree = "<group>"; };
-		A644173C18D87B1600001411 /* FormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormViewController.m; path = "View Controllers/FormViewController.m"; sourceTree = "<group>"; };
 		A644173E18D87BD200001411 /* ServiceBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceBase.h; path = Services/ServiceBase.h; sourceTree = "<group>"; };
 		A644173F18D87BD200001411 /* ServiceBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceBase.m; path = Services/ServiceBase.m; sourceTree = "<group>"; };
 		A644174118D87C1300001411 /* RepositoryBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RepositoryBase.h; path = Repositories/RepositoryBase.h; sourceTree = "<group>"; };
@@ -188,15 +167,10 @@
 		A699AC711867A6F800324F8D /* SlidingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlidingImageView.h; path = "Custom Views/SlidingImageView.h"; sourceTree = "<group>"; };
 		A699AC721867A6F800324F8D /* SlidingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlidingImageView.m; path = "Custom Views/SlidingImageView.m"; sourceTree = "<group>"; };
 		A69CA31318D88AE9001FFED8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		A69CA31518D88B26001FFED8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		A6A1A3DF18D8683D006FAB89 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserService.h; path = Services/UserService.h; sourceTree = "<group>"; };
 		A6A1A3E018D8683D006FAB89 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserService.m; path = Services/UserService.m; sourceTree = "<group>"; };
 		A6A1A3E218D868CB006FAB89 /* MTGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTGUser.h; path = Models/MTGUser.h; sourceTree = "<group>"; };
 		A6A1A3E318D868CB006FAB89 /* MTGUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTGUser.m; path = Models/MTGUser.m; sourceTree = "<group>"; };
-		A6A1A3E518D86924006FAB89 /* MTGUser+Mapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MTGUser+Mapper.h"; path = "Categories/MTGUser+Mapper.h"; sourceTree = "<group>"; };
-		A6A1A3E618D86924006FAB89 /* MTGUser+Mapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MTGUser+Mapper.m"; path = "Categories/MTGUser+Mapper.m"; sourceTree = "<group>"; };
-		A6A1A3E818D87353006FAB89 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeViewController.h; path = "View Controllers/WelcomeViewController.h"; sourceTree = "<group>"; };
-		A6A1A3E918D87353006FAB89 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WelcomeViewController.m; path = "View Controllers/WelcomeViewController.m"; sourceTree = "<group>"; };
 		A6A1A3ED18D8747A006FAB89 /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
 		A6A1A3EE18D8747A006FAB89 /* Consts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Consts.m; sourceTree = "<group>"; };
 		A6A1A3EF18D8747A006FAB89 /* Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
@@ -220,9 +194,6 @@
 		A6C28C0118D95E3600D625CA /* DeckService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeckService.m; path = Services/DeckService.m; sourceTree = "<group>"; };
 		A6C28C0318D95E7F00D625CA /* DeckRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeckRepository.h; path = Repositories/DeckRepository.h; sourceTree = "<group>"; };
 		A6C28C0418D95E7F00D625CA /* DeckRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeckRepository.m; path = Repositories/DeckRepository.m; sourceTree = "<group>"; };
-		A6C28C0618D9604600D625CA /* CompleteDeck+Mapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CompleteDeck+Mapper.h"; path = "Categories/CompleteDeck+Mapper.h"; sourceTree = "<group>"; };
-		A6C28C0718D9604600D625CA /* CompleteDeck+Mapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CompleteDeck+Mapper.m"; path = "Categories/CompleteDeck+Mapper.m"; sourceTree = "<group>"; };
-		A6C6689618D887F9001635EB /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		A6D3EC6E1863CDDF00246D24 /* DraftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraftViewController.h; path = "View Controllers/DraftViewController.h"; sourceTree = "<group>"; };
 		A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraftViewController.m; path = "View Controllers/DraftViewController.m"; sourceTree = "<group>"; };
 		A6D3EC721863CEE000246D24 /* DraftCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraftCardCell.h; path = "Custom Cells/DraftCardCell.h"; sourceTree = "<group>"; };
@@ -272,11 +243,8 @@
 		DAAF3A6C17E118BF00048CC6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DAAF3A6D17E118BF00048CC6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DAAF3A7017E118BF00048CC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		DAAF3A7217E118BF00048CC6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DAAF3A7317E118BF00048CC6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		DAAF3A7517E118BF00048CC6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DAAF3A7B17E118BF00048CC6 /* DraftWithFriendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DraftWithFriendsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAAF3A7C17E118BF00048CC6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		DAAF3A8417E118BF00048CC6 /* DraftWithFriendsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DraftWithFriendsTests-Info.plist"; sourceTree = "<group>"; };
 		DAAF3A8617E118BF00048CC6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DAAF3A8817E118BF00048CC6 /* DraftWithFriendsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DraftWithFriendsTests.m; sourceTree = "<group>"; };
@@ -288,15 +256,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69CA31618D88B26001FFED8 /* FacebookSDK.framework in Frameworks */,
-				A69CA31418D88AE9001FFED8 /* Social.framework in Frameworks */,
-				A6C6689818D88A45001635EB /* Parse.framework in Frameworks */,
-				A6C6689718D887F9001635EB /* SDWebImage.framework in Frameworks */,
 				A644172A18D8788B00001411 /* QuartzCore.framework in Frameworks */,
-				A644172818D8788000001411 /* MobileCoreServices.framework in Frameworks */,
 				A644172618D8787900001411 /* CFNetwork.framework in Frameworks */,
-				A644172418D8787100001411 /* Security.framework in Frameworks */,
-				A644172218D8786500001411 /* StoreKit.framework in Frameworks */,
 				A644172018D8785E00001411 /* SystemConfiguration.framework in Frameworks */,
 				DA6C8EAF17E14371001F8A6D /* ImageIO.framework in Frameworks */,
 				DAAF3A6017E118BF00048CC6 /* CoreGraphics.framework in Frameworks */,
@@ -309,7 +270,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAAF3A7D17E118BF00048CC6 /* XCTest.framework in Frameworks */,
 				DAAF3A7F17E118BF00048CC6 /* UIKit.framework in Frameworks */,
 				DAAF3A7E17E118BF00048CC6 /* Foundation.framework in Frameworks */,
 			);
@@ -374,10 +334,6 @@
 			children = (
 				A699AC6E1867A27600324F8D /* UIView+Helpers.h */,
 				A699AC6F1867A27600324F8D /* UIView+Helpers.m */,
-				A6A1A3E518D86924006FAB89 /* MTGUser+Mapper.h */,
-				A6A1A3E618D86924006FAB89 /* MTGUser+Mapper.m */,
-				A6C28C0618D9604600D625CA /* CompleteDeck+Mapper.h */,
-				A6C28C0718D9604600D625CA /* CompleteDeck+Mapper.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -408,8 +364,6 @@
 			children = (
 				A6D3EC721863CEE000246D24 /* DraftCardCell.h */,
 				A6D3EC731863CEE000246D24 /* DraftCardCell.m */,
-				DA6C8E3A17E1301F001F8A6D /* Card.h */,
-				DA6C8E3B17E1301F001F8A6D /* Card.m */,
 				DA76091E1814638100A4E3DD /* Player.h */,
 				DA76091F1814638100A4E3DD /* Player.m */,
 				DA7609211814679900A4E3DD /* Deck.h */,
@@ -528,9 +482,7 @@
 		DAAF3A5C17E118BF00048CC6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A69CA31518D88B26001FFED8 /* FacebookSDK.framework */,
 				A69CA31318D88AE9001FFED8 /* Social.framework */,
-				A6C6689618D887F9001635EB /* SDWebImage.framework */,
 				A644172918D8788B00001411 /* QuartzCore.framework */,
 				A644172718D8788000001411 /* MobileCoreServices.framework */,
 				A644172518D8787900001411 /* CFNetwork.framework */,
@@ -542,7 +494,6 @@
 				DAAF3A5D17E118BF00048CC6 /* Foundation.framework */,
 				DAAF3A5F17E118BF00048CC6 /* CoreGraphics.framework */,
 				DAAF3A6117E118BF00048CC6 /* UIKit.framework */,
-				DAAF3A7C17E118BF00048CC6 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -615,12 +566,8 @@
 			isa = PBXGroup;
 			children = (
 				A6461DE718EA50D60052A2E4 /* CardDetail */,
-				A644173B18D87B1600001411 /* FormViewController.h */,
-				A644173C18D87B1600001411 /* FormViewController.m */,
 				A6A1A3F318D876F5006FAB89 /* WireframeViewController.h */,
 				A6A1A3F418D876F5006FAB89 /* WireframeViewController.m */,
-				DAAF3A7217E118BF00048CC6 /* ViewController.h */,
-				DAAF3A7317E118BF00048CC6 /* ViewController.m */,
 				A6D3EC6E1863CDDF00246D24 /* DraftViewController.h */,
 				A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */,
 				A665E07A1863E65C00FCA166 /* DeckViewController.h */,
@@ -629,12 +576,6 @@
 				A6222BB318C86F5D00AFA3EE /* SetPickerViewController.m */,
 				A6BF6E1218CC1D7700A80474 /* DrawViewController.h */,
 				A6BF6E1318CC1D7700A80474 /* DrawViewController.m */,
-				A6A1A3E818D87353006FAB89 /* WelcomeViewController.h */,
-				A6A1A3E918D87353006FAB89 /* WelcomeViewController.m */,
-				A644173218D8795200001411 /* LoginViewController.h */,
-				A644173318D8795200001411 /* LoginViewController.m */,
-				A644173518D8795B00001411 /* SignupViewController.h */,
-				A644173618D8795B00001411 /* SignupViewController.m */,
 				A6C28BF718D95B8400D625CA /* DeckListViewController.h */,
 				A6C28BF818D95B8400D625CA /* DeckListViewController.m */,
 			);
@@ -710,9 +651,12 @@
 		DAAF3A5217E118BF00048CC6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Ryan Schroeder";
 				TargetAttributes = {
+					DAAF3A5917E118BF00048CC6 = {
+						DevelopmentTeam = T992VJAD7T;
+					};
 					DAAF3A7A17E118BF00048CC6 = {
 						TestTargetID = DAAF3A5917E118BF00048CC6;
 					};
@@ -808,16 +752,12 @@
 				A665E0791863E25700FCA166 /* StackedImageView.m in Sources */,
 				A6512AE418C81D3C006F4973 /* DeckViewModel.m in Sources */,
 				A66B60C71887C96A002B6867 /* ImageStack.m in Sources */,
-				A6A1A3E718D86924006FAB89 /* MTGUser+Mapper.m in Sources */,
-				A6A1A3EA18D87353006FAB89 /* WelcomeViewController.m in Sources */,
-				A644173718D8795B00001411 /* SignupViewController.m in Sources */,
 				A6C28C0218D95E3600D625CA /* DeckService.m in Sources */,
 				A699AC701867A27600324F8D /* UIView+Helpers.m in Sources */,
 				A6D3EC701863CDDF00246D24 /* DraftViewController.m in Sources */,
 				DA6C8EBC17E1833A001F8A6D /* CardRepository.m in Sources */,
 				A644173A18D87A5200001411 /* PrettyButton.m in Sources */,
 				DA7609231814679900A4E3DD /* Deck.m in Sources */,
-				DAAF3A7417E118BF00048CC6 /* ViewController.m in Sources */,
 				A6BF6E0E18CC0B9B00A80474 /* LandPickerView.m in Sources */,
 				A665E07F1863E6A800FCA166 /* StackedCardCell.m in Sources */,
 				A6D3EC741863CEE000246D24 /* DraftCardCell.m in Sources */,
@@ -825,11 +765,9 @@
 				A6A1A3F518D876F5006FAB89 /* WireframeViewController.m in Sources */,
 				DA76092D1814890600A4E3DD /* MTGSetService.m in Sources */,
 				A6A1A3F118D8747A006FAB89 /* Consts.m in Sources */,
-				A644173D18D87B1600001411 /* FormViewController.m in Sources */,
 				DAAF3A6E17E118BF00048CC6 /* AppDelegate.m in Sources */,
 				A644174518D87C1300001411 /* RepositoryBase.m in Sources */,
 				DAAF3A6A17E118BF00048CC6 /* main.m in Sources */,
-				A6C28C0818D9604600D625CA /* CompleteDeck+Mapper.m in Sources */,
 				A60DB1F818EFD18800BA452F /* ShareDeckView.m in Sources */,
 				A6C28BFF18D95D6400D625CA /* CompleteDeck.m in Sources */,
 				A6BF6E1718CC209F00A80474 /* DrawViewModel.m in Sources */,
@@ -847,7 +785,6 @@
 				A6BF6E1418CC1D7700A80474 /* DrawViewController.m in Sources */,
 				A6A1A3E118D8683D006FAB89 /* UserService.m in Sources */,
 				DA6C8E3C17E1301F001F8A6D /* Card.m in Sources */,
-				A644173418D8795200001411 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -901,7 +838,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -940,7 +876,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -972,20 +907,23 @@
 		DAAF3A8D17E118BF00048CC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/trent.ellingsen/Dev/DraftWithFriends/DraftWithFriends/Frameworks,
 					/Users/trent.ellingsen/Dev/DraftWithFriends,
 					/Users/trent.ellingsen/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DraftWithFriends/DraftWithFriends-Prefix.pch";
 				INFOPLIST_FILE = "DraftWithFriends/DraftWithFriends-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -993,21 +931,24 @@
 		DAAF3A8E17E118BF00048CC6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/ryan.schroeder/Desktop/Developer/DraftWithFriends,
 					/Users/trent.ellingsen/Dev/DraftWithFriends/DraftWithFriends/Frameworks,
 					/Users/trent.ellingsen/Dev/DraftWithFriends,
 					/Users/trent.ellingsen/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DraftWithFriends/DraftWithFriends-Prefix.pch";
 				INFOPLIST_FILE = "DraftWithFriends/DraftWithFriends-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1015,7 +956,6 @@
 		DAAF3A9017E118BF00048CC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DraftWithFriends.app/DraftWithFriends";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1038,7 +978,6 @@
 		DAAF3A9117E118BF00048CC6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DraftWithFriends.app/DraftWithFriends";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

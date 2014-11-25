@@ -117,8 +117,8 @@ NSString * const kSetKey = @"ths";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showPicks"]) {
-        [segue.destinationViewController setDelegate:self];
-        [segue.destinationViewController setPicks:[self.picks copy]];
+        [(DeckViewController *)segue.destinationViewController setDelegate:self];
+        [(DeckViewController *)segue.destinationViewController setPicks:[self.picks copy]];
     }
 }
 

@@ -7,45 +7,23 @@
 //
 
 #import "UserRepository.h"
-#import "MTGUser+Mapper.h"
 #import "Consts.h"
-#import <Parse/Parse.h>
 
 @implementation UserRepository
 
 - (void)logOut;
 {
-    [PFUser logOut];
+    // Not implemented
 }
 
 - (void)logInUser:(MTGUser *)mtgUser completed:(RepositoryCompletionBlock)completed
 {
-    [PFUser logInWithUsernameInBackground:mtgUser.email password:mtgUser.password
-                                    block:^(PFUser *user, NSError *error)
-     {
-         if (user) {
-             if (completed) completed(nil, [MTGUser mapPFUser:user]);
-         } else {
-             if (completed) completed(error, nil);
-         }
-     }];
+    if (completed) completed(nil, nil);
 }
 
 - (void)signUpUser:(MTGUser *)mtgUser completed:(RepositoryCompletionBlock)completed
 {
-    PFUser *user = [PFUser user];
-    user.username = mtgUser.email;
-    user.password = mtgUser.password;
-    user.email = mtgUser.email;
-    
-    user[@"firstName"] = mtgUser.firstName;
-    user[@"lastName"] = mtgUser.lastName;
-    
-    mtgUser.pfUser = user;
-    
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (completed) completed(error, nil);
-    }];
+    if (completed) completed(nil, nil);
 }
 
 + (UserRepository *)sharedRepository

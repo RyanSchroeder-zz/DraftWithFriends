@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Parse/Parse.h>
 #import "Card.h"
 
 @interface CompleteDeck : NSObject
@@ -19,6 +18,5 @@
 @property (nonatomic) NSArray *colors;
 @property (nonatomic) NSNumber *averageCMC;
 @property (nonatomic) NSDate *dateDrafted;
-@property (nonatomic) PFObject *pfCompletedDeck;
 
 @end

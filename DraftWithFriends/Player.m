@@ -32,7 +32,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"[ID: %d, Type: %u, Seat: %d]", self.ID, self.playerType, self.seatPosition];
+    return [NSString stringWithFormat:@"[ID: %d, Type: %lu, Seat: %d]", self.ID, self.playerType, self.seatPosition];
 }
 
 @end

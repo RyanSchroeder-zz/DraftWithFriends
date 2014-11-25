@@ -17,7 +17,7 @@
 
 - (MTGUser *)currentUser
 {
-    return [MTGUser mapPFUser:[PFUser currentUser]];
+    return nil;
 }
 
 - (void)logInUser:(MTGUser *)mtgUser completed:(ServiceCompletionBlock)completed
@@ -44,7 +44,6 @@
 
 - (void)logOut
 {
-    [PFUser logOut];
     [[NSNotificationCenter defaultCenter] postNotificationName:MTGUserLogOutNotificationKey object:self];
 }
 

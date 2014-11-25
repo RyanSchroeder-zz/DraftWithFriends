@@ -47,7 +47,7 @@
 
 - (void)updateTotal
 {
-    [self.totalLabel setText:[NSString stringWithFormat:@"Total: %d", [self totalLands]]];
+    [self.totalLabel setText:[NSString stringWithFormat:@"Total: %ld", (long)[self totalLands]]];
 }
 
 - (NSInteger)totalLands

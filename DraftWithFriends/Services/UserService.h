@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MTGUser+Mapper.h"
 #import "ServiceBase.h"
+#import "MTGUser.h"
 
 @interface UserService : ServiceBase
 

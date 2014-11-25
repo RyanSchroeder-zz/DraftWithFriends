@@ -45,7 +45,7 @@
 
 - (void)displayImages
 {
-    for (int i = self.imageViews.count - 1; i >= 0; i--) {
+    for (NSInteger i = self.imageViews.count - 1; i >= 0; i--) {
         SlidingImageView *imageView = self.imageViews[i];
         imageView.frame = [self imageFrame];
         NSInteger index = self.imageViews.count - i;

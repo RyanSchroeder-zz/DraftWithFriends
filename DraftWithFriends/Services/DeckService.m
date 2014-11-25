@@ -39,7 +39,7 @@
 
 - (void)deck:(CompleteDeck *)deck fetchCards:(ServiceCompletionBlock)completed;
 {
-    [[DeckRepository sharedRepository] deck:deck fetchCards:completed];
+    if (completed) completed(nil, nil);
 }
 
 + (DeckService *)sharedService

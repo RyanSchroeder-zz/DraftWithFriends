@@ -100,7 +100,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showDraft"]) {
-        [segue.destinationViewController setDelegate:self];
+        [(DraftViewController *)segue.destinationViewController setDelegate:self];
         [segue.destinationViewController setCardSet:self.set];
         [segue.destinationViewController setCards:[self.set generateBoosterPack]];
     } else if ([segue.identifier isEqualToString:@"showDecks"]) {
