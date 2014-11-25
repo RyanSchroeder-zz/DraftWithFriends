@@ -23,12 +23,12 @@
 		A6461DEA18EA50F00052A2E4 /* CardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6461DE918EA50F00052A2E4 /* CardDetailViewController.m */; };
 		A6461DEC18EA51010052A2E4 /* CardDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6461DEB18EA51010052A2E4 /* CardDetail.xib */; };
 		A6512AE418C81D3C006F4973 /* DeckViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6512AE318C81D3C006F4973 /* DeckViewModel.m */; };
-		A665E0791863E25700FCA166 /* StackedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A665E0781863E25700FCA166 /* StackedImageView.m */; };
+		A665E0791863E25700FCA166 /* StackedCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = A665E0781863E25700FCA166 /* StackedCardView.m */; };
 		A665E07C1863E65C00FCA166 /* DeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A665E07B1863E65C00FCA166 /* DeckViewController.m */; };
 		A665E07F1863E6A800FCA166 /* StackedCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A665E07E1863E6A800FCA166 /* StackedCardCell.m */; };
-		A66B60C71887C96A002B6867 /* ImageStack.m in Sources */ = {isa = PBXBuildFile; fileRef = A66B60C61887C96A002B6867 /* ImageStack.m */; };
+		A66B60C71887C96A002B6867 /* CardStack.m in Sources */ = {isa = PBXBuildFile; fileRef = A66B60C61887C96A002B6867 /* CardStack.m */; };
 		A699AC701867A27600324F8D /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A699AC6F1867A27600324F8D /* UIView+Helpers.m */; };
-		A699AC731867A6F800324F8D /* SlidingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A699AC721867A6F800324F8D /* SlidingImageView.m */; };
+		A699AC731867A6F800324F8D /* SlidingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = A699AC721867A6F800324F8D /* SlidingCardView.m */; };
 		A6A1A3E118D8683D006FAB89 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A1A3E018D8683D006FAB89 /* UserService.m */; };
 		A6A1A3E418D868CB006FAB89 /* MTGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A1A3E318D868CB006FAB89 /* MTGUser.m */; };
 		A6A1A3F118D8747A006FAB89 /* Consts.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A1A3EE18D8747A006FAB89 /* Consts.m */; };
@@ -108,18 +108,18 @@
 		A6461DEB18EA51010052A2E4 /* CardDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardDetail.xib; sourceTree = "<group>"; };
 		A6512AE218C81D3C006F4973 /* DeckViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeckViewModel.h; path = Models/DeckViewModel.h; sourceTree = "<group>"; };
 		A6512AE318C81D3C006F4973 /* DeckViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeckViewModel.m; path = Models/DeckViewModel.m; sourceTree = "<group>"; };
-		A665E0771863E25700FCA166 /* StackedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StackedImageView.h; path = "Custom Views/StackedImageView.h"; sourceTree = "<group>"; };
-		A665E0781863E25700FCA166 /* StackedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StackedImageView.m; path = "Custom Views/StackedImageView.m"; sourceTree = "<group>"; };
+		A665E0771863E25700FCA166 /* StackedCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StackedCardView.h; path = "Custom Views/StackedCardView.h"; sourceTree = "<group>"; };
+		A665E0781863E25700FCA166 /* StackedCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StackedCardView.m; path = "Custom Views/StackedCardView.m"; sourceTree = "<group>"; };
 		A665E07A1863E65C00FCA166 /* DeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeckViewController.h; path = "View Controllers/DeckViewController.h"; sourceTree = "<group>"; };
 		A665E07B1863E65C00FCA166 /* DeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeckViewController.m; path = "View Controllers/DeckViewController.m"; sourceTree = "<group>"; };
 		A665E07D1863E6A800FCA166 /* StackedCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StackedCardCell.h; path = "Custom Cells/StackedCardCell.h"; sourceTree = "<group>"; };
 		A665E07E1863E6A800FCA166 /* StackedCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StackedCardCell.m; path = "Custom Cells/StackedCardCell.m"; sourceTree = "<group>"; };
-		A66B60C51887C96A002B6867 /* ImageStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageStack.h; path = Models/ImageStack.h; sourceTree = "<group>"; };
-		A66B60C61887C96A002B6867 /* ImageStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageStack.m; path = Models/ImageStack.m; sourceTree = "<group>"; };
+		A66B60C51887C96A002B6867 /* CardStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardStack.h; path = Models/CardStack.h; sourceTree = "<group>"; };
+		A66B60C61887C96A002B6867 /* CardStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardStack.m; path = Models/CardStack.m; sourceTree = "<group>"; };
 		A699AC6E1867A27600324F8D /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Helpers.h"; path = "Categories/UIView+Helpers.h"; sourceTree = "<group>"; };
 		A699AC6F1867A27600324F8D /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Helpers.m"; path = "Categories/UIView+Helpers.m"; sourceTree = "<group>"; };
-		A699AC711867A6F800324F8D /* SlidingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlidingImageView.h; path = "Custom Views/SlidingImageView.h"; sourceTree = "<group>"; };
-		A699AC721867A6F800324F8D /* SlidingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlidingImageView.m; path = "Custom Views/SlidingImageView.m"; sourceTree = "<group>"; };
+		A699AC711867A6F800324F8D /* SlidingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlidingCardView.h; path = "Custom Views/SlidingCardView.h"; sourceTree = "<group>"; };
+		A699AC721867A6F800324F8D /* SlidingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlidingCardView.m; path = "Custom Views/SlidingCardView.m"; sourceTree = "<group>"; };
 		A6A1A3DF18D8683D006FAB89 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserService.h; path = Services/UserService.h; sourceTree = "<group>"; };
 		A6A1A3E018D8683D006FAB89 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserService.m; path = Services/UserService.m; sourceTree = "<group>"; };
 		A6A1A3E218D868CB006FAB89 /* MTGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTGUser.h; path = Models/MTGUser.h; sourceTree = "<group>"; };
@@ -243,10 +243,10 @@
 				A644173818D87A5200001411 /* PrettyButton.h */,
 				A644173918D87A5200001411 /* PrettyButton.m */,
 				A6BF6E0F18CC0BA700A80474 /* LandPicker */,
-				A665E0771863E25700FCA166 /* StackedImageView.h */,
-				A665E0781863E25700FCA166 /* StackedImageView.m */,
-				A699AC711867A6F800324F8D /* SlidingImageView.h */,
-				A699AC721867A6F800324F8D /* SlidingImageView.m */,
+				A665E0771863E25700FCA166 /* StackedCardView.h */,
+				A665E0781863E25700FCA166 /* StackedCardView.m */,
+				A699AC711867A6F800324F8D /* SlidingCardView.h */,
+				A699AC721867A6F800324F8D /* SlidingCardView.m */,
 				A60DB1EE18EFCDF700BA452F /* ShareDeckView.xib */,
 				A60DB1F618EFD18800BA452F /* ShareDeckView.h */,
 				A60DB1F718EFD18800BA452F /* ShareDeckView.m */,
@@ -319,8 +319,8 @@
 			children = (
 				DA6C8E3A17E1301F001F8A6D /* Card.h */,
 				DA6C8E3B17E1301F001F8A6D /* Card.m */,
-				A66B60C51887C96A002B6867 /* ImageStack.h */,
-				A66B60C61887C96A002B6867 /* ImageStack.m */,
+				A66B60C51887C96A002B6867 /* CardStack.h */,
+				A66B60C61887C96A002B6867 /* CardStack.m */,
 				A6512AE218C81D3C006F4973 /* DeckViewModel.h */,
 				A6512AE318C81D3C006F4973 /* DeckViewModel.m */,
 				A6BF6E1518CC209F00A80474 /* DrawViewModel.h */,
@@ -636,9 +636,9 @@
 			files = (
 				A665E07C1863E65C00FCA166 /* DeckViewController.m in Sources */,
 				A6C28BFC18D95BDF00D625CA /* ListedDeckCell.m in Sources */,
-				A665E0791863E25700FCA166 /* StackedImageView.m in Sources */,
+				A665E0791863E25700FCA166 /* StackedCardView.m in Sources */,
 				A6512AE418C81D3C006F4973 /* DeckViewModel.m in Sources */,
-				A66B60C71887C96A002B6867 /* ImageStack.m in Sources */,
+				A66B60C71887C96A002B6867 /* CardStack.m in Sources */,
 				A6C28C0218D95E3600D625CA /* DeckService.m in Sources */,
 				A699AC701867A27600324F8D /* UIView+Helpers.m in Sources */,
 				A6D3EC701863CDDF00246D24 /* DraftViewController.m in Sources */,
@@ -662,7 +662,7 @@
 				DA76092918146E7400A4E3DD /* MTGSet.m in Sources */,
 				DA760926181469B300A4E3DD /* BoosterPack.m in Sources */,
 				A644174618D87C1300001411 /* UserRepository.m in Sources */,
-				A699AC731867A6F800324F8D /* SlidingImageView.m in Sources */,
+				A699AC731867A6F800324F8D /* SlidingCardView.m in Sources */,
 				A6C28C0518D95E7F00D625CA /* DeckRepository.m in Sources */,
 				A6C28BF918D95B8400D625CA /* DeckListViewController.m in Sources */,
 				A644174018D87BD200001411 /* ServiceBase.m in Sources */,

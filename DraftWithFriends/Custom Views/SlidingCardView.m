@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 Trent Ellingsen. All rights reserved.
 //
 
-#import "SlidingImageView.h"
+#import "SlidingCardView.h"
 #import "Card.h"
 
-@interface SlidingImageView () <UIGestureRecognizerDelegate>
+@interface SlidingCardView () <UIGestureRecognizerDelegate>
 
 @property (nonatomic) Card *card;
 
 @end
 
-@implementation SlidingImageView
+@implementation SlidingCardView
 
 - (id)initWithCard:(Card *)card
 {
@@ -56,6 +56,7 @@
     } else {
         [self setFrameY:self.originalY + self.frame.size.height];
     }
+    
     return YES;
 }
 

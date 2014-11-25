@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ImageStack : NSObject
+@interface CardStack : NSObject
 
-@property (nonatomic) NSArray *cards;
-@property (nonatomic) NSInteger visibleImageIndex;
+@property (nonatomic) NSMutableArray *cards;
+@property (nonatomic) NSInteger highlightedCardIndex;
 
 - (id)initWithCards:(NSArray *)cards;
 

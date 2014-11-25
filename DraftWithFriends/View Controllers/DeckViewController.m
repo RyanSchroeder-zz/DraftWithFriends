@@ -8,9 +8,9 @@
 
 #import "DeckViewController.h"
 #import "StackedCardCell.h"
-#import "StackedImageView.h"
+#import "StackedCardView.h"
 #import "DeckViewModel.h"
-#import "ImageStack.h"
+#import "CardStack.h"
 #import "MTGSetService.h"
 #import "LandPickerView.h"
 #import "UIView+Helpers.h"
@@ -19,13 +19,13 @@
 
 NSString * const kStackedCardCellKey = @"stackedCardCell";
 
-@interface DeckViewController () <UICollectionViewDataSource, UICollectionViewDelegate, StackedImageViewDelegate, LandPickerViewDelegate>
+@interface DeckViewController () <UICollectionViewDataSource, UICollectionViewDelegate, StackedCardViewDelegate, LandPickerViewDelegate>
 
 // Raw data for the deck
 @property (nonatomic) DeckViewModel *deckViewModel;
 
 // The way the data needs to be stored for the view
-@property (nonatomic) NSArray *imageStacks;
+@property (nonatomic) NSArray *cardStacks;
 
 @property (weak, nonatomic) IBOutlet UIButton *draftButton;
 @property (weak, nonatomic) IBOutlet UIButton *addLandsButton;
@@ -86,16 +86,16 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 #pragma mark - StackedImageViewDelegate methods
 
-- (void)didRemoveCard:(Card *)card fromStack:(ImageStack *)imageStack
+- (void)didRemoveCard:(Card *)card fromStack:(CardStack *)cardStack
 {
-    if (imageStack.cards.count == 0) {
+    if (cardStack.cards.count == 0) {
         self.isRemovingEmptyStack = YES;
         
         [self setVisibleImages];
         
-        NSMutableArray *mutableStacks = [self.imageStacks mutableCopy];
-        [mutableStacks removeObject:imageStack];
-        self.imageStacks = [mutableStacks copy];
+        NSMutableArray *mutableStacks = [self.cardStacks mutableCopy];
+        [mutableStacks removeObject:cardStack];
+        self.cardStacks = [mutableStacks copy];
         
         [self.collectionView reloadData];
         self.isRemovingEmptyStack = NO;
@@ -114,11 +114,11 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 - (void)setVisibleImages
 {
-    for (NSInteger i = 0; i < self.imageStacks.count; i++) {
+    for (NSInteger i = 0; i < self.cardStacks.count; i++) {
         StackedCardCell *stackedCardCell = (StackedCardCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         
-        ImageStack *imageStack = self.imageStacks[i];
-        imageStack.visibleImageIndex = stackedCardCell.stackedImageView.visibleImageIndex;
+        CardStack *cardStack = self.cardStacks[i];
+        cardStack.highlightedCardIndex = stackedCardCell.stackedCardView.highlightCardIndex;
     }
 }
 
@@ -160,17 +160,17 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.imageStacks.count;
+    return self.cardStacks.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     StackedCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kStackedCardCellKey forIndexPath:indexPath];
 	
-    ImageStack *cardStack = self.imageStacks[indexPath.row];
-    [cell.stackedImageView setVisibleImageIndex:[cardStack visibleImageIndex]];
-    [cell.stackedImageView setCardStack:cardStack];
-    [cell.stackedImageView setStackedImageViewDelegate:self];
+    CardStack *cardStack = self.cardStacks[indexPath.row];
+    [cell.stackedCardView setHighlightCardIndex:[cardStack highlightedCardIndex]];
+    [cell.stackedCardView setCardStack:cardStack];
+    [cell.stackedCardView setStackedCardViewDelegate:self];
     
     return cell;
 }
@@ -183,8 +183,8 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
     
     StackedCardCell *stackedCardCell = (StackedCardCell *)cell;
 	
-    ImageStack *imageStack = self.imageStacks[indexPath.row];
-    imageStack.visibleImageIndex = stackedCardCell.stackedImageView.visibleImageIndex;
+    CardStack *cardStack = self.cardStacks[indexPath.row];
+    cardStack.highlightedCardIndex = stackedCardCell.stackedCardView.highlightCardIndex;
 }
 
 #pragma mark - configure methods
@@ -203,13 +203,13 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 - (void)configureCardsView
 {
-    NSMutableArray *imageStacks = [NSMutableArray new];
+    NSMutableArray *cardStacks = [NSMutableArray new];
     
     for (NSArray *cards in self.deckViewModel.chosenCardStacks) {
-        [imageStacks addObject:[[ImageStack alloc] initWithCards:cards]];
+        [cardStacks addObject:[[CardStack alloc] initWithCards:cards]];
     }
     
-    self.imageStacks = imageStacks;
+    self.cardStacks = cardStacks;
     
     [self.collectionView reloadData];
     [self configureStats];

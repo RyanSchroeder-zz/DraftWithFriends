@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Trent Ellingsen. All rights reserved.
 //
 
-#import "ImageStack.h"
+#import "CardStack.h"
 #import "Card.h"
 
-@implementation ImageStack
+@implementation CardStack
 
 - (id)initWithCards:(NSArray *)cards
 {
     self = [super init];
     
     if (self) {
-        self.cards = cards;
-        self.visibleImageIndex = 0;
+        self.cards = [cards mutableCopy];
+        self.highlightedCardIndex = 0;
     }
     
     return self;

@@ -198,7 +198,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="568"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0F-Tp-7SN" customClass="StackedImageView">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0F-Tp-7SN" customClass="StackedCardView">
                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="568"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -206,7 +206,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <outlet property="stackedImageView" destination="W0F-Tp-7SN" id="sab-Yj-W6V"/>
+                                            <outlet property="stackedCardView" destination="W0F-Tp-7SN" id="FoW-vh-Cbr"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -249,17 +249,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-5M-LgE">
-                                <rect key="frame" x="195" y="20" width="105" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Refresh View">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="refreshViewTapped" destination="5mw-Rq-vTX" eventType="touchUpInside" id="1BG-hE-n71"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -313,7 +302,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="568"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgp-dS-g8z" customClass="StackedImageView">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgp-dS-g8z" customClass="StackedCardView">
                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="568"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -321,7 +310,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <outlet property="stackedImageView" destination="dgp-dS-g8z" id="LMO-My-fMt"/>
+                                            <outlet property="stackedCardView" destination="dgp-dS-g8z" id="ghc-J8-aGE"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -352,17 +341,6 @@
                                     <action selector="newDraftTapped" destination="lqP-fp-rof" eventType="touchUpInside" id="QdQ-to-hzN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFb-Xw-xUH">
-                                <rect key="frame" x="195" y="20" width="105" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Refresh View">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="refreshTapped" destination="lqP-fp-rof" eventType="touchUpInside" id="J8E-vA-uXf"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPn-wM-qJr">
                                 <rect key="frame" x="115" y="518" width="89" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -372,17 +350,6 @@
                                 </state>
                                 <connections>
                                     <action selector="redrawTapped" destination="lqP-fp-rof" eventType="touchUpInside" id="dA7-Cv-mQP"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQr-Bi-Zuf">
-                                <rect key="frame" x="195" y="58" width="105" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Share">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="shareTapped" destination="lqP-fp-rof" eventType="touchUpInside" id="ZJh-HY-q7F"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -397,7 +364,6 @@
                     <navigationItem key="navigationItem" id="qxT-zT-QEZ"/>
                     <connections>
                         <outlet property="collectionView" destination="SWO-Vw-5Cv" id="hmw-6u-2ny"/>
-                        <outlet property="shareButton" destination="IQr-Bi-Zuf" id="VQ3-lv-jCD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCr-ym-Yh2" userLabel="First Responder" sceneMemberID="firstResponder"/>

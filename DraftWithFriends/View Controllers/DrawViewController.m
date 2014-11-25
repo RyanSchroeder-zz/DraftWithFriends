@@ -8,7 +8,7 @@
 
 #import "DrawViewController.h"
 #import "StackedCardCell.h"
-#import "ImageStack.h"
+#import "CardStack.h"
 #import "DrawViewModel.h"
 #import "DeckService.h"
 #import "UserService.h"
@@ -17,17 +17,16 @@
 
 NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 
-@interface DrawViewController () <UICollectionViewDataSource, UICollectionViewDelegate, StackedImageViewDelegate, ShareDeckViewDelegate>
+@interface DrawViewController () <UICollectionViewDataSource, UICollectionViewDelegate, StackedCardViewDelegate, ShareDeckViewDelegate>
 
 // The way the data needs to be stored for the view
-@property (nonatomic) NSArray *imageStacks;
+@property (nonatomic) NSArray *cardStacks;
 
-@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (nonatomic) DrawViewModel *drawViewModel;
 @property (nonatomic) BOOL isRemovingEmptyStack;
 
-@property (nonatomic) ImageStack *drawImageStack;
-@property (nonatomic) ImageStack *playedImageStack;
+@property (nonatomic) CardStack *drawCardStack;
+@property (nonatomic) CardStack *playedCardStack;
 @property (nonatomic) ShareDeckView *shareDeckView;
 
 @property (nonatomic) UIView *overlay;
@@ -47,23 +46,23 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 
 - (void)reloadCards
 {
-    self.imageStacks = [NSArray new];
-    if (!self.drawImageStack) {
-        self.drawImageStack = [[ImageStack alloc] initWithCards:self.drawViewModel.cardsDrawn];
+    self.cardStacks = [NSArray new];
+    if (!self.drawCardStack) {
+        self.drawCardStack = [[CardStack alloc] initWithCards:self.drawViewModel.cardsDrawn];
     } else {
-        [self.drawImageStack setCards:self.drawViewModel.cardsDrawn];
+        [self.drawCardStack setCards:self.drawViewModel.cardsDrawn];
     }
-    if (!self.playedImageStack) {
-        self.playedImageStack = [[ImageStack alloc] initWithCards:self.drawViewModel.cardsPlayed];
+    if (!self.playedCardStack) {
+        self.playedCardStack = [[CardStack alloc] initWithCards:self.drawViewModel.cardsPlayed];
     } else {
-        [self.playedImageStack setCards:self.drawViewModel.cardsPlayed];
+        [self.playedCardStack setCards:self.drawViewModel.cardsPlayed];
     }
     
-    if (self.drawImageStack.cards.count > 0) {
-        self.imageStacks = @[self.drawImageStack];
+    if (self.drawCardStack.cards.count > 0) {
+        self.cardStacks = @[self.drawCardStack];
     }
-    if (self.playedImageStack.cards.count > 0) {
-        self.imageStacks = [self.imageStacks arrayByAddingObject:self.playedImageStack];
+    if (self.playedCardStack.cards.count > 0) {
+        self.cardStacks = [self.cardStacks arrayByAddingObject:self.playedCardStack];
     }
     
     [self setVisibleImages];
@@ -145,21 +144,11 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
     [self configureCards];
 }
 
-- (IBAction)refreshTapped
-{
-    [self reloadCards];
-}
-
-- (IBAction)shareTapped
-{
-    [self showShareDeck];
-}
-
 #pragma mark - StackedImageViewDelegate methods
 
-- (void)didRemoveCard:(Card *)card fromStack:(ImageStack *)imageStack
+- (void)didRemoveCard:(Card *)card fromStack:(CardStack *)imageStack
 {
-    if (imageStack == self.drawImageStack) {
+    if (imageStack == self.drawCardStack) {
         for (NSInteger i = 0; i < self.drawViewModel.cardsDrawn.count; i++) {
             if (self.drawViewModel.cardsDrawn[i] == card) {
                 [self.drawViewModel.cardsPlayed addObject:card];
@@ -191,11 +180,11 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 
 - (void)setVisibleImages
 {
-    for (NSInteger i = 0; i < self.imageStacks.count; i++) {
+    for (NSInteger i = 0; i < self.cardStacks.count; i++) {
         StackedCardCell *stackedCardCell = (StackedCardCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         
-        ImageStack *imageStack = self.imageStacks[i];
-        imageStack.visibleImageIndex = stackedCardCell.stackedImageView.visibleImageIndex;
+        CardStack *cardStack = self.cardStacks[i];
+        cardStack.highlightedCardIndex = stackedCardCell.stackedCardView.highlightCardIndex;
     }
 }
 
@@ -203,42 +192,35 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.imageStacks.count;
+    return self.cardStacks.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     StackedCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kStackedDrawCardCellKey forIndexPath:indexPath];
 	
-    ImageStack *cardStack = self.imageStacks[indexPath.row];
-    [cell.stackedImageView setVisibleImageIndex:[cardStack visibleImageIndex]];
-    [cell.stackedImageView setCardStack:cardStack];
-    [cell.stackedImageView setStackedImageViewDelegate:self];
+    CardStack *cardStack = self.cardStacks[indexPath.row];
+    [cell.stackedCardView setHighlightCardIndex:[cardStack highlightedCardIndex]];
+    [cell.stackedCardView setCardStack:cardStack];
+    [cell.stackedCardView setStackedCardViewDelegate:self];
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.isRemovingEmptyStack || indexPath.row >= self.imageStacks.count) {
+    if (self.isRemovingEmptyStack || indexPath.row >= self.cardStacks.count) {
         return;
     }
     
     StackedCardCell *stackedCardCell = (StackedCardCell *)cell;
 	
-    ImageStack *imageStack = self.imageStacks[indexPath.row];
-    imageStack.visibleImageIndex = stackedCardCell.stackedImageView.visibleImageIndex;
+    CardStack *cardStack = self.cardStacks[indexPath.row];
+    cardStack.highlightedCardIndex = stackedCardCell.stackedCardView.highlightCardIndex;
 }
 
 
 #pragma mark - configure methods
-
-- (void)configureShareButton
-{
-    if (!self.completeDeck) {
-        self.shareButton.hidden = YES;
-    }
-}
 
 - (void)configureCards
 {
@@ -286,7 +268,6 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
     [super viewDidLoad];
     [self configureCollectionView];
     [self configureCards];
-    [self configureShareButton];
 }
 
 

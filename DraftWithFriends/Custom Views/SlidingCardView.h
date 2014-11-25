@@ -10,17 +10,17 @@
 
 @class Card;
 
-@protocol SlidingImageViewDelegate <NSObject>
+@protocol SlidingCardViewDelegate <NSObject>
 
 - (void)cardRemoved:(Card *)card;
 
 @end
 
 
-@interface SlidingImageView : UIImageView
+@interface SlidingCardView : UIImageView
 
 @property (nonatomic) CGFloat originalY;
-@property (nonatomic) id<SlidingImageViewDelegate> delegate;
+@property (nonatomic) id<SlidingCardViewDelegate> delegate;
 
 - (id)initWithCard:(Card *)card;
 - (BOOL)slideDownAnimated:(BOOL)animated;

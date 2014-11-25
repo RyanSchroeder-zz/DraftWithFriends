@@ -146,35 +146,6 @@ NSString * const kSetKey = @"ths";
 
 - (void)preloadCards
 {
-    
-    [self.picks addObject:self.cards[0]];
-    [self.picks addObject:self.cards[1]];
-    [self.picks addObject:self.cards[2]];
-    [self.picks addObject:self.cards[3]];
-    [self.picks addObject:self.cards[4]];
-    [self.picks addObject:self.cards[5]];
-    [self.picks addObject:self.cards[6]];
-    [self.picks addObject:self.cards[7]];
-    [self.picks addObject:self.cards[8]];
-    [self.picks addObject:self.cards[9]];
-    [self.picks addObject:self.cards[10]];
-    [self.picks addObject:self.cards[11]];
-    [self.picks addObject:self.cards[12]];
-    [self.picks addObject:self.cards[13]];
-    [self.picks addObject:self.cards[0]];
-    [self.picks addObject:self.cards[1]];
-    [self.picks addObject:self.cards[2]];
-    [self.picks addObject:self.cards[3]];
-    [self.picks addObject:self.cards[4]];
-    [self.picks addObject:self.cards[5]];
-    [self.picks addObject:self.cards[6]];
-    [self.picks addObject:self.cards[7]];
-    [self.picks addObject:self.cards[8]];
-    [self.picks addObject:self.cards[9]];
-    [self.picks addObject:self.cards[10]];
-    [self.picks addObject:self.cards[11]];
-    [self.picks addObject:self.cards[12]];
-    [self.picks addObject:self.cards[13]];
     [self.picks addObject:self.cards[0]];
     [self.picks addObject:self.cards[1]];
     [self.picks addObject:self.cards[2]];
