@@ -167,9 +167,9 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 {
     StackedCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kStackedCardCellKey forIndexPath:indexPath];
 	
-    ImageStack *imageStack = self.imageStacks[indexPath.row];
-    [cell.stackedImageView setVisibleImageIndex:[imageStack visibleImageIndex]];
-    [cell.stackedImageView setImageStack:imageStack];
+    ImageStack *cardStack = self.imageStacks[indexPath.row];
+    [cell.stackedImageView setVisibleImageIndex:[cardStack visibleImageIndex]];
+    [cell.stackedImageView setCardStack:cardStack];
     [cell.stackedImageView setStackedImageViewDelegate:self];
     
     return cell;

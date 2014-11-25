@@ -25,6 +25,6 @@
 @property (nonatomic) id<StackedImageViewDelegate> stackedImageViewDelegate;
 @property (nonatomic) NSInteger visibleImageIndex;
 
-- (void)setImageStack:(ImageStack *)imageStack;
+- (void)setCardStack:(ImageStack *)cardStack;
 
 @end

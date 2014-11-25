@@ -18,7 +18,7 @@
 
 @interface StackedImageView () <UIScrollViewDelegate, SlidingImageViewDelegate>
 
-@property (nonatomic) ImageStack *imageStack;
+@property (nonatomic) ImageStack *cardStack;
 @property (nonatomic) NSMutableArray *imageViews;
 @property (nonatomic) CGFloat startingContentOffset;
 @property (nonatomic, getter = isConfiguringImages) BOOL configuringImages;
@@ -28,9 +28,9 @@
 
 @implementation StackedImageView
 
-- (void)setImageStack:(ImageStack *)imageStack
+- (void)setCardStack:(ImageStack *)cardStack
 {
-    _imageStack = imageStack;
+    _cardStack = cardStack;
     
     [self reloadStack];
 }
@@ -39,21 +39,14 @@
 {
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    [self configureView];
-    [self scrollToVisibleImage];
+    [self configureImages];
+    [self scrollToHighlightedImage];
 }
 
-- (CGRect)cardFrameAtY:(CGFloat)yCoordinate
-{
-    return CGRectMake(0, yCoordinate, self.frame.size.width, self.frame.size.width * IMAGE_HEIGHT / IMAGE_WIDTH);
-}
-
-- (void)scrollToVisibleImage
+- (void)scrollToHighlightedImage
 {
     [self setContentOffset:CGPointMake(0, self.startingContentOffset - self.visibleImageIndex * IMAGE_OFFSET) animated:NO];
-    if (self.visibleImageIndex != 0 && self.isConfiguringImages) {
-        [self updateImagesAnimated:NO];
-    }
+    [self slideImagesIfNeededAnimated:NO];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -66,10 +59,10 @@
     [self preventDownScrollIfOnLastCard:scrollView.contentOffset.y];
     
     if (self.isConfiguringImages) {
-        [self updateImagesAnimated:NO];
+        [self slideImagesIfNeededAnimated:NO];
         self.configuringImages = NO;
     } else {
-        [self updateImagesAnimated:YES];
+        [self slideImagesIfNeededAnimated:YES];
     }
 }
 
@@ -81,14 +74,14 @@
     }
 }
 
-- (void)updateImagesAnimated:(BOOL)animated
+- (void)slideImagesIfNeededAnimated:(BOOL)animated
 {
     for (int i = 0; i < self.imageViews.count; i++) {
-        [self updateImageAtIndex:i animated:animated];
+        [self slideImageIfNeededAtIndex:i animated:animated];
     }
 }
 
-- (void)updateImageAtIndex:(NSInteger)index animated:(BOOL)animated
+- (void)slideImageIfNeededAtIndex:(NSInteger)index animated:(BOOL)animated
 {
     SlidingImageView *image = self.imageViews[index];
     
@@ -116,7 +109,7 @@
 
 - (void)cardRemoved:(Card *)card
 {
-    NSMutableArray *cards = [self.imageStack.cards mutableCopy];
+    NSMutableArray *cards = [self.cardStack.cards mutableCopy];
     
     for (NSInteger i = 0; i < cards.count; i++) {
         if (cards[i] == card) {
@@ -125,14 +118,12 @@
         }
     }
     
-    self.imageStack.cards = [cards copy];
+    self.cardStack.cards = [cards copy];
     
-    [self.stackedImageViewDelegate didRemoveCard:card fromStack:self.imageStack];
+    [self.stackedImageViewDelegate didRemoveCard:card fromStack:self.cardStack];
     
-    if (cards.count == 0) {
-        if ([self.stackedImageViewDelegate respondsToSelector:@selector(stackedViewDidEmpty)]) {
-            [self.stackedImageViewDelegate stackedViewDidEmpty];
-        }
+    if (cards.count == 0 && [self.stackedImageViewDelegate respondsToSelector:@selector(stackedViewDidEmpty)]) {
+        [self.stackedImageViewDelegate stackedViewDidEmpty];
     } else {
         [self reloadStack];
     }
@@ -140,33 +131,47 @@
 
 #pragma mark - configure methods
 
-- (void)configureView
+- (void)configureImages
 {
     self.configuringImages = YES;
-    
     self.imageViews = [NSMutableArray new];
     
-    for (NSInteger i = self.imageStack.cards.count - 1; i >= 0; i--) {
-        Card *card = self.imageStack.cards[i];
-        SlidingImageView *slidingImageView = [[SlidingImageView alloc] initWithCard:card];
-        
-        [slidingImageView setImageWithURL:card.smallImageURL placeholderImage:self.cardBack];
-        slidingImageView.delegate = self;
-        slidingImageView.originalY = (self.imageStack.cards.count - i) * IMAGE_OFFSET;
-        slidingImageView.frame = [self cardFrameAtY:slidingImageView.originalY];
-        
-        [self.imageViews insertObject:slidingImageView atIndex:0];
-        [self addSubview:slidingImageView];
+    for (NSInteger i = self.cardStack.cards.count - 1; i >= 0; i--) {
+        Card *card = self.cardStack.cards[i];
+        [self configureCardInStack:card atIndex:i];
     }
     
-    // Size of all the images stacked up
+    [self configureContentSizeToHeightOfStackedImages];
+    [self configureStartintContentOffset];
+}
+
+- (void)configureCardInStack:(Card *)card atIndex:(NSInteger)index
+{
+    SlidingImageView *slidingImageView = [[SlidingImageView alloc] initWithCard:card];
+    
+    [slidingImageView setImageWithURL:card.smallImageURL placeholderImage:self.cardBack];
+    slidingImageView.delegate = self;
+    slidingImageView.originalY = (self.cardStack.cards.count - index) * IMAGE_OFFSET;
+    slidingImageView.frame = [self cardFrameAtY:slidingImageView.originalY];
+    
+    [self.imageViews insertObject:slidingImageView atIndex:0];
+    [self addSubview:slidingImageView];
+}
+
+- (CGRect)cardFrameAtY:(CGFloat)yCoordinate
+{
+    return CGRectMake(0, yCoordinate, self.frame.size.width, self.frame.size.width * IMAGE_HEIGHT / IMAGE_WIDTH);
+}
+
+- (void)configureContentSizeToHeightOfStackedImages
+{
     self.contentSize = CGSizeMake(self.frame.size.width,
-                                  [self.imageViews[0] size].height * 2 + (self.imageViews.count * IMAGE_OFFSET));
-    
-    // Scroll to bottom of the list
+                                  [self.imageViews[0] size].height * 2 + ((self.cardStack.cards.count + 1) * IMAGE_OFFSET));
+}
+
+- (void)configureStartintContentOffset
+{
     self.startingContentOffset = self.contentSize.height - self.frame.size.height;
-    
-    self.cardBack = [UIImage imageNamed:@"cardback.jpg"];
 }
 
 #pragma mark - custom inits
@@ -178,6 +183,7 @@
     self.delegate = self;
     [self setShowsVerticalScrollIndicator:NO];
     [self setShowsHorizontalScrollIndicator:NO];
+    self.cardBack = [UIImage imageNamed:@"cardback.jpg"];
     
     return self;
 }
