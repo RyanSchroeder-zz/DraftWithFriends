@@ -78,8 +78,8 @@
     
     [self.stackedCardViewDelegate didRemoveCard:cardRemoved fromStack:self.cardStack];
     
-    if (self.cardStack.cards.count == 0 && [self.stackedCardViewDelegate respondsToSelector:@selector(stackedViewDidEmpty)]) {
-        [self.stackedCardViewDelegate stackedViewDidEmpty];
+    if (self.cardStack.cards.count == 0 && [self.stackedCardViewDelegate respondsToSelector:@selector(stackedViewDidEmpty:)]) {
+        [self.stackedCardViewDelegate stackedViewDidEmpty:self.cardStack];
     } else {
         [self reloadStack];
     }

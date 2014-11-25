@@ -16,7 +16,7 @@
 - (void)didRemoveCard:(Card *)card fromStack:(CardStack *)cardStack;
 
 @optional
-- (void)stackedViewDidEmpty;
+- (void)stackedViewDidEmpty:(CardStack *)cardStack;
 
 @end
 

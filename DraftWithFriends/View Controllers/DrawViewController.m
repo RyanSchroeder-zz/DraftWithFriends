@@ -168,7 +168,7 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
     [self reloadCards];
 }
 
-- (void)stackedViewDidEmpty
+- (void)stackedViewDidEmpty:(CardStack *)cardStack
 {
     self.isRemovingEmptyStack = YES;
     
@@ -184,7 +184,7 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
         StackedCardCell *stackedCardCell = (StackedCardCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         
         CardStack *cardStack = self.cardStacks[i];
-        cardStack.highlightedCardIndex = stackedCardCell.stackedCardView.highlightCardIndex;
+        cardStack.highlightedCardIndex = stackedCardCell.stackedCardView.highlightedCardIndex;
     }
 }
 
@@ -200,7 +200,7 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
     StackedCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kStackedDrawCardCellKey forIndexPath:indexPath];
 	
     CardStack *cardStack = self.cardStacks[indexPath.row];
-    [cell.stackedCardView setHighlightCardIndex:[cardStack highlightedCardIndex]];
+    [cell.stackedCardView setHighlightedCardIndex:[cardStack highlightedCardIndex]];
     [cell.stackedCardView setCardStack:cardStack];
     [cell.stackedCardView setStackedCardViewDelegate:self];
     
@@ -216,7 +216,7 @@ NSString * const kStackedDrawCardCellKey = @"stackedCardCell";
     StackedCardCell *stackedCardCell = (StackedCardCell *)cell;
 	
     CardStack *cardStack = self.cardStacks[indexPath.row];
-    cardStack.highlightedCardIndex = stackedCardCell.stackedCardView.highlightCardIndex;
+    cardStack.highlightedCardIndex = stackedCardCell.stackedCardView.highlightedCardIndex;
 }
 
 

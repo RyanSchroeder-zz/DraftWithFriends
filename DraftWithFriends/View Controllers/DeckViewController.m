@@ -86,21 +86,22 @@ NSString * const kStackedCardCellKey = @"stackedCardCell";
 
 #pragma mark - StackedImageViewDelegate methods
 
+- (void)stackedViewDidEmpty:(CardStack *)cardStack
+{
+    self.isRemovingEmptyStack = YES;
+    
+    [self displayHighlightedCards];
+    
+    NSMutableArray *mutableStacks = [self.cardStacks mutableCopy];
+    [mutableStacks removeObject:cardStack];
+    self.cardStacks = [mutableStacks copy];
+    
+    [self.collectionView reloadData];
+    self.isRemovingEmptyStack = NO;
+}
+
 - (void)didRemoveCard:(Card *)card fromStack:(CardStack *)cardStack
 {
-    if (cardStack.cards.count == 0) {
-        self.isRemovingEmptyStack = YES;
-        
-        [self displayHighlightedCards];
-        
-        NSMutableArray *mutableStacks = [self.cardStacks mutableCopy];
-        [mutableStacks removeObject:cardStack];
-        self.cardStacks = [mutableStacks copy];
-        
-        [self.collectionView reloadData];
-        self.isRemovingEmptyStack = NO;
-    }
-    
     for (NSInteger i = 0; i < self.deckViewModel.deckListCards.count; i++) {
         if (self.deckViewModel.deckListCards[i] == card) {
             [self.deckViewModel.potentialCards addObject:card];

@@ -136,6 +136,13 @@ NSString * const kSetKey = @"ths";
     [self configurePicksButton];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self preloadCards];
+}
+
 - (void)preloadCards
 {
     [self.picks addObject:self.cards[0]];
