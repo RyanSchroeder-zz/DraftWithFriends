@@ -24,6 +24,7 @@ typedef NS_ENUM(NSUInteger, LandType) {
 
 + (MTGSetService *)sharedService;
 
+- (void)draftSelectionList:(ServiceCallback)completed;
 - (void)setWithSetCode:(NSString *)setCode
               callback:(ServiceCallback)callback;
 - (NSInteger)boosterPackSize;

@@ -52,7 +52,7 @@ NSString * const kSetKey = @"ths";
 
 - (IBAction)newDraftButtonTapped
 {
-    [self.delegate newDraftDesired];
+    [self.delegate returnToDraftSelection];
 }
 
 #pragma mark - DeckViewControllerDelegate methods
@@ -161,6 +161,7 @@ NSString * const kSetKey = @"ths";
 {
     [super viewDidLoad];
     
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self configureCollectionView];
 }
 

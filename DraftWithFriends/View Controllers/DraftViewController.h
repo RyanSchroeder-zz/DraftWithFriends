@@ -12,7 +12,7 @@
 
 @protocol DraftViewControllerDelegate <NSObject>
 
-- (void)newDraftDesired;
+- (void)returnToDraftSelection;
 
 @end
 

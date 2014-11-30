@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Trent Ellingsen. All rights reserved.
 //
 
+#import "DraftSelectionRepository.h"
 #import "MTGSetService.h"
 #import "Card.h"
 
@@ -16,6 +17,11 @@
 @end
 
 @implementation MTGSetService
+
+- (void)draftSelectionList:(ServiceCallback)completed
+{
+    [[DraftSelectionRepository sharedRepository] draftSelectionList:completed];
+}
 
 - (void)setWithSetCode:(NSString *)setCode callback:(ServiceCallback)callback
 {
@@ -252,7 +258,6 @@
     __strong static MTGSetService *_sharedService = nil;
     
     dispatch_once(&pred, ^{
-        NSLog(@"self is : %@", self);
         _sharedService = [[self alloc] init];
     });
     

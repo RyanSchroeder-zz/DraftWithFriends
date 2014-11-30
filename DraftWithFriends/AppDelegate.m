@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Trent Ellingsen. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "Consts.h"
 
@@ -19,10 +20,18 @@
     [[UINavigationBar appearance] setTintColor:MTG_DRAFT_COLOR];
 }
 
+- (void)configureParseWithLaunchOptions:(NSDictionary *)launchOptions
+{
+    [Parse setApplicationId:@"MaANXOh7VHs2wCnEwKI6Oa0P1pJRe9UlbOnxtodE"
+                  clientKey:@"BeIJrjDOcnOtoP1UP7JGALqmsfF3MeaXUKb3xzU2"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+}
+
 #pragma mark - application methods
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self configureParseWithLaunchOptions:launchOptions];
     [self configureStyles];
     
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];

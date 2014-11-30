@@ -7,7 +7,7 @@
 //
 
 #import "WireframeViewController.h"
-#import "SetPickerViewController.h"
+#import "DraftSelectionTableViewController.h"
 #import "UserService.h"
 
 
@@ -21,9 +21,8 @@
 
 - (void)presentMagicSetsList
 {
-    SetPickerViewController *setPickerViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"SetPickerViewController"];
-    UINavigationController *appEntryNavController = [[UINavigationController alloc] initWithRootViewController:setPickerViewController];
-    [appEntryNavController setNavigationBarHidden:YES];
+    DraftSelectionTableViewController *draftSelectionTableViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"DraftSelectionTableViewController"];
+    UINavigationController *appEntryNavController = [[UINavigationController alloc] initWithRootViewController:draftSelectionTableViewController];
     self.window.rootViewController = appEntryNavController;
 }
 

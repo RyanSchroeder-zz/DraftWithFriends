@@ -11,7 +11,6 @@
 		A60ACADD18C87BB800E494F0 /* BNG.json in Resources */ = {isa = PBXBuildFile; fileRef = A60ACADC18C87BB800E494F0 /* BNG.json */; };
 		A60DB1EF18EFCDF700BA452F /* ShareDeckView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A60DB1EE18EFCDF700BA452F /* ShareDeckView.xib */; };
 		A60DB1F818EFD18800BA452F /* ShareDeckView.m in Sources */ = {isa = PBXBuildFile; fileRef = A60DB1F718EFD18800BA452F /* ShareDeckView.m */; };
-		A6222BB418C86F5D00AFA3EE /* SetPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6222BB318C86F5D00AFA3EE /* SetPickerViewController.m */; };
 		A644172018D8785E00001411 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A644171F18D8785E00001411 /* SystemConfiguration.framework */; };
 		A644172618D8787900001411 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A644172518D8787900001411 /* CFNetwork.framework */; };
 		A644172A18D8788B00001411 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A644172918D8788B00001411 /* QuartzCore.framework */; };
@@ -46,6 +45,17 @@
 		A6C6689518D88749001635EB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAAF3A6F17E118BF00048CC6 /* MainStoryboard.storyboard */; };
 		A6D3EC701863CDDF00246D24 /* DraftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */; };
 		A6D3EC741863CEE000246D24 /* DraftCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D3EC731863CEE000246D24 /* DraftCardCell.m */; };
+		A6DB866C1A2AF2EF00091FB3 /* DraftSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DB866B1A2AF2EF00091FB3 /* DraftSelectionTableViewController.m */; };
+		A6DB866E1A2AFEA200091FB3 /* KTK.json in Resources */ = {isa = PBXBuildFile; fileRef = A6DB866D1A2AFEA200091FB3 /* KTK.json */; };
+		A6DB86731A2B0D9500091FB3 /* DraftSelectionRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DB86721A2B0D9500091FB3 /* DraftSelectionRepository.m */; };
+		A6DB86741A2B105A00091FB3 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DB866F1A2B0BF400091FB3 /* Parse.framework */; };
+		A6DB86761A2B108E00091FB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DB86751A2B108E00091FB3 /* Security.framework */; };
+		A6DB86781A2B109E00091FB3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DB86771A2B109E00091FB3 /* MobileCoreServices.framework */; };
+		A6DB86801A2B112F00091FB3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DB867F1A2B112F00091FB3 /* AudioToolbox.framework */; };
+		A6DB86821A2B113E00091FB3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DB86811A2B113E00091FB3 /* CoreLocation.framework */; };
+		A6DB86841A2B114600091FB3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DB86831A2B114600091FB3 /* libz.dylib */; };
+		A6DB86861A2B114F00091FB3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DB86851A2B114F00091FB3 /* StoreKit.framework */; };
+		A6DB86871A2B120700091FB3 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DB86791A2B10CB00091FB3 /* Bolts.framework */; };
 		A6E0049E1A2440F200CCBF57 /* cardback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6E0049D1A2440F200CCBF57 /* cardback.jpg */; };
 		DA39904018643E6C00BCDA33 /* THS.json in Resources */ = {isa = PBXBuildFile; fileRef = DA39903F18643E6C00BCDA33 /* THS.json */; };
 		DA6C8E3C17E1301F001F8A6D /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6C8E3B17E1301F001F8A6D /* Card.m */; };
@@ -89,8 +99,6 @@
 		A60DB1EE18EFCDF700BA452F /* ShareDeckView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShareDeckView.xib; path = "Custom Views/ShareDeckView.xib"; sourceTree = "<group>"; };
 		A60DB1F618EFD18800BA452F /* ShareDeckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareDeckView.h; path = "Custom Views/ShareDeckView.h"; sourceTree = "<group>"; };
 		A60DB1F718EFD18800BA452F /* ShareDeckView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareDeckView.m; path = "Custom Views/ShareDeckView.m"; sourceTree = "<group>"; };
-		A6222BB218C86F5D00AFA3EE /* SetPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetPickerViewController.h; path = "View Controllers/SetPickerViewController.h"; sourceTree = "<group>"; };
-		A6222BB318C86F5D00AFA3EE /* SetPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetPickerViewController.m; path = "View Controllers/SetPickerViewController.m"; sourceTree = "<group>"; };
 		A644171F18D8785E00001411 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A644172518D8787900001411 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A644172918D8788B00001411 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -151,6 +159,21 @@
 		A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraftViewController.m; path = "View Controllers/DraftViewController.m"; sourceTree = "<group>"; };
 		A6D3EC721863CEE000246D24 /* DraftCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraftCardCell.h; path = "Custom Cells/DraftCardCell.h"; sourceTree = "<group>"; };
 		A6D3EC731863CEE000246D24 /* DraftCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraftCardCell.m; path = "Custom Cells/DraftCardCell.m"; sourceTree = "<group>"; };
+		A6DB866A1A2AF2EF00091FB3 /* DraftSelectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraftSelectionTableViewController.h; path = "View Controllers/DraftSelectionTableViewController.h"; sourceTree = "<group>"; };
+		A6DB866B1A2AF2EF00091FB3 /* DraftSelectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraftSelectionTableViewController.m; path = "View Controllers/DraftSelectionTableViewController.m"; sourceTree = "<group>"; };
+		A6DB866D1A2AFEA200091FB3 /* KTK.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = KTK.json; sourceTree = "<group>"; };
+		A6DB866F1A2B0BF400091FB3 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		A6DB86711A2B0D9500091FB3 /* DraftSelectionRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraftSelectionRepository.h; path = Repositories/DraftSelectionRepository.h; sourceTree = "<group>"; };
+		A6DB86721A2B0D9500091FB3 /* DraftSelectionRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraftSelectionRepository.m; path = Repositories/DraftSelectionRepository.m; sourceTree = "<group>"; };
+		A6DB86751A2B108E00091FB3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A6DB86771A2B109E00091FB3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A6DB86791A2B10CB00091FB3 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		A6DB867A1A2B10CB00091FB3 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		A6DB867B1A2B10CB00091FB3 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		A6DB867F1A2B112F00091FB3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A6DB86811A2B113E00091FB3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A6DB86831A2B114600091FB3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		A6DB86851A2B114F00091FB3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A6E0049D1A2440F200CCBF57 /* cardback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cardback.jpg; sourceTree = "<group>"; };
 		BF2D525C2E84375E00F329D4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA39903F18643E6C00BCDA33 /* THS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = THS.json; sourceTree = "<group>"; };
@@ -194,6 +217,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6DB86871A2B120700091FB3 /* Bolts.framework in Frameworks */,
+				A6DB86861A2B114F00091FB3 /* StoreKit.framework in Frameworks */,
+				A6DB86841A2B114600091FB3 /* libz.dylib in Frameworks */,
+				A6DB86821A2B113E00091FB3 /* CoreLocation.framework in Frameworks */,
+				A6DB86801A2B112F00091FB3 /* AudioToolbox.framework in Frameworks */,
+				A6DB86781A2B109E00091FB3 /* MobileCoreServices.framework in Frameworks */,
+				A6DB86761A2B108E00091FB3 /* Security.framework in Frameworks */,
+				A6DB86741A2B105A00091FB3 /* Parse.framework in Frameworks */,
 				A644172A18D8788B00001411 /* QuartzCore.framework in Frameworks */,
 				A644172618D8787900001411 /* CFNetwork.framework in Frameworks */,
 				A644172018D8785E00001411 /* SystemConfiguration.framework in Frameworks */,
@@ -344,6 +375,8 @@
 				DA6C8EBB17E1833A001F8A6D /* CardRepository.m */,
 				A6C28C0318D95E7F00D625CA /* DeckRepository.h */,
 				A6C28C0418D95E7F00D625CA /* DeckRepository.m */,
+				A6DB86711A2B0D9500091FB3 /* DraftSelectionRepository.h */,
+				A6DB86721A2B0D9500091FB3 /* DraftSelectionRepository.m */,
 			);
 			name = Repositories;
 			sourceTree = "<group>";
@@ -385,6 +418,16 @@
 		DAAF3A5C17E118BF00048CC6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6DB86851A2B114F00091FB3 /* StoreKit.framework */,
+				A6DB86831A2B114600091FB3 /* libz.dylib */,
+				A6DB86811A2B113E00091FB3 /* CoreLocation.framework */,
+				A6DB867F1A2B112F00091FB3 /* AudioToolbox.framework */,
+				A6DB86791A2B10CB00091FB3 /* Bolts.framework */,
+				A6DB867A1A2B10CB00091FB3 /* ParseFacebookUtils.framework */,
+				A6DB867B1A2B10CB00091FB3 /* ParseUI.framework */,
+				A6DB86771A2B109E00091FB3 /* MobileCoreServices.framework */,
+				A6DB86751A2B108E00091FB3 /* Security.framework */,
+				A6DB866F1A2B0BF400091FB3 /* Parse.framework */,
 				A644172918D8788B00001411 /* QuartzCore.framework */,
 				A644172518D8787900001411 /* CFNetwork.framework */,
 				A644171F18D8785E00001411 /* SystemConfiguration.framework */,
@@ -432,6 +475,7 @@
 		DAAF3A9217E11EDD00048CC6 /* SetJSON */ = {
 			isa = PBXGroup;
 			children = (
+				A6DB866D1A2AFEA200091FB3 /* KTK.json */,
 				A60ACADC18C87BB800E494F0 /* BNG.json */,
 				DA6C8EB017E15335001F8A6D /* M13.json */,
 				DA6C8EB217E15544001F8A6D /* RTR.json */,
@@ -453,12 +497,12 @@
 				A6D3EC6F1863CDDF00246D24 /* DraftViewController.m */,
 				A665E07A1863E65C00FCA166 /* DeckViewController.h */,
 				A665E07B1863E65C00FCA166 /* DeckViewController.m */,
-				A6222BB218C86F5D00AFA3EE /* SetPickerViewController.h */,
-				A6222BB318C86F5D00AFA3EE /* SetPickerViewController.m */,
 				A6BF6E1218CC1D7700A80474 /* DrawViewController.h */,
 				A6BF6E1318CC1D7700A80474 /* DrawViewController.m */,
 				A6C28BF718D95B8400D625CA /* DeckListViewController.h */,
 				A6C28BF818D95B8400D625CA /* DeckListViewController.m */,
+				A6DB866A1A2AF2EF00091FB3 /* DraftSelectionTableViewController.h */,
+				A6DB866B1A2AF2EF00091FB3 /* DraftSelectionTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -579,6 +623,7 @@
 				DAAF3A9517E11F4F00048CC6 /* M14.json in Resources */,
 				A6461DEC18EA51010052A2E4 /* CardDetail.xib in Resources */,
 				A644174818D884A100001411 /* logo@2x.png in Resources */,
+				A6DB866E1A2AFEA200091FB3 /* KTK.json in Resources */,
 				DA6C8EB517E15552001F8A6D /* GTC.json in Resources */,
 				A6C6689518D88749001635EB /* MainStoryboard.storyboard in Resources */,
 				A60DB1EF18EFCDF700BA452F /* ShareDeckView.xib in Resources */,
@@ -649,6 +694,7 @@
 				A665E07F1863E6A800FCA166 /* StackedCardCell.m in Sources */,
 				A6D3EC741863CEE000246D24 /* DraftCardCell.m in Sources */,
 				A6A1A3E418D868CB006FAB89 /* MTGUser.m in Sources */,
+				A6DB866C1A2AF2EF00091FB3 /* DraftSelectionTableViewController.m in Sources */,
 				A6A1A3F518D876F5006FAB89 /* WireframeViewController.m in Sources */,
 				DA76092D1814890600A4E3DD /* MTGSetService.m in Sources */,
 				A6A1A3F118D8747A006FAB89 /* Consts.m in Sources */,
@@ -664,10 +710,10 @@
 				A644174618D87C1300001411 /* UserRepository.m in Sources */,
 				A699AC731867A6F800324F8D /* SlidingCardView.m in Sources */,
 				A6C28C0518D95E7F00D625CA /* DeckRepository.m in Sources */,
+				A6DB86731A2B0D9500091FB3 /* DraftSelectionRepository.m in Sources */,
 				A6C28BF918D95B8400D625CA /* DeckListViewController.m in Sources */,
 				A644174018D87BD200001411 /* ServiceBase.m in Sources */,
 				A6A1A3F218D8747A006FAB89 /* Enums.m in Sources */,
-				A6222BB418C86F5D00AFA3EE /* SetPickerViewController.m in Sources */,
 				DA7609201814638100A4E3DD /* Player.m in Sources */,
 				A6BF6E1418CC1D7700A80474 /* DrawViewController.m in Sources */,
 				A6A1A3E118D8683D006FAB89 /* UserService.m in Sources */,
